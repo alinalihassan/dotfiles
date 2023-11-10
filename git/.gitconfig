@@ -1,0 +1,19 @@
+[user]
+	email = hassanalinali@gmail.com
+  name = Alin Ali Hassan
+  # Should add signingKey and gpg sign
+	signingKey = ""
+[init]
+  defaultBranch = main
+[push]
+  autoSetupRemote = true
+[github]
+  user = alinalihassan
+[hub]
+	host = github.com
+[gpg]
+	program = gpg
+[commit]
+	gpgSign = false
+[tag]
+	forceSignAnnotated = false

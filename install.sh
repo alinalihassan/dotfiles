@@ -5,18 +5,19 @@ set -e
 echo "🙏 Deep breaths, everything will (probably) be fine!"
 echo ""
 
-# location of the *full repo* (defaults to ~/.dotfiles)
+# Setting up
+## location of the *full repo* (defaults to ~/.dotfiles)
 DOTFILES_PATH="${DOTFILES_PATH:="$HOME/.dotfiles"}"
-# location of this script (should be right next to all the other files, but we handle that next if it's not)
+## location of this script (should be right next to all the other files, but we handle that next if it's not)
 INSTALLER_PATH="$(dirname "$(realpath "${BASH_SOURCE[0]}")")"
 
-# if this is a codespace, link automatically cloned dotfiles repo to the expected DOTFILES_PATH
-# https://docs.github.com/en/codespaces/troubleshooting/troubleshooting-personalization-for-codespaces#troubleshooting-dotfiles
+## if this is a codespace, link automatically cloned dotfiles repo to the expected DOTFILES_PATH
+## https://docs.github.com/en/codespaces/troubleshooting/troubleshooting-personalization-for-codespaces#troubleshooting-dotfiles
 if [[ "$CODESPACES" = "true" ]] && [[ -d /workspaces/.codespaces/.persistedshare/dotfiles ]]; then
   ln -sf /workspaces/.codespaces/.persistedshare/dotfiles "$DOTFILES_PATH"
 fi
 
-# clone this repo if this script is all by itself and/or we're not in the expected location
+## clone this repo if this script is all by itself and/or we're not in the expected location
 if [[ "$INSTALLER_PATH" != "$DOTFILES_PATH" ]] && [[ ! -d "$DOTFILES_PATH" ]]; then
   git clone https://github.com/alinalihassan/dotfiles.git "$DOTFILES_PATH"
 
@@ -38,9 +39,9 @@ ln -sf "$DOTFILES_PATH/git/.gitignore_global" ~/.gitignore_global
 ## Starship
 ln -sf "$DOTFILES_PATH/starship/config.toml" ~/.config/starship.toml
 ## Wezterm
-ln -sf "$DOTFILES_PATH/wezterm/wezterm.lua" ~/.config/wezterm/wezterm.lua
+ln -sf "$DOTFILES_PATH/wezterm" ~/.config/wezterm
 ## LunarVim
-ln -sf "$DOTFILES_PATH/lvim" ~/.config/lvim/
+ln -sf "$DOTFILES_PATH/lvim" ~/.config/lvim
 
 # Oh My Zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
@@ -60,8 +61,11 @@ brew update
 brew bundle --file=~/Brewfile
 
 # LunarVim
-LV_BRANCH='release-1.3/neovim-0.9'
-bash <(curl -s https://raw.githubusercontent.com/LunarVim/LunarVim/release-1.3/neovim-0.9/utils/installer/install.sh)
+if ! command -v lvim &> /dev/null; then
+    echo "LunarVim is not installed. Installing..."
+    LV_BRANCH='release-1.3/neovim-0.9'
+    bash <(curl -s https://raw.githubusercontent.com/LunarVim/LunarVim/release-1.3/neovim-0.9/utils/installer/install.sh)
+fi
 
 # Finalize logging
 echo ""

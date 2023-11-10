@@ -27,7 +27,7 @@ brew "lazygit" # for git nvim plugins
 brew "mas" # to install app store apps
 
 ###############################
-#  macOS Apps via Cask        #
+#  Casks                      #
 ###############################
 
 # Utilities
@@ -58,6 +58,12 @@ cask "rapidapi"
 cask "visual-studio-code"
 cask "wezterm"
 
+# Fonts
+cask "font-cascadia-code"
+cask "font-geist"
+cask "font-geist-mono"
+cask "font-jetbrains-mono-nerd-font"
+
 ###############################
 #  macOS Apps via App Store   #
 ###############################
@@ -66,8 +72,6 @@ cask "wezterm"
 mas "Dropover", id: 1355679052
 mas "Magnet", id: 441258766
 mas "Pure Paste", id: 1611378436
-
-# Password manager
 
 # Development
 mas "Xcode", id: 497799835

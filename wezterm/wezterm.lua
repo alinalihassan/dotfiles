@@ -36,7 +36,9 @@ config.inactive_pane_hsb = {
 config.color_scheme = "tokyonight_night"
 
 -- Font settings
-config.font = wezterm.font("Cascadia Code")
+config.font = wezterm.font("JetBrainsMono Nerd Font")
+-- config.font = wezterm.font("Cascadia Code")
+-- config.font = wezterm.font("Geist Mono")
 
 -- Window settings
 config.window_close_confirmation = "NeverPrompt"

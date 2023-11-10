@@ -44,6 +44,10 @@ cask "arc"
 # Calendar
 cask "cron"
 
+# Password manager
+cask "1password"
+cask "1password-cli"
+
 # Social
 cask "discord"
 cask "whatsapp"
@@ -64,7 +68,6 @@ mas "Magnet", id: 441258766
 mas "Pure Paste", id: 1611378436
 
 # Password manager
-mas "Strongbox", id: 897283731
 
 # Development
 mas "Xcode", id: 497799835

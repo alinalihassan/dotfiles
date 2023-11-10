@@ -4,11 +4,12 @@ export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="robbyrussell"
 
 plugins=(
-	git
-	zsh-syntax-highlighting
-	zsh-autosuggestions
+  git
+  zsh-syntax-highlighting
+  zsh-autosuggestions
   web-search
   macos
+  1password
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -16,6 +17,9 @@ source $ZSH/oh-my-zsh.sh
 # Options
 ## Starship prompt
 eval "$(starship init zsh)"
+
+## 1Password CLI
+eval "$(op completion zsh)"; compdef _op op
 
 ## WezTerm
 setopt COMBINING_CHARS

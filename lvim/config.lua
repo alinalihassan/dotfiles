@@ -21,6 +21,12 @@ lvim.builtin.nvimtree.setup.renderer.icons.glyphs.git = {
   ignored = "◌",
 }
 
+lvim.builtin.nvimtree.setup.filters.custom = {
+  "node_modules",
+  "\\.cache",
+  ".git"
+}
+
 -- Plugins
 lvim.plugins = {
   -- Colorschemes

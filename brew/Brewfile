@@ -83,4 +83,7 @@ mas "Xcode", id: 497799835 # Apple development
 # mas "rcmd" (https://lowtechguys.com/rcmd/) - Keybindings-focused window switcher
 # cask "keycastr" (https://github.com/keycastr/keycastr) - Open-source keystroke visualizer
 # cask "fig" (https://fig.io/) - Interesting Terminal integration for autocomplete and finding the right command with AI
-
+# brew "docker" (https://www.docker.com/) -- Docker for containers
+# cask "docker" (https://www.docker.com/) -- Docker desktop
+# cask "orbstack" (https://orbstack.dev/) -- Docker Desktop alternative with excellent Mac support
+# cask "transmission" (https://transmissionbt.com/) -- Torrent Client

@@ -1,2 +1,6 @@
 # yaml-language-server: $schema=https://json.schemastore.org/lazygit.json
-quitOnTopLevelReturn: true
+gui:
+  nerdFontsVersion: '3'
+git:
+  log:
+    showGraph: 'always'

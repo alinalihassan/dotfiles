@@ -32,7 +32,11 @@ alias python="python3"
 alias find="fd"
 alias grep="rg"
 
-## Others
+## Environment variables
+export EDITOR=nvim
+export VISUAL=$EDITOR
+
+## PATH additions
 export PATH="$HOME/bin:$PATH"
 export PATH="/usr/local/bin:$PATH"
 export PATH="/Users/alinalihassan/.local/bin:$PATH"

@@ -31,44 +31,52 @@ brew "mas" # to install app store apps
 ###############################
 
 # Utilities
-cask "airbuddy"
-cask "alt-tab"
-cask "bartender"
-cask "clop"
-cask "command-x"
-cask "raycast"
+cask "airbuddy" # Better AirPods interface, battery visualizer for devices
+cask "alt-tab" # Replaces the Command-Tab Window Switcher
+cask "bartender" # Menubar improvements
+cask "clop" # Clipboard auto-optimizer
+cask "command-x" # Cut and paste support for Finder
+cask "raycast" # Better Spotlight replacement
 
 # Browsers
-cask "arc"
+cask "arc" # Opinionated browser I like
 
 # Calendar
-cask "cron"
+cask "cron" # Better Calendar app with keybindings and menubar support
 
 # Password manager
-cask "1password"
-cask "1password-cli"
+cask "1password" # Password manager of choice
+cask "1password-cli" # CLI support for password manager
 
 # Social
 cask "discord"
 cask "whatsapp"
 
 # Development
-cask "gitkraken"
-cask "rapidapi"
-cask "visual-studio-code"
-cask "wezterm"
+cask "gitkraken" # Git GUI when I feel lazy
+cask "rapidapi" # API devtools, Postman replacement
+cask "visual-studio-code" # Backup editor when I'm tired of NeoVim
+cask "wezterm" # GPU-accelerated and Lua-scriptable fast terminal emulator
 
 # Fonts
-cask "font-jetbrains-mono-nerd-font"
+cask "font-jetbrains-mono-nerd-font" # Best font with NeoVim in my experience
 
 ###############################
 #  macOS Apps via App Store   #
 ###############################
 
 # Utilities
-mas "Dropover", id: 1355679052
-mas "Magnet", id: 441258766
-mas "Pure Paste", id: 1611378436
+mas "Dropover", id: 1355679052 # Save files in shelves by dragging to the corner
+mas "Magnet", id: 441258766 # Window snapping tool
+mas "Pure Paste", id: 1611378436 # Remove formatting and keeps only the text from clipboard
 
 # Development
-mas "Xcode", id: 497799835
+mas "Xcode", id: 497799835 # Apple development
+
+###############################
+# Interesting Apps I consider #
+###############################
+
+# mas "rcmd" (https://lowtechguys.com/rcmd/) - Keybindings-focused window switcher
+# cask "keycastr" (https://github.com/keycastr/keycastr) - Open-source keystroke visualizer
+

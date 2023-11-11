@@ -79,4 +79,5 @@ mas "Xcode", id: 497799835 # Apple development
 
 # mas "rcmd" (https://lowtechguys.com/rcmd/) - Keybindings-focused window switcher
 # cask "keycastr" (https://github.com/keycastr/keycastr) - Open-source keystroke visualizer
+# cask "fig" (https://fig.io/) - Interesting Terminal integration for autocomplete and finding the right command with AI
 

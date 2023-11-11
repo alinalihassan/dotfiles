@@ -42,6 +42,11 @@ ln -sf "$DOTFILES_PATH/starship/config.toml" ~/.config/starship.toml
 ln -sf "$DOTFILES_PATH/wezterm" ~/.config/wezterm
 ## LunarVim
 ln -sf "$DOTFILES_PATH/lvim" ~/.config/lvim
+## VSCode
+ln -sf "$DOTFILES_PATH/vscode/settings.json" ~/Library/Application\ Support/Code/User/settings.json
+ln -sf "$DOTFILES_PATH/vscode/keybindings.json" ~/Library/Application\ Support/Code/User/keybindings.json
+## LazyGit
+ln -sf "$DOTFILES_PATH/lazygit/config.yml" ~/Library/Application\ Support/lazygit/config.yml
 
 # Oh My Zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
@@ -63,11 +68,6 @@ if ! command -v lvim &> /dev/null; then
     LV_BRANCH='release-1.3/neovim-0.9'
     bash <(curl -s https://raw.githubusercontent.com/LunarVim/LunarVim/release-1.3/neovim-0.9/utils/installer/install.sh)
 fi
-
-# VSCode
-## Move settings and keybindings to proper location
-cp "$DOTFILES_PATH/vscode/settings.json" ~/Library/Application\ Support/Code/User/settings.json
-cp "$DOTFILES_PATH/vscode/keybindings.json" ~/Library/Application\ Support/Code/User/keybindings.json
 
 # Finalize logging
 echo ""

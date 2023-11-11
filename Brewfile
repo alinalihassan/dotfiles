@@ -59,9 +59,6 @@ cask "visual-studio-code"
 cask "wezterm"
 
 # Fonts
-cask "font-cascadia-code"
-cask "font-geist"
-cask "font-geist-mono"
 cask "font-jetbrains-mono-nerd-font"
 
 ###############################

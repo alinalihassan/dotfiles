@@ -27,6 +27,8 @@ if [[ "$INSTALLER_PATH" != "$DOTFILES_PATH" ]] && [[ ! -d "$DOTFILES_PATH" ]]; t
 fi
 
 # Symlinks
+echo "Setting up symlinks"
+
 ## Setup .config directory
 if [[ ! -d ~/.config ]]; then
   mkdir -p ~/.config
@@ -51,9 +53,11 @@ ln -sf "$DOTFILES_PATH/vscode/keybindings.json" ~/Library/Application\ Support/C
 ln -sf "$DOTFILES_PATH/lazygit/config.yml" ~/Library/Application\ Support/lazygit/config.yml
 
 # Oh My Zsh
+echo "Setting up Oh My Zsh"
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 # Homebrew
+echo "Setting up Homebrew"
 ## Ensure Homebrew is installed
 if ! command -v brew &> /dev/null; then
     echo "Homebrew is not installed. Installing..."
@@ -61,10 +65,12 @@ if ! command -v brew &> /dev/null; then
 fi
 
 ## Update Homebrew and install packages from Brewfile
+echo "Installing all brews, casks and apps"
 brew update
 brew bundle --file="$DOTFILES_PATH/brew/Brewfile"
 
 # LunarVim
+echo "Setting up NeoVim and LunarVim"
 if ! command -v lvim &> /dev/null; then
     echo "LunarVim is not installed. Installing..."
     LV_BRANCH='release-1.3/neovim-0.9'

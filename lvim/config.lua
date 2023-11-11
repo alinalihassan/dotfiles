@@ -8,6 +8,8 @@
 vim.opt.relativenumber = true
 
 -- LunarVim Core Plugins
+-- Colorscheme
+lvim.colorscheme = "tokyonight-night"
 -- Format on Save
 lvim.format_on_save.enabled = true
 -- Add Git Icons in NvimTree
@@ -34,7 +36,9 @@ lvim.plugins = {
     "folke/tokyonight.nvim",
     lazy = false,
     priority = 1000,
-    opts = {},
+    opts = {
+      style = "night"
+    },
   },
   -- Utility
   { "ThePrimeagen/vim-be-good" }, -- Minigames to get used to Vim

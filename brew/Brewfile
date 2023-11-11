@@ -58,6 +58,9 @@ cask "rapidapi" # API devtools, Postman replacement
 cask "visual-studio-code" # Backup editor when I'm tired of NeoVim
 cask "wezterm" # GPU-accelerated and Lua-scriptable fast terminal emulator
 
+# Notes
+cask "obsidian" # Hackable markdown-based note taking app
+
 # Fonts
 cask "font-jetbrains-mono-nerd-font" # Best font with NeoVim in my experience
 

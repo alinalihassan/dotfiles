@@ -64,6 +64,11 @@ if ! command -v lvim &> /dev/null; then
     bash <(curl -s https://raw.githubusercontent.com/LunarVim/LunarVim/release-1.3/neovim-0.9/utils/installer/install.sh)
 fi
 
+# VSCode
+## Move settings and keybindings to proper location
+cp "$DOTFILES_PATH/vscode/settings.json" ~/Library/Application\ Support/Code/User/settings.json
+cp "$DOTFILES_PATH/vscode/keybindings.json" ~/Library/Application\ Support/Code/User/keybindings.json
+
 # Finalize logging
 echo ""
 echo "🎉 It actually worked!"

@@ -42,6 +42,8 @@ ln -sf "$DOTFILES_PATH/starship/config.toml" ~/.config/starship.toml
 ln -sf "$DOTFILES_PATH/wezterm" ~/.config/wezterm
 ## LunarVim
 ln -sf "$DOTFILES_PATH/lvim" ~/.config/lvim
+## Bat
+ln -sf "$DOTFILES_PATH/bat" ~/.config/bat
 ## VSCode
 ln -sf "$DOTFILES_PATH/vscode/settings.json" ~/Library/Application\ Support/Code/User/settings.json
 ln -sf "$DOTFILES_PATH/vscode/keybindings.json" ~/Library/Application\ Support/Code/User/keybindings.json

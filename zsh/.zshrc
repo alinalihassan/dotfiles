@@ -26,7 +26,7 @@ setopt COMBINING_CHARS
 
 ## Command Redirects
 alias nvim="lvim"
-alias cat="bat --paging=never"
+alias cat="bat"
 alias ag="ack"
 alias python="python3"
 alias find="fd"

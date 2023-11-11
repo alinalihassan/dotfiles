@@ -7,6 +7,20 @@
 -- Options
 vim.opt.relativenumber = true
 
+-- LunarVim Core Plugins
+-- Format on Save
+lvim.format_on_save.enabled = true
+-- Add Git Icons in NvimTree
+lvim.builtin.nvimtree.setup.renderer.icons.glyphs.git = {
+  unstaged = "✗",
+  staged = "✓",
+  unmerged = "",
+  renamed = "➜",
+  untracked = "★",
+  deleted = "",
+  ignored = "◌",
+}
+
 -- Plugins
 lvim.plugins = {
   -- Colorschemes
@@ -18,5 +32,5 @@ lvim.plugins = {
   },
   -- Utility
   { "ThePrimeagen/vim-be-good" }, -- Minigames to get used to Vim
-  { "jghauser/mkdir.nvim" } -- Create directories automatically when making a new file
+  { "jghauser/mkdir.nvim" }       -- Create directories automatically when making a new file
 }

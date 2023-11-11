@@ -53,12 +53,9 @@ if ! command -v brew &> /dev/null; then
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
-## Symlink Brewfile
-ln -sf "$DOTFILES_PATH/Brewfile" ~/.Brewfile
-
 ## Update Homebrew and install packages from Brewfile
 brew update
-brew bundle --file=~/.Brewfile
+brew bundle --file="$DOTFILES_PATH/brew/Brewfile"
 
 # LunarVim
 if ! command -v lvim &> /dev/null; then

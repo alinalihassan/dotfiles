@@ -37,7 +37,7 @@ ln -sf "$DOTFILES_PATH/zsh/.zshrc" ~/.zshrc
 ln -sf "$DOTFILES_PATH/git/.gitconfig" ~/.gitconfig
 ln -sf "$DOTFILES_PATH/git/.gitignore_global" ~/.gitignore_global
 ## Starship
-ln -sf "$DOTFILES_PATH/starship/config.toml" ~/.config/starship.toml
+ln -sf "$DOTFILES_PATH/starship/starship.toml" ~/.config/starship.toml
 ## Wezterm
 ln -sf "$DOTFILES_PATH/wezterm" ~/.config/wezterm
 ## LunarVim

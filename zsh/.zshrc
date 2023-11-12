@@ -1,5 +1,6 @@
 # ZSH Options
 export ZSH="$HOME/.oh-my-zsh"
+export ZSH_CUSTOM="~/.dotfiles/zsh/custom"
 
 ZSH_THEME="robbyrussell"
 

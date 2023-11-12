@@ -61,7 +61,8 @@ chsh -s "$(which zsh)"
 
 ## Symlink after installation since it makes a backup from existing dotfiles
 ln -sf "$DOTFILES_PATH/zsh/.zshrc" ~/.zshrc
-ln -sf "$DOTFILES_PATH/zsh/custom" "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}"
+# We are currently setting the ZSH_CUSTOM to be in dotfiles folder instead of moving the plugins
+# ln -sf "$DOTFILES_PATH/zsh/custom" "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}"
 #
 # Homebrew
 echo "Setting up Homebrew"

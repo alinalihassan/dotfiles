@@ -37,7 +37,7 @@ export EDITOR=nvim
 export VISUAL=$EDITOR
 
 ## PATH additions
-export PATH="$HOME/bin:$PATH"
+export PATH="$HOME/bin:$PATH" # Custom binaries
 export PATH="/usr/local/bin:$PATH"
 export PATH="/Users/alinalihassan/.local/bin:$PATH"
-
+export PATH="/opt/homebrew/bin:$PATH"

@@ -74,8 +74,8 @@ fi
 
 ## Update Homebrew and install packages from Brewfile
 echo "Installing all brews, casks and apps"
-brew update
-brew bundle --file="$DOTFILES_PATH/brew/Brewfile"
+/opt/homebrew/bin/brew update
+/opt/homebrew/bin/brew bundle --file="$DOTFILES_PATH/brew/Brewfile"
 
 # LunarVim
 echo "Setting up NeoVim and LunarVim"

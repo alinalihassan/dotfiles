@@ -37,9 +37,7 @@ mkdir -p ~/.config
 mkdir -p ~/Library/Application\ Support/Code/User
 mkdir -p ~/Library/Application\ Support/lazygit
 
-## Zsh
-ln -sf "$DOTFILES_PATH/zsh/.zshrc" ~/.zshrc
-## Git
+# Git
 ln -sf "$DOTFILES_PATH/git/.gitconfig" ~/.gitconfig
 ln -sf "$DOTFILES_PATH/git/.gitignore_global" ~/.gitignore_global
 ## Starship
@@ -61,6 +59,10 @@ echo "Setting up Oh My Zsh"
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 chsh -s "$(which zsh)"
 
+## Symlink after installation since it makes a backup from existing dotfiles
+ln -sf "$DOTFILES_PATH/zsh/.zshrc" ~/.zshrc
+ln -sf "$DOTFILES_PATH/zsh/custom" "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}"
+#
 # Homebrew
 echo "Setting up Homebrew"
 ## Ensure Homebrew is installed

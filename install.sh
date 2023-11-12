@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env zsh
 
 set -e
 
@@ -57,13 +57,12 @@ ln -sf "$DOTFILES_PATH/lazygit/config.yml" ~/Library/Application\ Support/lazygi
 # Oh My Zsh
 echo "Setting up Oh My Zsh"
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
-chsh -s "$(which zsh)"
 
 ## Symlink after installation since it makes a backup from existing dotfiles
 ln -sf "$DOTFILES_PATH/zsh/.zshrc" ~/.zshrc
 # We are currently setting the ZSH_CUSTOM to be in dotfiles folder instead of moving the plugins
 # ln -sf "$DOTFILES_PATH/zsh/custom" "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}"
-#
+
 # Homebrew
 echo "Setting up Homebrew"
 ## Ensure Homebrew is installed

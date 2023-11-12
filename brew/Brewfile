@@ -87,3 +87,4 @@ mas "Xcode", id: 497799835 # Apple development
 # cask "docker" (https://www.docker.com/) -- Docker desktop
 # cask "orbstack" (https://orbstack.dev/) -- Docker Desktop alternative with excellent Mac support
 # cask "transmission" (https://transmissionbt.com/) -- Torrent Client
+# mas "ducklet" (https://ducklet.app/) - SQL Editor

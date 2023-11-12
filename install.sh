@@ -56,6 +56,7 @@ ln -sf "$DOTFILES_PATH/lazygit/config.yml" ~/Library/Application\ Support/lazygi
 # Oh My Zsh
 echo "Setting up Oh My Zsh"
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+chsh -s "$(which zsh)"
 
 # Homebrew
 echo "Setting up Homebrew"

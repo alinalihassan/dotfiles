@@ -26,6 +26,9 @@ if [[ "$INSTALLER_PATH" != "$DOTFILES_PATH" ]] && [[ ! -d "$DOTFILES_PATH" ]]; t
   exit 0
 fi
 
+# Variables
+export HOMEBREW_NO_INSTALL_FROM_API=1 # Used by Homebrew
+
 # Symlinks
 echo "Setting up symlinks"
 

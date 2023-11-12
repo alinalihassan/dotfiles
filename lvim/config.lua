@@ -29,6 +29,8 @@ lvim.builtin.nvimtree.setup.filters.custom = {
   ".git"
 }
 
+lvim.builtin.which_key.mappings['t'] = { "<cmd>TroubleToggle<cr>", "Diagnostics" }
+
 -- Plugins
 lvim.plugins = {
   -- Colorschemes
@@ -38,6 +40,15 @@ lvim.plugins = {
     priority = 1000,
     opts = {
       style = "night"
+    },
+  },
+  {
+    "folke/trouble.nvim",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    opts = {
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
     },
   },
   -- Utility

@@ -15,7 +15,8 @@ This repository contains my personal configuration files (dotfiles) for macOS.
 
 To set up a new system with these dotfiles, run the install.sh script:
 ```bash
-sh install.sh
+git clone --recurse-submodules https://github.com/alinalihassan/dotfiles.git ~/.dotfiles
+cd ~/.dotfiles && ./install.sh
 ```
 
 This will symlink the files in this repo to your home directory and install any necessary dependencies.

@@ -29,10 +29,11 @@ fi
 # Symlinks
 echo "Setting up symlinks"
 
-## Setup .config directory
-if [[ ! -d ~/.config ]]; then
-  mkdir -p ~/.config
-fi
+## Setup directories
+mkdir -p ~/.config
+mkdir -p ~/Library/Application\ Support/Code/User
+mkdir -p ~/Library/Application\ Support/lazygit
+
 ## Zsh
 ln -sf "$DOTFILES_PATH/zsh/.zshrc" ~/.zshrc
 ## Git

@@ -18,6 +18,7 @@ brew "git" # Git
 brew "node" # Node
 brew 'rust' # Rust
 brew "oven-sh/bun/bun" # Bun
+brew "starship" # Starship prompt
 
 # Neovim specific
 brew "neovim" # Neovim

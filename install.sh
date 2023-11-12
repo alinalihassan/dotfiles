@@ -84,6 +84,9 @@ if ! command -v lvim &> /dev/null; then
     bash <(curl -s https://raw.githubusercontent.com/LunarVim/LunarVim/release-1.3/neovim-0.9/utils/installer/install.sh)
 fi
 
+echo "Restarting shell"
+exec zsh
+
 # Finalize logging
 echo ""
 echo "🎉 It actually worked!"

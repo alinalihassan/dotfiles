@@ -13,6 +13,7 @@ tap "homebrew/cask-fonts" # for fonts
 brew "bat" # better cat
 brew "fd" # better find
 brew "ripgrep" # better grep
+brew "eza" # better ls
 brew "the_silver_searcher" # better ack
 brew "git" # Git
 brew "node" # Node

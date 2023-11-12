@@ -32,6 +32,9 @@ alias ag="ack"
 alias python="python3"
 alias find="fd"
 alias grep="rg"
+alias ls="eza --icons --hyperlink"
+alias lla="ls -la --git"
+alias lstree="ls -TL=2"
 
 ## Environment variables
 export EDITOR=nvim

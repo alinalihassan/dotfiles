@@ -11,12 +11,12 @@ config.enable_tab_bar = false
 
 -- Pane settings
 config.inactive_pane_hsb = {
-	saturation = 0.8,
-	brightness = 0.7,
+  saturation = 0.8,
+  brightness = 0.7,
 }
 
 -- Color settings
-config.color_scheme = "tokyonight_night"
+config.color_scheme = "Tokyo Night"
 
 -- Font settings
 config.font = wezterm.font("JetBrainsMono Nerd Font")
@@ -25,16 +25,16 @@ config.font = wezterm.font("JetBrainsMono Nerd Font")
 config.window_close_confirmation = "NeverPrompt"
 config.window_decorations = "RESIZE"
 config.window_padding = {
-	left = 0,
-	right = 0,
-	top = 0,
-	bottom = 0,
+  left = 0,
+  right = 0,
+  top = 0,
+  bottom = 0,
 }
 
 -- Maximize window on load
 wezterm.on("gui-startup", function()
-	local _, _, window = mux.spawn_window({})
-	window:gui_window():maximize()
+  local _, _, window = mux.spawn_window({})
+  window:gui_window():maximize()
 end)
 
 return config

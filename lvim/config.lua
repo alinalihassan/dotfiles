@@ -51,6 +51,22 @@ lvim.plugins = {
       -- refer to the configuration section below
     },
   },
+  -- lazy.nvim
+  {
+    "folke/noice.nvim",
+    event = "VeryLazy",
+    opts = {
+      -- add any options here
+    },
+    dependencies = {
+      -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+      "MunifTanjim/nui.nvim",
+      -- OPTIONAL:
+      --   `nvim-notify` is only needed, if you want to use the notification view.
+      --   If not available, we use `mini` as the fallback
+      "rcarriga/nvim-notify",
+    }
+  },
   -- Utility
   { "ThePrimeagen/vim-be-good" }, -- Minigames to get used to Vim
   { "jghauser/mkdir.nvim" }       -- Create directories automatically when making a new file

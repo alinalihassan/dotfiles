@@ -68,5 +68,6 @@ lvim.plugins = {
     }
   },
   -- Utility
-  { "jghauser/mkdir.nvim" } -- Create directories automatically when making a new file
+  { "jghauser/mkdir.nvim" }, -- Create directories automatically when making a new file
+  { "romainl/vim-cool" },    -- Disable search highlight after search is done (no more :noh after every search)
 }

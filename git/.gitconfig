@@ -9,6 +9,10 @@
   defaultBranch = main
 [push]
   autoSetupRemote = true
+[core]
+  pager = bat
+  excludesfile = ~/.gitignore_global
+  editor = nvim
 [github]
   user = alinalihassan
 [hub]

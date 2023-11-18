@@ -2,7 +2,9 @@
 	email = hassanalinali@gmail.com
   name = Alin Ali Hassan
   # Should add signingKey and gpg sign
-	signingKey = ""
+  signingKey = ""
+[includeIf "gitdir:~/Developer/Work/"]
+  path = "~/.dotfiles/git/.gitconfig-work"
 [init]
   defaultBranch = main
 [push]

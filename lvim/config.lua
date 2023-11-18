@@ -10,8 +10,10 @@ vim.opt.relativenumber = true
 -- LunarVim Core Plugins
 -- Colorscheme
 lvim.colorscheme = "tokyonight-night"
+
 -- Format on Save
 lvim.format_on_save.enabled = true
+
 -- Add Git Icons in NvimTree
 lvim.builtin.nvimtree.setup.renderer.icons.glyphs.git = {
   unstaged = "✗",
@@ -23,12 +25,14 @@ lvim.builtin.nvimtree.setup.renderer.icons.glyphs.git = {
   ignored = "◌",
 }
 
+-- File Tree Filters/Ignored
 lvim.builtin.nvimtree.setup.filters.custom = {
   "node_modules",
   "\\.cache",
   ".git"
 }
 
+-- Whichkey mappings
 lvim.builtin.which_key.mappings['t'] = { "<cmd>TroubleToggle<cr>", "Diagnostics" }
 
 -- Plugins
@@ -42,32 +46,22 @@ lvim.plugins = {
       style = "night"
     },
   },
+  -- Diagonistics UI
   {
     "folke/trouble.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
-    opts = {
-      -- your configuration comes here
-      -- or leave it empty to use the default settings
-      -- refer to the configuration section below
-    },
+    opts = {},
   },
-  -- lazy.nvim
+  -- Cmdline and notifications UI
   {
     "folke/noice.nvim",
     event = "VeryLazy",
-    opts = {
-      -- add any options here
-    },
+    opts = {},
     dependencies = {
-      -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
       "MunifTanjim/nui.nvim",
-      -- OPTIONAL:
-      --   `nvim-notify` is only needed, if you want to use the notification view.
-      --   If not available, we use `mini` as the fallback
       "rcarriga/nvim-notify",
     }
   },
   -- Utility
-  { "ThePrimeagen/vim-be-good" }, -- Minigames to get used to Vim
-  { "jghauser/mkdir.nvim" }       -- Create directories automatically when making a new file
+  { "jghauser/mkdir.nvim" } -- Create directories automatically when making a new file
 }

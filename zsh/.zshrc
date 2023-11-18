@@ -37,8 +37,8 @@ export VISUAL=$EDITOR
 export PATH="$HOME/bin:$PATH" # Custom binaries
 export PATH="/usr/local/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
-export PATH="/opt/homebrew/bin:$PATH"
-
+export PATH="/opt/homebrew/bin:$PATH" # Homebrew binaries
+export PATH="$HOME/.cargo/bin:$PATH" # Cargo binaries
 # Options
 ## 1Password CLI
 eval "$(op completion zsh)"; compdef _op op

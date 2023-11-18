@@ -17,3 +17,5 @@
 	gpgSign = false
 [tag]
 	forceSignAnnotated = false
+[credential]
+	helper = store

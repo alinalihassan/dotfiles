@@ -32,8 +32,13 @@ lvim.builtin.nvimtree.setup.filters.custom = {
   ".git"
 }
 
+-- Keybindings
 -- Whichkey mappings
 lvim.builtin.which_key.mappings['t'] = { "<cmd>TroubleToggle<cr>", "Diagnostics" }
+
+-- Mappings
+lvim.keys.normal_mode["<Tab>"] = "<cmd>:bnext<cr>"
+lvim.keys.normal_mode["<S-Tab>"] = "<cmd>:bprevious<cr>"
 
 -- Plugins
 lvim.plugins = {

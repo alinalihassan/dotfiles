@@ -7,7 +7,7 @@ local config = wezterm.config_builder()
 local mux = wezterm.mux
 
 -- Tab bar settings
-config.enable_tab_bar = true
+config.enable_tab_bar = false --set to true if you want to see the tabs
 config.hide_tab_bar_if_only_one_tab = true
 config.use_fancy_tab_bar = false
 config.tab_bar_at_bottom = true

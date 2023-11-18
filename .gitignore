@@ -1,2 +1,5 @@
 # macOS folder attributes. 
 .DS_Store
+
+# Git credentials
+git/.git-credentials

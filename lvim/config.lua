@@ -31,14 +31,17 @@ lvim.builtin.nvimtree.setup.filters.custom = {
   "\\.cache",
   ".git"
 }
+-- Helps with Java Projects
+lvim.builtin.nvimtree.setup.view.adaptive_size = true
+lvim.builtin.nvimtree.setup.renderer.group_empty = true
 
 -- Keybindings
 -- Whichkey mappings
 lvim.builtin.which_key.mappings['t'] = { "<cmd>TroubleToggle<cr>", "Diagnostics" }
 
 -- Mappings
-lvim.keys.normal_mode["<Tab>"] = "<cmd>:bnext<cr>"
-lvim.keys.normal_mode["<S-Tab>"] = "<cmd>:bprevious<cr>"
+lvim.keys.normal_mode["<Tab>"] = { "<cmd>:bnext<cr>", { desc = "Cycle to next open buffer" } }
+lvim.keys.normal_mode["<S-Tab>"] = { "<cmd>:bprevious<cr>", { desc = "Cycle to previous open buffer" } }
 
 -- Plugins
 lvim.plugins = {
@@ -58,15 +61,15 @@ lvim.plugins = {
     opts = {},
   },
   -- Cmdline and notifications UI
-  {
-    "folke/noice.nvim",
-    event = "VeryLazy",
-    opts = {},
-    dependencies = {
-      "MunifTanjim/nui.nvim",
-      "rcarriga/nvim-notify",
-    }
-  },
+  -- {
+  --   "folke/noice.nvim",
+  --   event = "VeryLazy",
+  --   opts = {},
+  --   dependencies = {
+  --     "MunifTanjim/nui.nvim",
+  --     "rcarriga/nvim-notify",
+  --   }
+  -- },
   -- Utility
   { "jghauser/mkdir.nvim" }, -- Create directories automatically when making a new file
   { "romainl/vim-cool" },    -- Disable search highlight after search is done (no more :noh after every search)

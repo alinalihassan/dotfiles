@@ -48,3 +48,6 @@ eval "$(op completion zsh)"; compdef _op op
 
 ## Starship prompt
 eval "$(starship init zsh)"
+
+## Completions
+source <(bk completion zsh) # Booking internal CLI completion

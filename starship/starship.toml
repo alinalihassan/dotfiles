@@ -1,5 +1,13 @@
 # Get editor completions based on the config schema
 "$schema" = 'https://starship.rs/config-schema.json'
 
+add_newline = false
+
 [cmd_duration]
 min_time = 0
+
+[package]
+disabled = true
+
+[java]
+disabled = true

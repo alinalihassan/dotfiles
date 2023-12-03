@@ -19,7 +19,7 @@ fi
 
 ## clone this repo if this script is all by itself and/or we're not in the expected location
 if [[ "$INSTALLER_PATH" != "$DOTFILES_PATH" ]] && [[ ! -d "$DOTFILES_PATH" ]]; then
-  git clone --recurse-submodules https://github.com/alinalihassan/dotfiles.git "$DOTFILES_PATH"
+  git clone https://github.com/alinalihassan/dotfiles.git "$DOTFILES_PATH"
 
   echo "Successfully cloned the full repo to '$DOTFILES_PATH'"
   echo "Run install.sh from that directory to continue. Exiting now..."
@@ -46,6 +46,8 @@ ln -sf "$DOTFILES_PATH/starship/starship.toml" ~/.config/starship.toml
 ln -sf "$DOTFILES_PATH/wezterm" ~/.config/wezterm
 ## LunarVim
 ln -sf "$DOTFILES_PATH/lvim" ~/.config/lvim
+## Fish
+ln -sf "$DOTFILES_PATH/fish" ~/.config/fish
 ## Bat
 ln -sf "$DOTFILES_PATH/bat" ~/.config/bat
 ## VSCode
@@ -53,15 +55,6 @@ ln -sf "$DOTFILES_PATH/vscode/settings.json" ~/Library/Application\ Support/Code
 ln -sf "$DOTFILES_PATH/vscode/keybindings.json" ~/Library/Application\ Support/Code/User/keybindings.json
 ## LazyGit
 ln -sf "$DOTFILES_PATH/lazygit/config.yml" ~/Library/Application\ Support/lazygit/config.yml
-
-# Oh My Zsh
-echo "Setting up Oh My Zsh"
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
-
-## Symlink after installation since it makes a backup from existing dotfiles
-ln -sf "$DOTFILES_PATH/zsh/.zshrc" ~/.zshrc
-# We are currently setting the ZSH_CUSTOM to be in dotfiles folder instead of moving the plugins
-# ln -sf "$DOTFILES_PATH/zsh/custom" "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}"
 
 # Homebrew
 echo "Setting up Homebrew"
@@ -84,8 +77,20 @@ if ! command -v lvim &> /dev/null; then
     bash <(curl -s https://raw.githubusercontent.com/LunarVim/LunarVim/release-1.3/neovim-0.9/utils/installer/install.sh)
 fi
 
+# Check if Fish is installed and set it as the default shell if desired
+if
+  command -v fish &
+  >/dev/null
+then
+  if ! grep -q "$(which fish)" /etc/shells; then
+    substep_info "Adding Fish to available shells..."
+    sudo sh -c "echo $(which fish) >> /etc/shells"
+  fi
+  chsh -s $(which fish)
+fi
+
 echo "Restarting shell"
-exec zsh
+exec fish
 
 # Finalize logging
 echo ""

@@ -1,11 +1,7 @@
--- Read the docs: https://www.lunarvim.org/docs/configuration
--- Video Tutorials: https://www.youtube.com/watch?v=sFA9kX-Ud_c&list=PLhoH5vyxr6QqGu0i7tt_XoVK9v-KvZ3m6
--- Forum: https://www.reddit.com/r/lunarvim/
--- Discord: https://discord.com/invite/Xb9B4Ny
-
-
 -- Options
 vim.opt.relativenumber = true
+vim.opt.cmdheight = 0
+vim.opt.laststatus = 0
 
 -- LunarVim Core Plugins
 -- Colorscheme
@@ -38,6 +34,7 @@ lvim.builtin.nvimtree.setup.renderer.group_empty = true
 -- Keybindings
 -- Whichkey mappings
 lvim.builtin.which_key.mappings['t'] = { "<cmd>TroubleToggle<cr>", "Diagnostics" }
+lvim.builtin.which_key.mappings['s']['P'] = { "<cmd>Telescope projects<cr>", "Projects" }
 
 -- Mappings
 lvim.keys.normal_mode["<Tab>"] = { "<cmd>:bnext<cr>", { desc = "Cycle to next open buffer" } }
@@ -71,6 +68,7 @@ lvim.plugins = {
   --   }
   -- },
   -- Utility
-  { "jghauser/mkdir.nvim" }, -- Create directories automatically when making a new file
-  { "romainl/vim-cool" },    -- Disable search highlight after search is done (no more :noh after every search)
+  { "jghauser/mkdir.nvim" },   -- Create directories automatically when making a new file
+  { "romainl/vim-cool" },      -- Disable search highlight after search is done (no more :noh after every search)
+  { "tmux-plugins/vim-tmux" }, -- Tmux Conf LSP
 }

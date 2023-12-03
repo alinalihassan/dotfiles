@@ -3,8 +3,6 @@
   name = Alin Ali Hassan
   # Should add signingKey and gpg sign
   signingKey = ""
-[includeIf "gitdir:~/Developer/Work/"]
-  path = "~/.dotfiles/git/.gitconfig-work"
 [init]
   defaultBranch = main
 [push]
@@ -27,4 +25,8 @@
 	helper = /usr/local/share/gcm-core/git-credential-manager
 [credential "https://dev.azure.com"]
 	useHttpPath = true
-
+# Include work specific configs
+[includeIf "gitdir:~/Developer/Work/"]
+  path = "~/.dotfiles/git/work/.gitconfig"
+[includeIf "gitdir:~/git_tree/"]
+  path = "~/.dotfiles/git/work/.gitconfig"

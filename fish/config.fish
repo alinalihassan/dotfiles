@@ -15,9 +15,12 @@ alias l="ls -la --git"
 alias ll="ls -l --git"
 alias lt="ls -TL=2"
 alias reload='exec fish'
+alias bk_reload='bk completion fish > ~/.config/fish/completions/bk.fish'
 
 # Completions
 ## Booking BK CLI
+## Instead of waiting for bk to run every time we open a shell
+## We use it once and we update it when we install a plugin or update it
 # bk completion fish | source # Very very slow, ~500ms
 
 ## Starship prompt

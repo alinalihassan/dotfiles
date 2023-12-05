@@ -18,5 +18,8 @@
   "workbench.iconTheme": "vscode-icons", // Icon Theme
   "yaml.schemas": {
     "https://json.schemastore.org/github-workflow.json": ".github/workflows/*" // GitHub Actions
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   }
 }

@@ -40,6 +40,16 @@ lvim.builtin.which_key.mappings['s']['P'] = { "<cmd>Telescope projects<cr>", "Pr
 lvim.keys.normal_mode["<Tab>"] = { "<cmd>:bnext<cr>", { desc = "Cycle to next open buffer" } }
 lvim.keys.normal_mode["<S-Tab>"] = { "<cmd>:bprevious<cr>", { desc = "Cycle to previous open buffer" } }
 
+-- Formatters
+local formatters = require "lvim.lsp.null-ls.formatters"
+formatters.setup {
+  { name = "prettier" },
+}
+
+-- Git
+lvim.builtin.gitsigns.opts.current_line_blame = true
+lvim.builtin.gitsigns.opts.current_line_blame_opts.delay = 0
+
 -- Plugins
 lvim.plugins = {
   -- Colorschemes

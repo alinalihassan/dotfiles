@@ -11,6 +11,8 @@ set -l __bk_command_group_config_get_contexts config:get-contexts cloud:config:g
 set -l __bk_command_group_config_view config:view cloud:config:view
 set -l __bk_command_group_context context cloud:context ctx
 set -l __bk_command_group_context_use context:use cloud:use:context ctx:use
+set -l __bk_command_group_cloud_clusters cloud:clusters cloud:cluster:list cloud:cluster:links
+set -l __bk_command_group_context_use_cluster context:use:cluster cloud:use:cluster ctx:use:cluster cloud:clusters:use
 set -l __bk_command_group_config_get_component_contexts config:get-component-contexts cloud:config:get-component-contexts cloud:config:get-service-contexts config:get-service-contexts
 set -l __bk_command_group_config_get_installation_contexts config:get-installation-contexts cloud:config:get-installation-contexts
 set -l __bk_command_group_config_get_project_contexts config:get-project-contexts cloud:config:get-project-contexts
@@ -36,8 +38,6 @@ set -l __bk_command_group_sd_projects sd:projects cloud:get:projects sd:projects
 set -l __bk_command_group_sd_projects_create sd:projects:create cloud:create:project
 set -l __bk_command_group_sd_projects_delete sd:projects:delete cloud:delete:project
 set -l __bk_command_group_sd_projects_update sd:projects:update cloud:update:project
-set -l __bk_command_group_cloud_clusters cloud:clusters cloud:cluster:list cloud:cluster:links
-set -l __bk_command_group_context_use_cluster context:use:cluster cloud:use:cluster ctx:use:cluster cloud:clusters:use
 set -l __bk_command_group_plugins_install plugins:install plugins:add
 set -l __bk_command_group_plugins_uninstall plugins:uninstall plugins:unlink plugins:remove
 
@@ -122,6 +122,68 @@ complete -c bk -n "__fish_is_nth_token 1" -d 'get latest available version of a 
 complete -c bk -n "__fish_seen_subcommand_from plugins:versions:latest" -l dist-tag -d 'dist-tag of which to display the latest version'
 complete -c bk -n "__fish_is_nth_token 1" -d 'display who you should contact in case you need support with a command (works with aliases as well)' -kxa "support"
 complete -c bk -n "__fish_is_nth_token 1" -d 'update the bk CLI' -kxa "update"
+complete -c bk -n "__fish_is_nth_token 1" -d 'show available BKS Kubernetes clusters' -kxa "$__bk_command_group_cloud_clusters"
+complete -c bk -n "__fish_seen_subcommand_from $__bk_command_group_cloud_clusters" -l columns -d 'only show provided columns (comma-separated)'
+complete -c bk -n "__fish_seen_subcommand_from $__bk_command_group_cloud_clusters" -l sort -d 'property to sort by (prepend \'-\' for descending)'
+complete -c bk -n "__fish_seen_subcommand_from $__bk_command_group_cloud_clusters" -l filter -d 'filter property by partial string matching, ex: name=foo'
+complete -c bk -n "__fish_seen_subcommand_from $__bk_command_group_cloud_clusters" -l csv -d 'output is csv format [alias: --output=csv]'
+complete -c bk -n "__fish_seen_subcommand_from $__bk_command_group_cloud_clusters" -l output -d 'output in a more machine friendly format' -x -a "csv json yaml"
+complete -c bk -n "__fish_seen_subcommand_from $__bk_command_group_cloud_clusters" -l extended -s x -d 'show extra columns'
+complete -c bk -n "__fish_seen_subcommand_from $__bk_command_group_cloud_clusters" -l truncate -d 'whether or not to truncate output to fit screen'
+complete -c bk -n "__fish_seen_subcommand_from $__bk_command_group_cloud_clusters" -l header -d 'whether or not to show table header from output'
+complete -c bk -n "__fish_seen_subcommand_from $__bk_command_group_cloud_clusters" -l all -d 'show all clusters, by default it only shows application, development, management clusters'
+complete -c bk -n "__fish_is_nth_token 1" -d 'create a subscription in AlertAPI to receive alerts about issues in BKS Kubernetes clusters' -kxa "cloud:subscribe:cluster-alerts"
+complete -c bk -n "__fish_seen_subcommand_from cloud:subscribe:cluster-alerts" -l component -d 'override component name' -x -a "(__bk_autocomplete_component)"
+complete -c bk -n "__fish_seen_subcommand_from cloud:subscribe:cluster-alerts" -l project -d 'override project name' -x -a "(__bk_autocomplete_project)"
+complete -c bk -n "__fish_is_nth_token 1" -d 'create a subscription in AlertAPI to receive alerts about exhausting resources in your namespace in BKS Kubernetes clusters' -kxa "cloud:subscribe:quota-alerts"
+complete -c bk -n "__fish_seen_subcommand_from cloud:subscribe:quota-alerts" -l component -d 'override component name' -x -a "(__bk_autocomplete_component)"
+complete -c bk -n "__fish_seen_subcommand_from cloud:subscribe:quota-alerts" -l project -d 'override project name' -x -a "(__bk_autocomplete_project)"
+complete -c bk -n "__fish_is_nth_token 1" -d 'create a subscription in AlertAPI to receive notifications about ongoing rollouts of your service in BKS Kubernetes clusters,' -kxa "cloud:subscribe:rollout-info"
+complete -c bk -n "__fish_seen_subcommand_from cloud:subscribe:rollout-info" -l component -d 'override component name' -x -a "(__bk_autocomplete_component)"
+complete -c bk -n "__fish_seen_subcommand_from cloud:subscribe:rollout-info" -l project -d 'override project name' -x -a "(__bk_autocomplete_project)"
+complete -c bk -n "__fish_is_nth_token 1" -d 'switch cluster context in kube config' -kxa "$__bk_command_group_context_use_cluster"
+complete -c bk -n "__fish_seen_subcommand_from $__bk_command_group_context_use_cluster" -l check-cluster-status -d 'whether or not to print a warning if cluster status is not \'Ready\''
+complete -c bk -n "__fish_seen_subcommand_from $__bk_command_group_context_use_cluster" -l set-as-preferred-cluster -d 'store given cluster as preferred cluster, preferred cluster is one which an installation uses by default'
+complete -c bk -n "__fish_seen_subcommand_from $__bk_command_group_context_use_cluster" -l allow-testing-clusters -d 'allow switching to test clusters as well'
+complete -c bk -n "__fish_seen_subcommand_from $__bk_command_group_context_use_cluster" -l check-if-installation-provisioned-in-cluster -d 'whether or not to fail if no installation is provisioned in the specified cluster'
+complete -c bk -n "__fish_seen_subcommand_from $__bk_command_group_context_use_cluster" -l check-if-cluster-exists -d 'UNSAFE: whether or not to fail if the specified cluster exists in Cluster Directory'
+complete -c bk -n "__fish_seen_subcommand_from $__bk_command_group_context_use_cluster" -l namespace -d 'namespace to use, defaults to the namespace of the current kubectl context, or sd context if kubectl context is unset'
+complete -c bk -n "__fish_seen_subcommand_from $__bk_command_group_context_use_cluster" -fa "(__bk_autocomplete_clusterName)"
+complete -c bk -n "__fish_is_nth_token 1" -d 'Add the "harness" attribute to the current SD installation' -kxa "harness:installation:harness-sd-attribute:add"
+complete -c bk -n "__fish_is_nth_token 1" -d 'Remove the "harness" attribute from the current SD installation' -kxa "harness:installation:harness-sd-attribute:remove"
+complete -c bk -n "__fish_is_nth_token 1" -d 'Get pods deployed by Harness for your application from all clusters' -kxa "harness:pods:status"
+complete -c bk -n "__fish_seen_subcommand_from harness:pods:status" -l columns -d 'only show provided columns (comma-separated)'
+complete -c bk -n "__fish_seen_subcommand_from harness:pods:status" -l sort -d 'property to sort by (prepend \'-\' for descending)'
+complete -c bk -n "__fish_seen_subcommand_from harness:pods:status" -l filter -d 'filter property by partial string matching, ex: name=foo'
+complete -c bk -n "__fish_seen_subcommand_from harness:pods:status" -l csv -d 'output is csv format [alias: --output=csv]'
+complete -c bk -n "__fish_seen_subcommand_from harness:pods:status" -l output -d 'output in a more machine friendly format' -x -a "csv json yaml"
+complete -c bk -n "__fish_seen_subcommand_from harness:pods:status" -l extended -s x -d 'show extra columns'
+complete -c bk -n "__fish_seen_subcommand_from harness:pods:status" -l truncate -d 'whether or not to truncate output to fit screen'
+complete -c bk -n "__fish_seen_subcommand_from harness:pods:status" -l header -d 'whether or not to show table header from output'
+complete -c bk -n "__fish_seen_subcommand_from harness:pods:status" -l installation -s i -d 'Get pods from another installation' -x -a "(__bk_autocomplete_installation)"
+complete -c bk -n "__fish_seen_subcommand_from harness:pods:status" -l timeout -s t -d 'Kubernetes get pod requests timeout in ms'
+complete -c bk -n "__fish_is_nth_token 1" -d 'Generate Harness configuration for specified project and create MRs in deployments repositories.' -kxa "harness:project:generate-config"
+complete -c bk -n "__fish_seen_subcommand_from harness:project:generate-config" -l project -s p -d 'SD project (current bk context project by default)' -x -a "(__bk_autocomplete_project)"
+complete -c bk -n "__fish_seen_subcommand_from harness:project:generate-config" -l regex -s r -d 'Regex to choose projects'
+complete -c bk -n "__fish_seen_subcommand_from harness:project:generate-config" -l template-dir -s t -d 'Template dir name in "harness-templates-and-values" repo (e.g. "cloud-application-template/cdk" for cloud apps)'
+complete -c bk -n "__fish_seen_subcommand_from harness:project:generate-config" -l local-data -s l -d 'Optional local yaml file to provide extra data to render configs'
+complete -c bk -n "__fish_is_nth_token 1" -d 'Bootstrap a new component in Harness, generate Harness configs, add "harness" attribute to SD service.' -kxa "harness:service:bootstrap"
+complete -c bk -n "__fish_seen_subcommand_from harness:service:bootstrap" -l project -s p -d 'Service Directory project' -x -a "(__bk_autocomplete_project)"
+complete -c bk -n "__fish_seen_subcommand_from harness:service:bootstrap" -l component -s c -d 'Service Directory component' -x -a "(__bk_autocomplete_component)"
+complete -c bk -n "__fish_seen_subcommand_from harness:service:bootstrap" -l imageRepo -r -s i -d 'Container image repository' -x -a "docker docker-dev docker-image-builder docker-build docker-build-sandbox"
+complete -c bk -n "__fish_seen_subcommand_from harness:service:bootstrap" -l skip-installation-presence-check -s s -d 'Allow to generate files even if "kubernetes-prod" or "kubernetes-dqs" installation is missing'
+complete -c bk -n "__fish_seen_subcommand_from harness:service:bootstrap" -l template-dir -s t -d 'Template directory in "harness-templates-and-values" repo (e.g. "cloud-application-template/cdk")'
+complete -c bk -n "__fish_seen_subcommand_from harness:service:bootstrap" -l local-data -s l -d 'Optional local yaml file to provide extra data to render configs'
+complete -c bk -n "__fish_is_nth_token 1" -d 'Generate Harness config(s) for application' -kxa "harness:service:generate-harnessconfig"
+complete -c bk -n "__fish_seen_subcommand_from harness:service:generate-harnessconfig" -l project -r -s p -d 'Service Directory project' -x -a "(__bk_autocomplete_project)"
+complete -c bk -n "__fish_seen_subcommand_from harness:service:generate-harnessconfig" -l component -r -s c -d 'Service Directory component' -x -a "(__bk_autocomplete_component)"
+complete -c bk -n "__fish_seen_subcommand_from harness:service:generate-harnessconfig" -l installation -r -s i -d 'Service Directory installation' -x -a "(__bk_autocomplete_installation)"
+complete -c bk -n "__fish_seen_subcommand_from harness:service:generate-harnessconfig" -l template-file -s t -d 'Config template file, omit to use default Harness config (resources/harnessconfig-templ.yaml)'
+complete -c bk -n "__fish_seen_subcommand_from harness:service:generate-harnessconfig" -l chart-name -r -s n -d 'Helm chart name (java, perl, nodejs), omit to use default'
+complete -c bk -n "__fish_seen_subcommand_from harness:service:generate-harnessconfig" -l chart-version -r -s V -d 'Helm chart version (e.g. ^5), omit to use default'
+complete -c bk -n "__fish_is_nth_token 1" -d 'Update service\'s harness configs so they have the meta labels we need' -kxa "harness:service:update-configs"
+complete -c bk -n "__fish_seen_subcommand_from harness:service:update-configs" -l project -r -s p -d 'service directory project' -x -a "(__bk_autocomplete_project)"
+complete -c bk -n "__fish_seen_subcommand_from harness:service:update-configs" -l component -r -s c -d 'service directory component' -x -a "(__bk_autocomplete_component)"
 complete -c bk -n "__fish_is_nth_token 1" -d 'list configured component contexts for the current project' -kxa "$__bk_command_group_config_get_component_contexts"
 complete -c bk -n "__fish_seen_subcommand_from $__bk_command_group_config_get_component_contexts" -l columns -d 'only show provided columns (comma-separated)'
 complete -c bk -n "__fish_seen_subcommand_from $__bk_command_group_config_get_component_contexts" -l sort -d 'property to sort by (prepend \'-\' for descending)'
@@ -282,41 +344,38 @@ complete -c bk -n "__fish_seen_subcommand_from $__bk_command_group_sd_projects_d
 complete -c bk -n "__fish_is_nth_token 1" -d 'update project in Service Directory' -kxa "$__bk_command_group_sd_projects_update"
 complete -c bk -n "__fish_seen_subcommand_from $__bk_command_group_sd_projects_update" -l attributes -d 'add an attribute, can be specified multiple times to add multiple attributes' -x -a "kubernetes gcp bcf aws"
 complete -c bk -n "__fish_seen_subcommand_from $__bk_command_group_sd_projects_update" -l delete-attributes -d 'delete attribute, can be specified multiple times to delete multiple attributes' -x -a "kubernetes gcp bcf aws"
-complete -c bk -n "__fish_is_nth_token 1" -d 'Add the "harness" attribute to the current SD installation' -kxa "harness:installation:harness-sd-attribute:add"
-complete -c bk -n "__fish_is_nth_token 1" -d 'Remove the "harness" attribute from the current SD installation' -kxa "harness:installation:harness-sd-attribute:remove"
-complete -c bk -n "__fish_is_nth_token 1" -d 'Get pods deployed by Harness for your application from all clusters' -kxa "harness:pods:status"
-complete -c bk -n "__fish_seen_subcommand_from harness:pods:status" -l columns -d 'only show provided columns (comma-separated)'
-complete -c bk -n "__fish_seen_subcommand_from harness:pods:status" -l sort -d 'property to sort by (prepend \'-\' for descending)'
-complete -c bk -n "__fish_seen_subcommand_from harness:pods:status" -l filter -d 'filter property by partial string matching, ex: name=foo'
-complete -c bk -n "__fish_seen_subcommand_from harness:pods:status" -l csv -d 'output is csv format [alias: --output=csv]'
-complete -c bk -n "__fish_seen_subcommand_from harness:pods:status" -l output -d 'output in a more machine friendly format' -x -a "csv json yaml"
-complete -c bk -n "__fish_seen_subcommand_from harness:pods:status" -l extended -s x -d 'show extra columns'
-complete -c bk -n "__fish_seen_subcommand_from harness:pods:status" -l truncate -d 'whether or not to truncate output to fit screen'
-complete -c bk -n "__fish_seen_subcommand_from harness:pods:status" -l header -d 'whether or not to show table header from output'
-complete -c bk -n "__fish_seen_subcommand_from harness:pods:status" -l installation -s i -d 'Get pods from another installation' -x -a "(__bk_autocomplete_installation)"
-complete -c bk -n "__fish_seen_subcommand_from harness:pods:status" -l timeout -s t -d 'Kubernetes get pod requests timeout in ms'
-complete -c bk -n "__fish_is_nth_token 1" -d 'Generate Harness configuration for specified project and create MRs in deployments repositories.' -kxa "harness:project:generate-config"
-complete -c bk -n "__fish_seen_subcommand_from harness:project:generate-config" -l project -s p -d 'SD project (current bk context project by default)' -x -a "(__bk_autocomplete_project)"
-complete -c bk -n "__fish_seen_subcommand_from harness:project:generate-config" -l regex -s r -d 'Regex to choose projects'
-complete -c bk -n "__fish_seen_subcommand_from harness:project:generate-config" -l template-dir -s t -d 'Template dir name in "harness-templates-and-values" repo (e.g. "cloud-application-template/cdk" for cloud apps)'
-complete -c bk -n "__fish_seen_subcommand_from harness:project:generate-config" -l local-data -s l -d 'Optional local yaml file to provide extra data to render configs'
-complete -c bk -n "__fish_is_nth_token 1" -d 'Bootstrap a new component in Harness, generate Harness configs, add "harness" attribute to SD service.' -kxa "harness:service:bootstrap"
-complete -c bk -n "__fish_seen_subcommand_from harness:service:bootstrap" -l project -s p -d 'Service Directory project' -x -a "(__bk_autocomplete_project)"
-complete -c bk -n "__fish_seen_subcommand_from harness:service:bootstrap" -l component -s c -d 'Service Directory component' -x -a "(__bk_autocomplete_component)"
-complete -c bk -n "__fish_seen_subcommand_from harness:service:bootstrap" -l imageRepo -r -s i -d 'Container image repository' -x -a "docker docker-dev docker-image-builder docker-build docker-build-sandbox"
-complete -c bk -n "__fish_seen_subcommand_from harness:service:bootstrap" -l skip-installation-presence-check -s s -d 'Allow to generate files even if "kubernetes-prod" or "kubernetes-dqs" installation is missing'
-complete -c bk -n "__fish_seen_subcommand_from harness:service:bootstrap" -l template-dir -s t -d 'Template directory in "harness-templates-and-values" repo (e.g. "cloud-application-template/cdk")'
-complete -c bk -n "__fish_seen_subcommand_from harness:service:bootstrap" -l local-data -s l -d 'Optional local yaml file to provide extra data to render configs'
-complete -c bk -n "__fish_is_nth_token 1" -d 'Generate Harness config(s) for application' -kxa "harness:service:generate-harnessconfig"
-complete -c bk -n "__fish_seen_subcommand_from harness:service:generate-harnessconfig" -l project -r -s p -d 'Service Directory project' -x -a "(__bk_autocomplete_project)"
-complete -c bk -n "__fish_seen_subcommand_from harness:service:generate-harnessconfig" -l component -r -s c -d 'Service Directory component' -x -a "(__bk_autocomplete_component)"
-complete -c bk -n "__fish_seen_subcommand_from harness:service:generate-harnessconfig" -l installation -r -s i -d 'Service Directory installation' -x -a "(__bk_autocomplete_installation)"
-complete -c bk -n "__fish_seen_subcommand_from harness:service:generate-harnessconfig" -l template-file -s t -d 'Config template file, omit to use default Harness config (resources/harnessconfig-templ.yaml)'
-complete -c bk -n "__fish_seen_subcommand_from harness:service:generate-harnessconfig" -l chart-name -r -s n -d 'Helm chart name (java, perl, nodejs), omit to use default'
-complete -c bk -n "__fish_seen_subcommand_from harness:service:generate-harnessconfig" -l chart-version -r -s V -d 'Helm chart version (e.g. ^5), omit to use default'
-complete -c bk -n "__fish_is_nth_token 1" -d 'Update service\'s harness configs so they have the meta labels we need' -kxa "harness:service:update-configs"
-complete -c bk -n "__fish_seen_subcommand_from harness:service:update-configs" -l project -r -s p -d 'service directory project' -x -a "(__bk_autocomplete_project)"
-complete -c bk -n "__fish_seen_subcommand_from harness:service:update-configs" -l component -r -s c -d 'service directory component' -x -a "(__bk_autocomplete_component)"
+complete -c bk -n "__fish_is_nth_token 1" -d 'A tool to add GraphQL support into existing Java services.' -kxa "java:add:graphql"
+complete -c bk -n "__fish_seen_subcommand_from java:add:graphql" -l serviceDir -d '[Optional] Absolute path to service folder.'
+complete -c bk -n "__fish_is_nth_token 1" -d 'A scaffolding tool for new Java applications' -kxa "java:bootstrap"
+complete -c bk -n "__fish_seen_subcommand_from java:bootstrap" -l baremetal -d 'This service is running on baremetal. If not provided, BKS service is assumed.'
+complete -c bk -n "__fish_seen_subcommand_from java:bootstrap" -l project-name -d 'BKS project name'
+complete -c bk -n "__fish_seen_subcommand_from java:bootstrap" -l service-name -d 'Component (service) name. Application name in case of baremetal'
+complete -c bk -n "__fish_seen_subcommand_from java:bootstrap" -l java-package -d 'Java package'
+complete -c bk -n "__fish_seen_subcommand_from java:bootstrap" -l group-id -d 'Maven group id'
+complete -c bk -n "__fish_seen_subcommand_from java:bootstrap" -l artifact-id -d 'Maven artifact id'
+complete -c bk -n "__fish_seen_subcommand_from java:bootstrap" -l framework -d 'SB3 or DW'
+complete -c bk -n "__fish_seen_subcommand_from java:bootstrap" -l sb3-template -d 'Spring Boot 3 template (sb3-simple, sb3-jdbc, sb3-jpa, sb3-graphql)'
+complete -c bk -n "__fish_seen_subcommand_from java:bootstrap" -l build-tool -d 'Maven or Bazel'
+complete -c bk -n "__fish_seen_subcommand_from java:bootstrap" -l monorepo -d 'This service is part of java monorepo'
+complete -c bk -n "__fish_seen_subcommand_from java:bootstrap" -l java-version -d 'Java version'
+complete -c bk -n "__fish_seen_subcommand_from java:bootstrap" -l background-tasks -d 'Add a demo background task to the generated app'
+complete -c bk -n "__fish_seen_subcommand_from java:bootstrap" -l mysql -d 'Add a demo MySql database to the generated app'
+complete -c bk -n "__fish_seen_subcommand_from java:bootstrap" -l renovate -d 'Add \'renovate.json5\' file to receive dependency update MRs'
+complete -c bk -n "__fish_seen_subcommand_from java:bootstrap" -l diprocessor -d 'Add DI Processor to the generated app - https://gitlab.booking.com/pfs/dropwizard-di-processor/-/blob/dev/README.md'
+complete -c bk -n "__fish_seen_subcommand_from java:bootstrap" -l slo -d 'Add default SLO configuration to the generated app - https://docs.booking.com/java-service-maturity/reliability/slo_service.html'
+complete -c bk -n "__fish_seen_subcommand_from java:bootstrap" -l graphql -d 'Add GraphQL integration library to the generated app'
+complete -c bk -n "__fish_seen_subcommand_from java:bootstrap" -l graphql-tools -d 'Add GraphQL playground and visualization tools to the generated app'
+complete -c bk -n "__fish_seen_subcommand_from java:bootstrap" -l security -d 'Add security to the generated app'
+complete -c bk -n "__fish_seen_subcommand_from java:bootstrap" -l passport-policy -d 'Which Passport policy to use'
+complete -c bk -n "__fish_seen_subcommand_from java:bootstrap" -l passport-policy-action -d 'Which Passport policy action to use'
+complete -c bk -n "__fish_is_nth_token 1" -d 'A tool to generate Run configuration files for your Java Service' -kxa "java:generate:run-configs"
+complete -c bk -n "__fish_seen_subcommand_from java:generate:run-configs" -l serviceDir -d 'optional, absolute path to service folder'
+complete -c bk -n "__fish_is_nth_token 1" -d 'A tool to run a bare metal Java Service on your Laptop' -kxa "java:local:baremetal"
+complete -c bk -n "__fish_seen_subcommand_from java:local:baremetal" -l kvm -d 'optional, kvm which will be used to fetch required files and forward ports'
+complete -c bk -n "__fish_is_nth_token 1" -d '' -kxa "java:local:k8s"
+complete -c bk -n "__fish_seen_subcommand_from java:local:k8s" -l context -d 'optional, dev service context which will be used to fetch required files and forward ports' -x -a "(__bk_autocomplete_context)"
+complete -c bk -n "__fish_seen_subcommand_from java:local:k8s" -l additionalPort -d 'additional ports to forward (can be in the format "9092" or "9092:9093") and can be provided multiple times'
+complete -c bk -n "__fish_seen_subcommand_from java:local:k8s" -l debug -d 'should print debug logs'
 complete -c bk -n "__fish_is_nth_token 1" -d 'show current Rollout Blocks' -kxa "deploy:blocks"
 complete -c bk -n "__fish_seen_subcommand_from deploy:blocks" -l columns -d 'only show provided columns (comma-separated)'
 complete -c bk -n "__fish_seen_subcommand_from deploy:blocks" -l sort -d 'property to sort by (prepend \'-\' for descending)'
@@ -481,65 +540,39 @@ complete -c bk -n "__fish_seen_subcommand_from deploy:use" -l installation -s i 
 complete -c bk -n "__fish_seen_subcommand_from deploy:use" -l choose-component -d 'Keep the current project context, start the dialog from choosing a component'
 complete -c bk -n "__fish_seen_subcommand_from deploy:use" -l choose-installation -d 'Keep the current project/component context, start the dialog from choosing an installation'
 complete -c bk -n "__fish_seen_subcommand_from deploy:use" -l choose-cluster -d 'Keep the current project/component/installation context, choose only a cluster'
-complete -c bk -n "__fish_is_nth_token 1" -d 'A tool to add GraphQL support into existing Java services.' -kxa "java:add:graphql"
-complete -c bk -n "__fish_seen_subcommand_from java:add:graphql" -l serviceDir -d '[Optional] Absolute path to service folder.'
-complete -c bk -n "__fish_is_nth_token 1" -d 'A scaffolding tool for new Java applications' -kxa "java:bootstrap"
-complete -c bk -n "__fish_seen_subcommand_from java:bootstrap" -l baremetal -d 'This service is running on baremetal. If not provided, BKS service is assumed.'
-complete -c bk -n "__fish_seen_subcommand_from java:bootstrap" -l project-name -d 'BKS project name'
-complete -c bk -n "__fish_seen_subcommand_from java:bootstrap" -l service-name -d 'Component (service) name. Application name in case of baremetal'
-complete -c bk -n "__fish_seen_subcommand_from java:bootstrap" -l java-package -d 'Java package'
-complete -c bk -n "__fish_seen_subcommand_from java:bootstrap" -l group-id -d 'Maven group id'
-complete -c bk -n "__fish_seen_subcommand_from java:bootstrap" -l artifact-id -d 'Maven artifact id'
-complete -c bk -n "__fish_seen_subcommand_from java:bootstrap" -l framework -d 'SB3 or DW'
-complete -c bk -n "__fish_seen_subcommand_from java:bootstrap" -l sb3-template -d 'Spring Boot 3 template (sb3-simple, sb3-jdbc, sb3-jpa, sb3-graphql)'
-complete -c bk -n "__fish_seen_subcommand_from java:bootstrap" -l build-tool -d 'Maven or Bazel'
-complete -c bk -n "__fish_seen_subcommand_from java:bootstrap" -l monorepo -d 'This service is part of java monorepo'
-complete -c bk -n "__fish_seen_subcommand_from java:bootstrap" -l java-version -d 'Java version'
-complete -c bk -n "__fish_seen_subcommand_from java:bootstrap" -l background-tasks -d 'Add a demo background task to the generated app'
-complete -c bk -n "__fish_seen_subcommand_from java:bootstrap" -l mysql -d 'Add a demo MySql database to the generated app'
-complete -c bk -n "__fish_seen_subcommand_from java:bootstrap" -l renovate -d 'Add \'renovate.json5\' file to receive dependency update MRs'
-complete -c bk -n "__fish_seen_subcommand_from java:bootstrap" -l diprocessor -d 'Add DI Processor to the generated app - https://gitlab.booking.com/pfs/dropwizard-di-processor/-/blob/dev/README.md'
-complete -c bk -n "__fish_seen_subcommand_from java:bootstrap" -l slo -d 'Add default SLO configuration to the generated app - https://docs.booking.com/java-service-maturity/reliability/slo_service.html'
-complete -c bk -n "__fish_seen_subcommand_from java:bootstrap" -l graphql -d 'Add GraphQL integration library to the generated app'
-complete -c bk -n "__fish_seen_subcommand_from java:bootstrap" -l graphql-tools -d 'Add GraphQL playground and visualization tools to the generated app'
-complete -c bk -n "__fish_seen_subcommand_from java:bootstrap" -l security -d 'Add security to the generated app'
-complete -c bk -n "__fish_seen_subcommand_from java:bootstrap" -l passport-policy -d 'Which Passport policy to use'
-complete -c bk -n "__fish_seen_subcommand_from java:bootstrap" -l passport-policy-action -d 'Which Passport policy action to use'
-complete -c bk -n "__fish_is_nth_token 1" -d 'A tool to generate Run configuration files for your Java Service' -kxa "java:generate:run-configs"
-complete -c bk -n "__fish_seen_subcommand_from java:generate:run-configs" -l serviceDir -d 'optional, absolute path to service folder'
-complete -c bk -n "__fish_is_nth_token 1" -d 'A tool to run a bare metal Java Service on your Laptop' -kxa "java:local:baremetal"
-complete -c bk -n "__fish_seen_subcommand_from java:local:baremetal" -l kvm -d 'optional, kvm which will be used to fetch required files and forward ports'
-complete -c bk -n "__fish_is_nth_token 1" -d '' -kxa "java:local:k8s"
-complete -c bk -n "__fish_seen_subcommand_from java:local:k8s" -l context -d 'optional, dev service context which will be used to fetch required files and forward ports' -x -a "(__bk_autocomplete_context)"
-complete -c bk -n "__fish_seen_subcommand_from java:local:k8s" -l additionalPort -d 'additional ports to forward (can be in the format "9092" or "9092:9093") and can be provided multiple times'
-complete -c bk -n "__fish_seen_subcommand_from java:local:k8s" -l debug -d 'should print debug logs'
-complete -c bk -n "__fish_is_nth_token 1" -d 'show available BKS Kubernetes clusters' -kxa "$__bk_command_group_cloud_clusters"
-complete -c bk -n "__fish_seen_subcommand_from $__bk_command_group_cloud_clusters" -l columns -d 'only show provided columns (comma-separated)'
-complete -c bk -n "__fish_seen_subcommand_from $__bk_command_group_cloud_clusters" -l sort -d 'property to sort by (prepend \'-\' for descending)'
-complete -c bk -n "__fish_seen_subcommand_from $__bk_command_group_cloud_clusters" -l filter -d 'filter property by partial string matching, ex: name=foo'
-complete -c bk -n "__fish_seen_subcommand_from $__bk_command_group_cloud_clusters" -l csv -d 'output is csv format [alias: --output=csv]'
-complete -c bk -n "__fish_seen_subcommand_from $__bk_command_group_cloud_clusters" -l output -d 'output in a more machine friendly format' -x -a "csv json yaml"
-complete -c bk -n "__fish_seen_subcommand_from $__bk_command_group_cloud_clusters" -l extended -s x -d 'show extra columns'
-complete -c bk -n "__fish_seen_subcommand_from $__bk_command_group_cloud_clusters" -l truncate -d 'whether or not to truncate output to fit screen'
-complete -c bk -n "__fish_seen_subcommand_from $__bk_command_group_cloud_clusters" -l header -d 'whether or not to show table header from output'
-complete -c bk -n "__fish_seen_subcommand_from $__bk_command_group_cloud_clusters" -l all -d 'show all clusters, by default it only shows application, development, management clusters'
-complete -c bk -n "__fish_is_nth_token 1" -d 'create a subscription in AlertAPI to receive alerts about issues in BKS Kubernetes clusters' -kxa "cloud:subscribe:cluster-alerts"
-complete -c bk -n "__fish_seen_subcommand_from cloud:subscribe:cluster-alerts" -l component -d 'override component name' -x -a "(__bk_autocomplete_component)"
-complete -c bk -n "__fish_seen_subcommand_from cloud:subscribe:cluster-alerts" -l project -d 'override project name' -x -a "(__bk_autocomplete_project)"
-complete -c bk -n "__fish_is_nth_token 1" -d 'create a subscription in AlertAPI to receive alerts about exhausting resources in your namespace in BKS Kubernetes clusters' -kxa "cloud:subscribe:quota-alerts"
-complete -c bk -n "__fish_seen_subcommand_from cloud:subscribe:quota-alerts" -l component -d 'override component name' -x -a "(__bk_autocomplete_component)"
-complete -c bk -n "__fish_seen_subcommand_from cloud:subscribe:quota-alerts" -l project -d 'override project name' -x -a "(__bk_autocomplete_project)"
-complete -c bk -n "__fish_is_nth_token 1" -d 'create a subscription in AlertAPI to receive notifications about ongoing rollouts of your service in BKS Kubernetes clusters,' -kxa "cloud:subscribe:rollout-info"
-complete -c bk -n "__fish_seen_subcommand_from cloud:subscribe:rollout-info" -l component -d 'override component name' -x -a "(__bk_autocomplete_component)"
-complete -c bk -n "__fish_seen_subcommand_from cloud:subscribe:rollout-info" -l project -d 'override project name' -x -a "(__bk_autocomplete_project)"
-complete -c bk -n "__fish_is_nth_token 1" -d 'switch cluster context in kube config' -kxa "$__bk_command_group_context_use_cluster"
-complete -c bk -n "__fish_seen_subcommand_from $__bk_command_group_context_use_cluster" -l check-cluster-status -d 'whether or not to print a warning if cluster status is not \'Ready\''
-complete -c bk -n "__fish_seen_subcommand_from $__bk_command_group_context_use_cluster" -l set-as-preferred-cluster -d 'store given cluster as preferred cluster, preferred cluster is one which an installation uses by default'
-complete -c bk -n "__fish_seen_subcommand_from $__bk_command_group_context_use_cluster" -l allow-testing-clusters -d 'allow switching to test clusters as well'
-complete -c bk -n "__fish_seen_subcommand_from $__bk_command_group_context_use_cluster" -l check-if-installation-provisioned-in-cluster -d 'whether or not to fail if no installation is provisioned in the specified cluster'
-complete -c bk -n "__fish_seen_subcommand_from $__bk_command_group_context_use_cluster" -l check-if-cluster-exists -d 'UNSAFE: whether or not to fail if the specified cluster exists in Cluster Directory'
-complete -c bk -n "__fish_seen_subcommand_from $__bk_command_group_context_use_cluster" -l namespace -d 'namespace to use, defaults to the namespace of the current kubectl context, or sd context if kubectl context is unset'
-complete -c bk -n "__fish_seen_subcommand_from $__bk_command_group_context_use_cluster" -fa "(__bk_autocomplete_clusterName)"
+complete -c bk -n "__fish_is_nth_token 1" -d 'bootstrap a new plugin or library inside the bk monorepo' -kxa "packages:bootstrap"
+complete -c bk -n "__fish_seen_subcommand_from packages:bootstrap" -l name -r -s n -d 'name of the package'
+complete -c bk -n "__fish_seen_subcommand_from packages:bootstrap" -l description -s d -d 'description of the package (not required for libraries)'
+complete -c bk -n "__fish_seen_subcommand_from packages:bootstrap" -l is-discoverable -d 'whether or not the plugin will be displayed by `bk plugins:discover` command'
+complete -c bk -n "__fish_seen_subcommand_from packages:bootstrap" -l owner -d 'plugin owner name'
+complete -c bk -n "__fish_seen_subcommand_from packages:bootstrap" -l bk-root -r -s r -d 'root of the bk monorepo git project'
+complete -c bk -n "__fish_seen_subcommand_from packages:bootstrap" -l type -r -s t -d 'wether to create a plugin or a library' -x -a "plugin library"
+complete -c bk -n "__fish_is_nth_token 1" -d 'adds one or multiple dependencies by name to the specified plugin/library BUILD.bazel file' -kxa "packages:dependencies:add"
+complete -c bk -n "__fish_seen_subcommand_from packages:dependencies:add" -l bazel-label -r -s l -d 'Bazel label of your plugin, e.g. //packages/plugins/shipper'
+complete -c bk -n "__fish_seen_subcommand_from packages:dependencies:add" -l bk-root -r -s r -d 'root of the bk monorepo git project'
+complete -c bk -n "__fish_seen_subcommand_from packages:dependencies:add" -l dependency-name -r -s d -d 'dependency name to add, could be specified multiple time'
+complete -c bk -n "__fish_seen_subcommand_from packages:dependencies:add" -l type -r -s t -d 'type of dependencies we are adding' -x -a "internal external external-dev"
+complete -c bk -n "__fish_is_nth_token 1" -d 'open Grafana dashboard of a particular plugin or ownership domain' -kxa "packages:metrics:dashboard"
+complete -c bk -n "__fish_seen_subcommand_from packages:metrics:dashboard" -l plugin -d 'plugin name of the dashboard we want to open'
+complete -c bk -n "__fish_seen_subcommand_from packages:metrics:dashboard" -l owner -d 'orgunit_id of the owner of the dashboard we want to open'
+complete -c bk -n "__fish_is_nth_token 1" -d 'Calculates next tag and opens Gitlab UI to create the new tag on the correct commit hash.' -kxa "packages:tag"
+complete -c bk -n "__fish_seen_subcommand_from packages:tag" -l bk-root -r -s r -d 'root of the bk monorepo git project'
+complete -c bk -n "__fish_seen_subcommand_from packages:tag" -l name -r -s n -d 'name of the plugin of which to check the next tag'
+complete -c bk -n "__fish_seen_subcommand_from packages:tag" -l channel -r -s c -d 'the channel on which to set the minimal version' -x -a "latest alpha"
+complete -c bk -n "__fish_seen_subcommand_from packages:tag" -l release-type -r -s t -d 'type of release you want to make' -x -a "patch minor major prepatch preminor premajor prerelease"
+complete -c bk -n "__fish_seen_subcommand_from packages:tag" -l remote -d 'git remote to use'
+complete -c bk -n "__fish_seen_subcommand_from packages:tag" -l branch -s b -d 'git remote branch name to use. If not specified it will be inferred from the git status. It should not include the remote name, e.g. "master" not "origin/master"'
+complete -c bk -n "__fish_is_nth_token 1" -d 'set the minimum version to check against during a version check' -kxa "packages:versions:set-minimum"
+complete -c bk -n "__fish_seen_subcommand_from packages:versions:set-minimum" -l bk-root -r -s r -d 'root of the bk monorepo git project'
+complete -c bk -n "__fish_seen_subcommand_from packages:versions:set-minimum" -l name -r -s n -d 'name of the plugin of which to set the minimum required version'
+complete -c bk -n "__fish_seen_subcommand_from packages:versions:set-minimum" -l reason -r -d 'reason why this version needs to be the minimum one'
+complete -c bk -n "__fish_seen_subcommand_from packages:versions:set-minimum" -l version -r -s v -d 'the minimum version user should have installed on their machine'
+complete -c bk -n "__fish_seen_subcommand_from packages:versions:set-minimum" -l channel -s c -d 'the channel on which to set the minimal version, will be defaulted to \'latest\' for plugins or \'stable\' for `bk`'
+complete -c bk -n "__fish_seen_subcommand_from packages:versions:set-minimum" -l version-configuration-file -d 'configuration file of version-checker that holds minimum versions, relative to flags \'--bk-root\''
+complete -c bk -n "__fish_is_nth_token 1" -d 'a simplified version of `bk plugins:link` for Bazel setup' -kxa "plugins:link-bazel"
+complete -c bk -n "__fish_seen_subcommand_from plugins:link-bazel" -l verbose -s v
+complete -c bk -n "__fish_seen_subcommand_from plugins:link-bazel" -l bk-root -s r -d 'root of the bk monorepo git project'
+complete -c bk -n "__fish_seen_subcommand_from plugins:link-bazel" -l plugin-name -s n -d 'link a plugin by name'
 complete -c bk -n "__fish_is_nth_token 1" -d 'list installed plugins' -kxa "plugins"
 complete -c bk -n "__fish_seen_subcommand_from plugins" -l core -d 'show core plugins'
 complete -c bk -n "__fish_is_nth_token 1" -d 'displays installation properties of a plugin' -kxa "plugins:inspect"

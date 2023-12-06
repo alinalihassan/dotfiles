@@ -40,7 +40,7 @@ end)
 config.disable_default_key_bindings = true
 
 -- Setup Leader key for tmux-like panel and window management
-config.leader = { key = 'a', mods = 'CTRL', timeout_milliseconds = 1000 }
+-- config.leader = { key = 'a', mods = 'CTRL', timeout_milliseconds = 1000 }
 config.keys = {
   -- Tab/Window Management
   { key = 'Tab',        mods = 'CTRL',       action = act.ActivateTabRelative(1) },
@@ -80,6 +80,7 @@ config.keys = {
   { key = 'DownArrow',  mods = 'SHIFT|ALT',  action = act.AdjustPaneSize { 'Down', 2 } },
   -- Other
   { key = 'P',          mods = 'SHIFT|CTRL', action = act.ActivateCommandPalette },
+  { key = 'k',          mods = 'SUPER',      action = act.ActivateCommandPalette },
   { key = 'U',          mods = 'SHIFT|CTRL', action = act.CharSelect { copy_on_select = true, copy_to = 'ClipboardAndPrimarySelection' } },
   { key = 'X',          mods = 'SHIFT|CTRL', action = act.ActivateCopyMode },
   { key = 'Z',          mods = 'SHIFT|CTRL', action = act.TogglePaneZoomState },

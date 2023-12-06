@@ -81,4 +81,10 @@ lvim.plugins = {
   { "jghauser/mkdir.nvim" },   -- Create directories automatically when making a new file
   { "romainl/vim-cool" },      -- Disable search highlight after search is done (no more :noh after every search)
   { "tmux-plugins/vim-tmux" }, -- Tmux Conf LSP
+  -- AI Assistant
+  {
+    "sourcegraph/sg.nvim",
+    dependencies = { "nvim-lua/plenary.nvim", --[[ "nvim-telescope/telescope.nvim ]] },
+  },
+  { "christoomey/vim-tmux-navigator" },
 }

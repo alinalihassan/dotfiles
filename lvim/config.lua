@@ -77,14 +77,16 @@ lvim.plugins = {
   --     "rcarriga/nvim-notify",
   --   }
   -- },
-  -- Utility
-  { "jghauser/mkdir.nvim" },   -- Create directories automatically when making a new file
-  { "romainl/vim-cool" },      -- Disable search highlight after search is done (no more :noh after every search)
-  { "tmux-plugins/vim-tmux" }, -- Tmux Conf LSP
   -- AI Assistant
   {
     "sourcegraph/sg.nvim",
     dependencies = { "nvim-lua/plenary.nvim", --[[ "nvim-telescope/telescope.nvim ]] },
   },
+  -- Move between vim and tmux windows like they're the same
   { "christoomey/vim-tmux-navigator" },
+  -- LSPs
+  { "tmux-plugins/vim-tmux" }, -- Tmux Conf LSP
+  -- Utility
+  { "jghauser/mkdir.nvim" },   -- Create directories automatically when making a new file
+  { "romainl/vim-cool" },      -- Disable search highlight after search is done (no more :noh after every search)
 }

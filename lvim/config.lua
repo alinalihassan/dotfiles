@@ -1,9 +1,6 @@
 -- Options
 vim.opt.relativenumber = true
--- vim.opt.cmdheight = 0
--- vim.opt.laststatus = 0
 
--- LunarVim Core Plugins
 -- Colorscheme
 lvim.colorscheme = "tokyonight-night"
 
@@ -50,6 +47,20 @@ formatters.setup {
 lvim.builtin.gitsigns.opts.current_line_blame = true
 lvim.builtin.gitsigns.opts.current_line_blame_opts.delay = 0
 
+-- Message filters
+require("noice").setup({
+  routes = {
+    {
+      filter = {
+        event = "msg_show",
+        kind = "",
+        find = "written",
+      },
+      opts = { skip = true },
+    },
+  },
+})
+
 -- Plugins
 lvim.plugins = {
   -- Colorschemes
@@ -68,15 +79,15 @@ lvim.plugins = {
     opts = {},
   },
   -- Cmdline and notifications UI
-  -- {
-  --   "folke/noice.nvim",
-  --   event = "VeryLazy",
-  --   opts = {},
-  --   dependencies = {
-  --     "MunifTanjim/nui.nvim",
-  --     "rcarriga/nvim-notify",
-  --   }
-  -- },
+  {
+    "folke/noice.nvim",
+    event = "VeryLazy",
+    opts = {},
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+      "rcarriga/nvim-notify",
+    }
+  },
   -- AI Assistant
   {
     "sourcegraph/sg.nvim",

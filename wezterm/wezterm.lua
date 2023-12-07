@@ -19,6 +19,9 @@ config.color_scheme = "Tokyo Night"
 -- Font settings
 config.font = wezterm.font("JetBrainsMono Nerd Font")
 
+-- Disable audible bell
+config.audible_bell = "Disabled"
+
 -- Window settings
 config.window_close_confirmation = "NeverPrompt"
 config.window_decorations = "INTEGRATED_BUTTONS|RESIZE"

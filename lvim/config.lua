@@ -94,7 +94,15 @@ lvim.plugins = {
     dependencies = { "nvim-lua/plenary.nvim", --[[ "nvim-telescope/telescope.nvim ]] },
   },
   -- Move between vim and tmux windows like they're the same
-  { "christoomey/vim-tmux-navigator" },
+  {
+    "christoomey/vim-tmux-navigator",
+    config = function()
+      vim.cmd([[
+            " let g:tmux_navigator_save_on_switch = 1
+            let  g:tmux_navigator_no_wrap = 1
+            ]])
+    end,
+  },
   -- LSPs
   { "tmux-plugins/vim-tmux" }, -- Tmux Conf LSP
   -- Utility

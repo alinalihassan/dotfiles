@@ -43,6 +43,7 @@ end)
 config.disable_default_key_bindings = true
 
 -- Setup Leader key for tmux-like panel and window management
+-- Currently disabled since we use tmux (for vim-tmux navigation)
 -- config.leader = { key = 'a', mods = 'CTRL', timeout_milliseconds = 1000 }
 config.keys = {
   -- Tab/Window Management

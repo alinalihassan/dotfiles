@@ -19,6 +19,7 @@ status --is-interactive; and source (jump shell fish | psub)
 alias nvim="lvim"
 alias v="nvim"
 alias cat="bat"
+# alias cd="z" # Already aliased by zoxide init
 alias ack="ag"
 alias python="python3"
 alias find="fd"
@@ -38,3 +39,6 @@ alias bk_reload='bk completion fish > ~/.config/fish/completions/bk.fish'
 
 ## Starship prompt
 starship init fish | source
+
+## Zoxide cd replacement
+zoxide init --cmd cd fish | source

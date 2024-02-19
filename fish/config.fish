@@ -20,6 +20,7 @@ alias nvim="lvim"
 alias v="nvim"
 alias cat="bat"
 # alias cd="z" # Already aliased by zoxide init
+alias df="duf"
 alias ack="ag"
 alias python="python3"
 alias find="fd"

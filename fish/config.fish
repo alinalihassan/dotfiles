@@ -42,3 +42,16 @@ starship init fish | source
 
 ## Zoxide cd replacement
 zoxide init --cmd cd fish | source
+
+# Functions
+function fish_add_var
+    if count $argv > 1 
+        set -Ux $argv[1] $argv[2]  
+    else
+        echo "Usage: fish_add_var VARIABLE VALUE"
+    end
+end
+
+function fish_remove_var
+    set --erase $argv
+end

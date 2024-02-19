@@ -25,6 +25,7 @@ brew "hyperfine" # Benchmarking tool
 brew "jump" # Utility tool to jump to directories
 brew "fish" # Shell
 brew "tmux" # Terminal Multiplexer (optional, using wezterm)
+brew "httpie" # HTTP CLI Client
 
 # Neovim specific
 brew "neovim" # Neovim

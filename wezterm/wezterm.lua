@@ -1,5 +1,6 @@
 -- Pull in the wezterm API
 local wezterm = require("wezterm")
+local sessionizer = require("sessionizer")
 
 -- In newer versions of wezterm, use the config_builder which will
 -- help provide clearer error messages
@@ -24,7 +25,7 @@ config.audible_bell = "Disabled"
 
 -- Window settings
 config.window_close_confirmation = "NeverPrompt"
-config.window_decorations = "INTEGRATED_BUTTONS|RESIZE|TITLE"
+config.window_decorations = "INTEGRATED_BUTTONS|RESIZE"
 config.window_padding = {
   left = 0,
   right = 0,
@@ -68,6 +69,7 @@ config.keys = {
   { key = 'v',          mods = 'SUPER',       action = act.PasteFrom 'Clipboard' },
   -- Command-based keybindings
   { key = 'f',          mods = 'SUPER',       action = act.Search 'CurrentSelectionOrEmptyString' },
+  { key = "F",          mods = "SUPER",       action = wezterm.action_callback(sessionizer.toggle) },
   { key = 'k',          mods = 'SUPER',       action = act.ClearScrollback 'ScrollbackOnly' },
   { key = 'n',          mods = 'SUPER',       action = act.SpawnWindow },
   { key = 'q',          mods = 'SUPER',       action = act.QuitApplication },

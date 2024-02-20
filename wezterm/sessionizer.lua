@@ -15,8 +15,8 @@ M.toggle = function(window, pane)
     "-td",
     "^.git$",
     "--max-depth=4",
+    "--prune",
     rootPath,
-    -- add more paths here
   })
 
   if not success then

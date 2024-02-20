@@ -24,7 +24,7 @@ config.audible_bell = "Disabled"
 
 -- Window settings
 config.window_close_confirmation = "NeverPrompt"
-config.window_decorations = "INTEGRATED_BUTTONS|RESIZE"
+config.window_decorations = "INTEGRATED_BUTTONS|RESIZE|TITLE"
 config.window_padding = {
   left = 0,
   right = 0,

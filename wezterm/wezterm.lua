@@ -29,7 +29,7 @@ config.window_decorations = "INTEGRATED_BUTTONS|RESIZE"
 config.window_padding = {
   left = 0,
   right = 0,
-  top = 60,
+  top = "1.5cell",
   bottom = 0,
 }
 

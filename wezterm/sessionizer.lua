@@ -9,6 +9,9 @@ local rootPath = "/Users/ahassan18/Developer"
 M.toggle = function(window, pane)
   local projects = {}
 
+  -- Default workspace
+  table.insert(projects, { label = "~", id = "~" })
+
   local success, stdout, stderr = wezterm.run_child_process({
     fd,
     "-HI",
@@ -26,8 +29,12 @@ M.toggle = function(window, pane)
 
   for line in stdout:gmatch("([^\n]*)\n?") do
     local project = line:gsub("/.git/$", "")
-    local label = project
-    local id = project:gsub(".*/", "")
+    -- local label = project
+    -- local id = project:gsub(".*/", "")
+
+    -- Strip the path, if you want to keep use the code above
+    local label = project:match(".*/(.*)") or project
+    local id = label
     table.insert(projects, { label = tostring(label), id = tostring(id) })
   end
 

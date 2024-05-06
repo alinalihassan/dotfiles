@@ -97,6 +97,9 @@ config.keys = {
   { key = 'l',          mods = 'SHIFT|SUPER', action = act.AdjustPaneSize { 'Right', 2 } },
   { key = 'k',          mods = 'SHIFT|SUPER', action = act.AdjustPaneSize { 'Up', 2 } },
   { key = 'j',          mods = 'SHIFT|SUPER', action = act.AdjustPaneSize { 'Down', 2 } },
+  { key = '[',          mods = 'SHIFT|SUPER', action = act.RotatePanes 'CounterClockwise'},
+  { key = ']',          mods = 'SHIFT|SUPER', action = act.RotatePanes 'Clockwise'},
+  { key = '/',          mods = 'SUPER',       action = act.Search { CaseInSensitiveString = "" } },
   -- Other
   { key = 'P',          mods = 'SHIFT|CTRL',  action = act.ActivateCommandPalette },
   { key = 'p',          mods = 'SUPER',       action = act.ActivateCommandPalette },

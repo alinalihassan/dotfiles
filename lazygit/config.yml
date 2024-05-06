@@ -4,3 +4,8 @@ gui:
 git:
   log:
     showGraph: 'always'
+os:
+  openLink: open "$(echo {{link}} | sed 's/%2F/\//g')"
+  editPreset: 'lvim'
+services:
+  'gitlab.booking.com': 'gitlab:gitlab.booking.com'

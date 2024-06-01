@@ -29,6 +29,7 @@
 - <Super-←↑→↓> -> Change pane in that direction
 - <Super-Shift-hjkl> -> Grow/shrink pane in that direction
 - <Super-Shift-←↑→↓> -> Grow/shrink pane in that direction
+- <Super-Shift-[]> -> Rotate pane in that direction
 
 ### Tabs
 

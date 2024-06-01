@@ -100,8 +100,8 @@ config.keys = {
   { key = ']',          mods = 'SHIFT|SUPER', action = act.RotatePanes 'Clockwise'},
   { key = '/',          mods = 'SUPER',       action = act.Search { CaseInSensitiveString = "" } },
   -- Other
-  { key = 'p',          mods = 'SHIFT|CTRL',  action = act.ActivateCommandPalette },
-  { key = 'p',          mods = 'SUPER',       action = act.ActivateCommandPalette },
+  -- { key = 'p',          mods = 'SHIFT|CTRL',  action = act.ActivateCommandPalette },
+  -- { key = 'p',          mods = 'SUPER',       action = act.ActivateCommandPalette },
   -- { key = 'U',          mods = 'SHIFT|CTRL',  action = act.CharSelect { copy_on_select = true, copy_to = 'ClipboardAndPrimarySelection' } },
   -- { key = 'X',          mods = 'SHIFT|CTRL',  action = act.ActivateCopyMode },
   -- { key = 'Z',          mods = 'SHIFT|CTRL',  action = act.TogglePaneZoomState },

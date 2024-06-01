@@ -70,17 +70,16 @@ config.keys = {
   -- Command-based keybindings
   { key = 'f',          mods = 'SUPER',       action = act.Search 'CurrentSelectionOrEmptyString' },
   { key = "F",          mods = "SUPER",       action = wezterm.action_callback(sessionizer.toggle) },
-  { key = 'k',          mods = 'SUPER',       action = act.ClearScrollback 'ScrollbackOnly' },
   { key = 'n',          mods = 'SUPER',       action = act.SpawnWindow },
   { key = 'q',          mods = 'SUPER',       action = act.QuitApplication },
   { key = 'r',          mods = 'SUPER',       action = act.ReloadConfiguration },
   { key = 't',          mods = 'SUPER',       action = act.SpawnTab 'CurrentPaneDomain' },
   { key = 'w',          mods = 'SUPER',       action = act.CloseCurrentTab { confirm = true } },
   -- Panel keybindings
-  { key = '\\',         mods = 'LEADER',      action = wezterm.action.SplitHorizontal { domain = 'CurrentPaneDomain' } },
-  { key = '-',          mods = 'LEADER',      action = wezterm.action.SplitVertical { domain = 'CurrentPaneDomain' } },
-  { key = '-',          mods = 'SUPER',       action = wezterm.action.SplitVertical { domain = 'CurrentPaneDomain' } },
-  { key = '\\',         mods = 'SUPER',       action = wezterm.action.SplitHorizontal { domain = 'CurrentPaneDomain' } },
+  -- { key = '\\',         mods = 'LEADER',      action = act.SplitHorizontal { domain = 'CurrentPaneDomain' } },
+  -- { key = '-',          mods = 'LEADER',      action = act.SplitVertical { domain = 'CurrentPaneDomain' } },
+  { key = '-',          mods = 'SUPER',       action = act.SplitVertical { domain = 'CurrentPaneDomain' } },
+  { key = '\\',         mods = 'SUPER',       action = act.SplitHorizontal { domain = 'CurrentPaneDomain' } },
   { key = 'LeftArrow',  mods = 'SUPER',       action = act.ActivatePaneDirection 'Left' },
   { key = 'RightArrow', mods = 'SUPER',       action = act.ActivatePaneDirection 'Right' },
   { key = 'UpArrow',    mods = 'SUPER',       action = act.ActivatePaneDirection 'Up' },
@@ -101,12 +100,12 @@ config.keys = {
   { key = ']',          mods = 'SHIFT|SUPER', action = act.RotatePanes 'Clockwise'},
   { key = '/',          mods = 'SUPER',       action = act.Search { CaseInSensitiveString = "" } },
   -- Other
-  { key = 'P',          mods = 'SHIFT|CTRL',  action = act.ActivateCommandPalette },
+  { key = 'p',          mods = 'SHIFT|CTRL',  action = act.ActivateCommandPalette },
   { key = 'p',          mods = 'SUPER',       action = act.ActivateCommandPalette },
-  { key = 'U',          mods = 'SHIFT|CTRL',  action = act.CharSelect { copy_on_select = true, copy_to = 'ClipboardAndPrimarySelection' } },
-  { key = 'X',          mods = 'SHIFT|CTRL',  action = act.ActivateCopyMode },
-  { key = 'Z',          mods = 'SHIFT|CTRL',  action = act.TogglePaneZoomState },
-  { key = 'phys:Space', mods = 'SHIFT|CTRL',  action = act.QuickSelect },
+  -- { key = 'U',          mods = 'SHIFT|CTRL',  action = act.CharSelect { copy_on_select = true, copy_to = 'ClipboardAndPrimarySelection' } },
+  -- { key = 'X',          mods = 'SHIFT|CTRL',  action = act.ActivateCopyMode },
+  -- { key = 'Z',          mods = 'SHIFT|CTRL',  action = act.TogglePaneZoomState },
+  -- { key = 'phys:Space', mods = 'SHIFT|CTRL',  action = act.QuickSelect },
 }
 
 return config

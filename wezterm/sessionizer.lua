@@ -28,11 +28,15 @@ M.toggle = function(window, pane)
   end
 
   for line in stdout:gmatch("([^\n]*)\n?") do
-    local project = line:gsub("/.git/$", "")
-    local label = project
-    local id = project:gsub(".*/", "")
+    local path = line:gsub("/.git/$", "")
+    local label = path:gsub(".*/", "")
 
-    table.insert(projects, { label = tostring(label), id = tostring(id) })
+    local stylized = wezterm.format {
+      { Attribute = { Intensity = "Bold" }},
+      { Text = label },
+    }
+
+    table.insert(projects, { label = stylized, id = path })
   end
 
   window:perform_action(
@@ -43,13 +47,13 @@ M.toggle = function(window, pane)
         else
           wezterm.log_info("Selected " .. label)
           win:perform_action(
-            act.SwitchToWorkspace({ name = id, spawn = { cwd = label } }),
+            act.SwitchToWorkspace({ name = label, spawn = { cwd = id } }),
             pane
           )
         end
       end),
       fuzzy = true,
-      title = "Select project",
+      fuzzy_description = "Select project: ",
       choices = projects,
     }),
     pane

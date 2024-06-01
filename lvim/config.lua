@@ -5,7 +5,7 @@ vim.opt.relativenumber = true
 lvim.colorscheme = "tokyonight-night"
 
 -- Format on Save
-lvim.format_on_save.enabled = true
+-- lvim.format_on_save.enabled = true
 
 -- Add Git Icons in NvimTree
 lvim.builtin.nvimtree.setup.renderer.icons.glyphs.git = {

@@ -66,6 +66,7 @@ cask "gitkraken" # Git GUI when I feel lazy
 cask "rapidapi" # API devtools, Postman replacement
 cask "visual-studio-code" # Backup editor when I'm tired of NeoVim
 cask "wezterm" # GPU-accelerated and Lua-scriptable fast terminal emulator
+cask "orbstack" (https://orbstack.dev/) # Docker Desktop alternative with excellent Mac support
 
 # Notes
 cask "obsidian" # Hackable markdown-based note taking app
@@ -81,6 +82,7 @@ cask "font-jetbrains-mono-nerd-font" # Best font with NeoVim in my experience
 mas "Dropover", id: 1355679052 # Save files in shelves by dragging to the corner
 mas "Magnet", id: 441258766 # Window snapping tool
 mas "Pure Paste", id: 1611378436 # Remove formatting and keeps only the text from clipboard
+mas "rcmd", id: 1596283165 # Keybindings-focused window switcher
 
 # Development
 mas "Xcode", id: 497799835 # Apple development
@@ -89,11 +91,6 @@ mas "Xcode", id: 497799835 # Apple development
 # Interesting Apps I consider #
 ###############################
 
-# mas "rcmd" (https://lowtechguys.com/rcmd/) - Keybindings-focused window switcher
 # cask "keycastr" (https://github.com/keycastr/keycastr) - Open-source keystroke visualizer
-# cask "fig" (https://fig.io/) - Interesting Terminal integration for autocomplete and finding the right command with AI
-# brew "docker" (https://www.docker.com/) -- Docker for containers
-# cask "docker" (https://www.docker.com/) -- Docker desktop
-# cask "orbstack" (https://orbstack.dev/) -- Docker Desktop alternative with excellent Mac support
 # cask "transmission" (https://transmissionbt.com/) -- Torrent Client
 # mas "ducklet" (https://ducklet.app/) - SQL Editor

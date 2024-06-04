@@ -65,8 +65,8 @@ cask "whatsapp"
 cask "gitkraken" # Git GUI when I feel lazy
 cask "rapidapi" # API devtools, Postman replacement
 cask "visual-studio-code" # Backup editor when I'm tired of NeoVim
-cask "wezterm" # GPU-accelerated and Lua-scriptable fast terminal emulator
-cask "orbstack" (https://orbstack.dev/) # Docker Desktop alternative with excellent Mac support
+cask "wezterm@nightly" # GPU-accelerated and Lua-scriptable fast terminal emulator
+cask "orbstack" # Docker Desktop alternative with excellent Mac support
 
 # Notes
 cask "obsidian" # Hackable markdown-based note taking app

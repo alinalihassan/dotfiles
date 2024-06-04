@@ -1,9 +1,6 @@
--- Pull in the wezterm API
 local wezterm = require("wezterm")
 local sessionizer = require("sessionizer")
 
--- In newer versions of wezterm, use the config_builder which will
--- help provide clearer error messages
 local config = wezterm.config_builder()
 local mux = wezterm.mux
 local act = wezterm.action

@@ -6,11 +6,17 @@ local M = {}
 local fd = "/opt/homebrew/bin/fd"
 local rootPath = "/Users/ahassan18/Developer"
 
+
+---@param label string
+---@return string
+local workspace_formatter = function(label)
+	return wezterm.format({
+		{ Text = "󱂬: " .. label },
+	})
+end
+
 M.toggle = function(window, pane)
   local projects = {}
-
-  -- Default workspace
-  table.insert(projects, { label = "~", id = "~" })
 
   local success, stdout, stderr = wezterm.run_child_process({
     fd,
@@ -27,16 +33,29 @@ M.toggle = function(window, pane)
     return
   end
 
+  local workspace_set = {}
+  for _, workspace in ipairs(wezterm.mux.get_workspace_names()) do
+    wezterm.log_info(_ .. " - " .. workspace)
+		table.insert(projects, {
+			id = workspace,
+			label = workspace_formatter(workspace),
+		})
+    workspace_set[workspace] = true
+	end
+
   for line in stdout:gmatch("([^\n]*)\n?") do
     local path = line:gsub("/.git/$", "")
-    local label = path:gsub(".*/", "")
+    -- local label = path:gsub(".*/", "")
 
     local stylized = wezterm.format {
       { Attribute = { Intensity = "Bold" }},
-      { Text = label },
+      { Text = path },
     }
 
-    table.insert(projects, { label = stylized, id = path })
+    if not workspace_set[path] then
+      table.insert(projects, { label = stylized, id = path })
+      workspace_set[path] = true -- Add to set to prevent future duplicates
+    end
   end
 
   window:perform_action(
@@ -47,7 +66,7 @@ M.toggle = function(window, pane)
         else
           wezterm.log_info("Selected " .. label)
           win:perform_action(
-            act.SwitchToWorkspace({ name = label, spawn = { cwd = id } }),
+            act.SwitchToWorkspace({ name = id, spawn = { cwd = id } }),
             pane
           )
         end

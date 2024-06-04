@@ -9,7 +9,7 @@ local act = wezterm.action
 config.front_end = "WebGpu"
 
 -- Tab bar settings
-config.enable_tab_bar = false --set to true if you want to see the tabs
+-- config.enable_tab_bar = false --set to true if you want to see the tabs
 
 -- Colorscheme
 config.color_scheme = "Tokyo Night"
@@ -104,5 +104,13 @@ config.keys = {
   -- { key = 'Z',          mods = 'SHIFT|CTRL',  action = act.TogglePaneZoomState },
   -- { key = 'phys:Space', mods = 'SHIFT|CTRL',  action = act.QuickSelect },
 }
+
+-- Plugins
+wezterm.plugin.require("https://github.com/nekowinston/wezterm-bar").apply_to_config(config, {
+  clock = {
+    enabled = false
+  },
+  dividers = false
+})
 
 return config

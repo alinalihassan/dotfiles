@@ -177,7 +177,7 @@
     # - Set pack.useSparse=true
     # - Set fetch.negotiationAlgorithm=skipping
     # - Set fetch.writeCommitGraph=true
-    manyFiles = true
+    ; manyFiles = true
 
     # Documentation: https://git-scm.com/docs/git-config#Documentation/git-config.txt-featureexperimental
     # - Set index.version=4

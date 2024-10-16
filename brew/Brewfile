@@ -27,6 +27,7 @@ brew "fish" # Shell
 brew "tmux" # Terminal Multiplexer (optional, using wezterm)
 brew "httpie" # HTTP CLI Client
 brew "duf" # Disk Usage Utility - 'df' alternative
+brew "git-delta" # Better diff tool
 
 # Neovim specific
 brew "neovim" # Neovim

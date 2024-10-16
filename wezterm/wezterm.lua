@@ -9,7 +9,7 @@ local act = wezterm.action
 config.front_end = "WebGpu"
 
 -- Tab bar settings
--- config.enable_tab_bar = false --set to true if you want to see the tabs
+config.enable_tab_bar = false --set to true if you want to see the tabs
 
 -- Colorscheme
 config.color_scheme = "Tokyo Night"
@@ -97,7 +97,7 @@ config.keys = {
   { key = ']',          mods = 'SHIFT|SUPER', action = act.RotatePanes 'Clockwise'},
   { key = '/',          mods = 'SUPER',       action = act.Search { CaseInSensitiveString = "" } },
   -- Other
-  -- { key = 'p',          mods = 'SHIFT|CTRL',  action = act.ActivateCommandPalette },
+  { key = 'p',          mods = 'SHIFT|CTRL',  action = act.ActivateCommandPalette },
   -- { key = 'p',          mods = 'SUPER',       action = act.ActivateCommandPalette },
   -- { key = 'U',          mods = 'SHIFT|CTRL',  action = act.CharSelect { copy_on_select = true, copy_to = 'ClipboardAndPrimarySelection' } },
   -- { key = 'X',          mods = 'SHIFT|CTRL',  action = act.ActivateCopyMode },
@@ -106,11 +106,16 @@ config.keys = {
 }
 
 -- Plugins
-wezterm.plugin.require("https://github.com/nekowinston/wezterm-bar").apply_to_config(config, {
-  clock = {
-    enabled = false
-  },
-  dividers = false
-})
+-- wezterm.plugin.require("https://github.com/alinalihassan/wezterm-bar").apply_to_config(config, {
+-- wezterm.plugin.require("file:///Users/ahassan18/Developer/wezterm-bar").apply_to_config(config, {
+  -- clock = {
+    -- enabled = false
+  -- },
+  -- dividers = false
+-- })
+-- local bar = wezterm.plugin.require("https://github.com/adriankarlen/bar.wezterm")
+-- bar.apply_to_config(config)
+-- local tabline = wezterm.plugin.require("https://github.com/michaelbrusegard/tabline.wez")
+-- tabline.apply_to_config(config)
 
 return config

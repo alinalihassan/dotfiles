@@ -14,7 +14,6 @@
 # Jump
 status --is-interactive; and source (jump shell fish | psub)
 
-
 # Aliases
 alias nvim="lvim"
 alias v="nvim"
@@ -30,7 +29,11 @@ alias l="ls -la --git"
 alias ll="ls -l --git"
 alias lt="ls -TL=2"
 alias reload='exec fish'
-alias bk_reload='bk completion fish > ~/.config/fish/completions/bk.fish'
+alias imgcat='wezterm imgcat'
+
+# Work Aliases
+alias bk_reload='bk completion fish > ~/.config/fish/completions/bk.fish' # Specific work-related CLI completions
+alias sudosu='/Applications/Privileges.app/Contents/MacOS/Privileges' # Specific work-related application
 
 # Completions
 ## Booking BK CLI

@@ -3,14 +3,28 @@
   name = Alin Ali Hassan
   # Should add signingKey and gpg sign
   signingKey = ""
+[include]
+  path = ~/.dotfiles/git/extra/delta/tokyonight_night.gitconfig
 [init]
   defaultBranch = main
 [push]
   autoSetupRemote = true
 [core]
-  pager = bat
+  ; pager = bat
+  pager = delta
   excludesfile = ~/.gitignore_global
   editor = nvim
+[interactive]
+  diffFilter = delta --color-only
+[delta]
+  navigate = true
+  line-numbers = true
+  hyperlinks = true
+  hyperlinks-file-link-format = "vscode://file/{path}:{line}"
+[merge]
+  conflictstyle = diff3
+[diff]
+  colorMoved = default
 [github]
   user = alinalihassan
 [hub]
@@ -21,8 +35,6 @@
 	gpgSign = false
 [tag]
 	forceSignAnnotated = false
-[credential]
-	helper = /usr/local/share/gcm-core/git-credential-manager
 [credential "https://dev.azure.com"]
 	useHttpPath = true
 # Include work specific configs
@@ -30,3 +42,5 @@
   path = "~/.dotfiles/git/work/.gitconfig"
 [includeIf "gitdir:~/git_tree/"]
   path = "~/.dotfiles/git/work/.gitconfig"
+[credential]
+	helper = /usr/local/share/gcm-core/git-credential-manager

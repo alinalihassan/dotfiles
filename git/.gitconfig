@@ -1,6 +1,6 @@
 [user]
 	email = hassanalinali@gmail.com
-  name = Alin Ali Hassan
+	name = Alin Ali Hassan
   # Should add signingKey and gpg sign
   signingKey = ""
 [include]
@@ -42,5 +42,3 @@
   path = "~/.dotfiles/git/work/.gitconfig"
 [includeIf "gitdir:~/git_tree/"]
   path = "~/.dotfiles/git/work/.gitconfig"
-[credential]
-	helper = /usr/local/share/gcm-core/git-credential-manager

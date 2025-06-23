@@ -2,11 +2,12 @@
 # VERSION: 3.0
 SETUVAR EDITOR:nvim
 SETUVAR HOMEBREW_NO_ANALYTICS:1
+SETUVAR --export JAVA_HOME:/opt/homebrew/opt/openjdk/libexec/openjdk\x2ejdk/Contents/Home
 SETUVAR MUSIC_APP:Music
 SETUVAR SPACESHIP_PROMPT_ADD_NEWLINE:false
 SETUVAR SPACESHIP_PROMPT_SEPARATE_LINE:false
 SETUVAR SPACESHIP_RPROMPT_ADD_NEWLINE:true
-SETUVAR __fish_initialized:3400
+SETUVAR __fish_initialized:3800
 SETUVAR _fisher_jorgebucaran_2F_autopair_2E_fish_files:\x7e/\x2econfig/fish/functions/_autopair_backspace\x2efish\x1e\x7e/\x2econfig/fish/functions/_autopair_insert_left\x2efish\x1e\x7e/\x2econfig/fish/functions/_autopair_insert_right\x2efish\x1e\x7e/\x2econfig/fish/functions/_autopair_insert_same\x2efish\x1e\x7e/\x2econfig/fish/functions/_autopair_tab\x2efish\x1e\x7e/\x2econfig/fish/conf\x2ed/autopair\x2efish
 SETUVAR _fisher_jorgebucaran_2F_fisher_files:\x7e/\x2econfig/fish/functions/fisher\x2efish\x1e\x7e/\x2econfig/fish/completions/fisher\x2efish
 SETUVAR _fisher_patrickf1_2F_fzf_2E_fish_files:\x7e/\x2econfig/fish/functions/_fzf_configure_bindings_help\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_extract_var_info\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_preview_changed_file\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_preview_file\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_report_diff_type\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_report_file_type\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_search_directory\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_search_git_log\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_search_git_status\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_search_history\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_search_processes\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_search_variables\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_wrapper\x2efish\x1e\x7e/\x2econfig/fish/functions/fzf_configure_bindings\x2efish\x1e\x7e/\x2econfig/fish/conf\x2ed/fzf\x2efish\x1e\x7e/\x2econfig/fish/completions/fzf_configure_bindings\x2efish
@@ -52,4 +53,4 @@ SETUVAR fish_pager_color_selected_background:\x2d\x2dbackground\x3d283457
 SETUVAR fish_pager_color_selected_completion:\x1d
 SETUVAR fish_pager_color_selected_description:\x1d
 SETUVAR fish_pager_color_selected_prefix:\x1d
-SETUVAR fish_user_paths:/Users/ahassan18/\x2ecargo/bin\x1e/Users/ahassan18/\x2elocal/bin\x1e/opt/homebrew/bin\x1e/usr/local/bin
+SETUVAR fish_user_paths:/Users/alinalihassan/\x2ebun/bin\x1e/Users/alinalihassan/\x2ecodeium/windsurf/bin\x1e/Users/alinalihassan/\x2ecargo/bin\x1e/Users/alinalihassan/\x2elocal/bin\x1e/opt/homebrew/bin\x1e/usr/local/bin

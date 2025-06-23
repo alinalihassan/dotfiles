@@ -107,7 +107,7 @@ config.keys = {
 
 -- Plugins
 -- wezterm.plugin.require("https://github.com/alinalihassan/wezterm-bar").apply_to_config(config, {
--- wezterm.plugin.require("file:///Users/ahassan18/Developer/wezterm-bar").apply_to_config(config, {
+-- wezterm.plugin.require("file:///Users/alinalihassan/Developer/wezterm-bar").apply_to_config(config, {
   -- clock = {
     -- enabled = false
   -- },

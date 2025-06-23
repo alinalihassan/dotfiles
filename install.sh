@@ -73,7 +73,7 @@ echo "Installing all brews, casks and apps"
 echo "Setting up NeoVim and LunarVim"
 if ! command -v lvim &> /dev/null; then
     echo "LunarVim is not installed. Installing..."
-    LV_BRANCH='release-1.3/neovim-0.9'
+    LV_BRANCH='release-1.4/neovim-0.9'
     bash <(curl -s https://raw.githubusercontent.com/LunarVim/LunarVim/release-1.3/neovim-0.9/utils/installer/install.sh)
 fi
 

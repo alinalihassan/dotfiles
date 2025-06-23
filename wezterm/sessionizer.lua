@@ -4,7 +4,7 @@ local act = wezterm.action
 local M = {}
 
 local fd = "/opt/homebrew/bin/fd"
-local rootPath = "/Users/ahassan18/Developer"
+local rootPath = "/Users/alinalihassan/Developer"
 
 
 ---@param label string

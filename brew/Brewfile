@@ -3,7 +3,6 @@
 ###############################
 tap "homebrew/bundle" # for brew bundle
 tap "oven-sh/bun" # for bun
-tap "homebrew/cask-fonts" # for fonts
 
 ###############################
 #  Brews                      #
@@ -24,7 +23,7 @@ brew "starship" # Starship prompt
 brew "hyperfine" # Benchmarking tool
 brew "jump" # Utility tool to jump to directories
 brew "fish" # Shell
-brew "tmux" # Terminal Multiplexer (optional, using wezterm)
+# brew "tmux" # Terminal Multiplexer (optional, using wezterm)
 brew "httpie" # HTTP CLI Client
 brew "duf" # Disk Usage Utility - 'df' alternative
 brew "git-delta" # Better diff tool
@@ -41,7 +40,6 @@ brew "mas" # to install app store apps
 ###############################
 
 # Utilities
-cask "airbuddy" # Better AirPods interface, battery visualizer for devices
 cask "alt-tab" # Replaces the Command-Tab Window Switcher
 cask "bartender" # Menubar improvements
 cask "clop" # Clipboard auto-optimizer
@@ -50,9 +48,6 @@ cask "raycast" # Better Spotlight replacement
 
 # Browsers
 cask "arc" # Opinionated browser I like
-
-# Calendar
-cask "cron" # Better Calendar app with keybindings and menubar support
 
 # Password manager
 cask "1password" # Password manager of choice
@@ -63,14 +58,15 @@ cask "discord"
 cask "whatsapp"
 
 # Development
-cask "gitkraken" # Git GUI when I feel lazy
-cask "rapidapi" # API devtools, Postman replacement
-cask "visual-studio-code" # Backup editor when I'm tired of NeoVim
+# cask "gitkraken" # Git GUI when I feel lazy
+# cask "rapidapi" # API devtools, Postman replacement
+# cask "visual-studio-code" # Backup editor when I'm tired of NeoVim
+cask "cursor" # Cursor IDE
 cask "wezterm@nightly" # GPU-accelerated and Lua-scriptable fast terminal emulator
 cask "orbstack" # Docker Desktop alternative with excellent Mac support
 
 # Notes
-cask "obsidian" # Hackable markdown-based note taking app
+# cask "obsidian" # Hackable markdown-based note taking app
 
 # Fonts
 cask "font-jetbrains-mono-nerd-font" # Best font with NeoVim in my experience
@@ -80,13 +76,10 @@ cask "font-jetbrains-mono-nerd-font" # Best font with NeoVim in my experience
 ###############################
 
 # Utilities
-mas "Dropover", id: 1355679052 # Save files in shelves by dragging to the corner
+# mas "Dropover", id: 1355679052 # Save files in shelves by dragging to the corner
 mas "Magnet", id: 441258766 # Window snapping tool
 mas "Pure Paste", id: 1611378436 # Remove formatting and keeps only the text from clipboard
 mas "rcmd", id: 1596283165 # Keybindings-focused window switcher
-
-# Development
-mas "Xcode", id: 497799835 # Apple development
 
 ###############################
 # Interesting Apps I consider #

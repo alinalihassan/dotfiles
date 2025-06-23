@@ -1,0 +1,50 @@
+theme = tokyonight
+
+# Keybindings
+keybind = clear
+
+## Tab Management
+keybind = super+t=new_tab
+keybind = ctrl+shift+tab=previous_tab
+keybind = ctrl+tab=next_tab
+
+keybind = super+1=goto_tab:1
+keybind = super+2=goto_tab:2
+keybind = super+3=goto_tab:3
+keybind = super+4=goto_tab:4
+keybind = super+5=goto_tab:5
+keybind = super+6=goto_tab:6
+keybind = super+7=goto_tab:7
+keybind = super+8=goto_tab:8
+keybind = super+9=goto_tab:9
+
+## Splits
+keybind = super+\=new_split:right
+keybind = super+-=new_split:down
+
+keybind = super+h=goto_split:left
+keybind = super+l=goto_split:right
+keybind = super+j=goto_split:bottom
+keybind = super+k=goto_split:top
+
+keybind = super+left=goto_split:left
+keybind = super+right=goto_split:right
+keybind = super+up=goto_split:top
+keybind = super+down=goto_split:bottom
+
+keybind = super+shift+h=resize_split:left,10
+keybind = super+shift+j=resize_split:down,10
+keybind = super+shift+k=resize_split:up,10
+keybind = super+shift+l=resize_split:right,10
+
+keybind = super+shift+left=resize_split:left,10
+keybind = super+shift+down=resize_split:down,10
+keybind = super+shift+up=resize_split:up,10
+keybind = super+shift+right=resize_split:right,10
+
+## Other
+keybind = super+r=reload_config
+keybind = super+w=close_surface
+keybind = super+c=copy_to_clipboard
+keybind = super+v=paste_from_clipboard
+keybind = super+q=quit

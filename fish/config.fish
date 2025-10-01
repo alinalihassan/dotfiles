@@ -15,8 +15,8 @@
 status --is-interactive; and source (jump shell fish | psub)
 
 # Aliases
-alias nvim="lvim"
 alias v="nvim"
+alias vim="nvim"
 alias cat="bat"
 # alias cd="z" # Already aliased by zoxide init
 alias df="duf"

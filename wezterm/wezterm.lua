@@ -67,6 +67,7 @@ config.keys = {
   -- Command-based keybindings
   { key = 'f',          mods = 'SUPER',       action = act.Search 'CurrentSelectionOrEmptyString' },
   { key = "F",          mods = "SUPER",       action = wezterm.action_callback(sessionizer.toggle) },
+  { key = "R",          mods = "SUPER",       action = wezterm.action_callback(sessionizer.refresh) },
   { key = 'n',          mods = 'SUPER',       action = act.SpawnWindow },
   { key = 'q',          mods = 'SUPER',       action = act.QuitApplication },
   { key = 'r',          mods = 'SUPER',       action = act.ReloadConfiguration },

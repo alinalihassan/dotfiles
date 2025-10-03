@@ -53,4 +53,4 @@ SETUVAR fish_pager_color_selected_background:\x2d\x2dbackground\x3d283457
 SETUVAR fish_pager_color_selected_completion:\x1d
 SETUVAR fish_pager_color_selected_description:\x1d
 SETUVAR fish_pager_color_selected_prefix:\x1d
-SETUVAR fish_user_paths:/Users/alinalihassan/\x2ebun/bin\x1e/Users/alinalihassan/\x2ecodeium/windsurf/bin\x1e/Users/alinalihassan/\x2ecargo/bin\x1e/Users/alinalihassan/\x2elocal/bin\x1e/opt/homebrew/bin\x1e/usr/local/bin
+SETUVAR fish_user_paths:/Users/alinalihassan/\x2ebun/bin\x1e/Users/alinalihassan/\x2ecodeium/windsurf/bin\x1e/Users/alinalihassan/\x2ecargo/bin\x1e/Users/alinalihassan/\x2elocal/bin\x1e/opt/homebrew/bin\x1e/usr/local/bin\x1e/Applications/Ghostty\x2eapp/Contents/MacOS

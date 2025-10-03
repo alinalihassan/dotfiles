@@ -8,7 +8,8 @@ local config = {
   fd = "/opt/homebrew/bin/fd",
   rootPath = "/Users/alinalihassan/Developer",
   cacheFile = os.getenv("HOME") .. "/.cache/wezterm-sessionizer.json",
-  maxDepth = 6,
+  maxDepth = 4, -- Reduced from 6 for better performance
+  maxProjects = 100, -- Limit number of projects to process
   cacheExpiry = 60 * 60, -- 1 hour
   ignorePatterns = {
     "node_modules",
@@ -212,17 +213,16 @@ local function getProjectMetadata(path)
     type = detectProjectType(path)
   }
 
-  -- Get file stats
+  -- Get file stats (optimized with single command)
   local success, result = pcall(function()
-    local handle = io.popen("stat -f '%m %z' '" .. path .. "' 2>/dev/null")
+    local handle = io.popen("stat -f '%m' '" .. path .. "' 2>/dev/null")
     if handle then
       local output = handle:read("*all")
       handle:close()
       if output and output ~= "" then
-        local timestamp, size = output:match("(%d+) (%d+)")
-        if timestamp and size then
+        local timestamp = output:match("(%d+)")
+        if timestamp then
           metadata.lastModified = tonumber(timestamp)
-          metadata.size = tonumber(size)
         end
       end
     end
@@ -238,19 +238,8 @@ local function formatProjectLabel(metadata)
   local path = metadata.path
   local timeStr = formatTime(metadata.lastModified)
 
-  -- Create the formatted label
-  local label = wezterm.format({
-    { Foreground = { AnsiColor = "Blue" } },
-    { Text = emoji .. " " },
-    { Foreground = { AnsiColor = "White" } },
-    { Attribute = { Intensity = "Bold" } },
-    { Text = name },
-    { Attribute = { Intensity = "Normal" } },
-    { Foreground = { AnsiColor = "Green" } },
-    { Text = timeStr },
-    { Foreground = { AnsiColor = "Green" } },
-    { Text = "\n  " .. path },
-  })
+  -- Create simplified label (avoid complex formatting for performance)
+  local label = emoji .. " " .. name .. timeStr .. "\n  " .. path
 
   return label
 end
@@ -261,18 +250,8 @@ local function workspaceFormatter(label)
   local timeStr = formatTime(metadata.lastModified)
   local folderName = label:match("([^/]+)$") or label
 
-  return wezterm.format({
-    { Foreground = { AnsiColor = "Blue" } },
-    { Text = "🔗 " },
-    { Foreground = { AnsiColor = "White" } },
-    { Attribute = { Intensity = "Bold" } },
-    { Text = folderName },
-    { Attribute = { Intensity = "Normal" } },
-    { Foreground = { AnsiColor = "Blue" } },
-    { Text = timeStr },
-    { Foreground = { AnsiColor = "Green" } },
-    { Text = " (active)" },
-  })
+  -- Create simplified label (avoid complex formatting for performance)
+  return "🔗 " .. folderName .. timeStr .. " (active)"
 end
 
 local function isCacheValid()
@@ -290,11 +269,13 @@ local function buildIgnoreArgs()
 end
 
 local function discoverProjects()
+  local startTime = os.clock()
   loadCache()
 
   -- Return cached results if valid
   if isCacheValid() and cache.projects then
-    wezterm.log_info("Using cached projects (" .. #cache.projects .. " found)")
+    local cacheTime = os.clock() - startTime
+    wezterm.log_info("Using cached projects (" .. #cache.projects .. " found) in " .. string.format("%.3f", cacheTime) .. "s")
     return cache.projects
   end
 
@@ -303,6 +284,7 @@ local function discoverProjects()
   local workspaceSet = {}
 
   -- Add active workspaces
+  local workspaceTime = os.clock()
   for _, workspace in ipairs(wezterm.mux.get_workspace_names()) do
     table.insert(projects, {
       id = workspace,
@@ -310,8 +292,10 @@ local function discoverProjects()
     })
     workspaceSet[workspace] = true
   end
+  wezterm.log_info("Added workspaces in " .. string.format("%.3f", os.clock() - workspaceTime) .. "s")
 
   -- Build fd command with ignore patterns
+  local fdTime = os.clock()
   local fdArgs = { config.fd, "-HI", "-td", "^.git$", "--max-depth=" .. config.maxDepth, "--prune" }
   local ignoreArgs = buildIgnoreArgs()
   for _, arg in ipairs(ignoreArgs) do
@@ -320,6 +304,7 @@ local function discoverProjects()
   table.insert(fdArgs, config.rootPath)
 
   local success, stdout, stderr = wezterm.run_child_process(fdArgs)
+  wezterm.log_info("fd command completed in " .. string.format("%.3f", os.clock() - fdTime) .. "s")
 
   if not success then
     wezterm.log_error("Failed to run fd: " .. stderr)
@@ -327,20 +312,25 @@ local function discoverProjects()
   end
 
   -- Process discovered projects
+  local processTime = os.clock()
+  local projectCount = 0
   for line in stdout:gmatch("([^\n]*)\n?") do
     local path = line:gsub("/.git/$", "")
 
-    if not workspaceSet[path] then
+    if not workspaceSet[path] and projectCount < config.maxProjects then
       local metadata = getProjectMetadata(path)
       table.insert(projects, {
         id = path,
         label = formatProjectLabel(metadata)
       })
       workspaceSet[path] = true
+      projectCount = projectCount + 1
     end
   end
+  wezterm.log_info("Processed " .. projectCount .. " projects in " .. string.format("%.3f", os.clock() - processTime) .. "s")
 
   -- Sort projects with priority: current workspace > default > rest by last modified
+  local sortTime = os.clock()
   table.sort(projects, function(a, b)
     -- Get current workspace name
     local currentWorkspace = wezterm.mux.get_active_workspace()
@@ -358,19 +348,25 @@ local function discoverProjects()
     local bMetadata = getProjectMetadata(b.id)
     return (aMetadata.lastModified or 0) > (bMetadata.lastModified or 0)
   end)
+  wezterm.log_info("Sorted projects in " .. string.format("%.3f", os.clock() - sortTime) .. "s")
 
   -- Update cache
+  local cacheTime = os.clock()
   cache = {
     timestamp = os.time(),
     projects = projects
   }
   saveCache()
+  wezterm.log_info("Updated cache in " .. string.format("%.3f", os.clock() - cacheTime) .. "s")
 
-  wezterm.log_info("Discovered " .. #projects .. " projects")
+  local totalTime = os.clock() - startTime
+  wezterm.log_info("Discovered " .. #projects .. " projects in " .. string.format("%.3f", totalTime) .. "s total")
   return projects
 end
 
 M.toggle = function(window, pane)
+  local toggleStartTime = os.clock()
+
   -- If sessionizer is already open, close it by sending Escape
   if sessionizerOpen then
     sessionizerOpen = false
@@ -378,7 +374,9 @@ M.toggle = function(window, pane)
     return
   end
 
+  local discoveryStartTime = os.clock()
   local projects = discoverProjects()
+  wezterm.log_info("Discovery took " .. string.format("%.3f", os.clock() - discoveryStartTime) .. "s")
 
   if #projects == 0 then
     wezterm.log_info("No projects found")
@@ -387,10 +385,14 @@ M.toggle = function(window, pane)
 
   sessionizerOpen = true
 
+  local selectorStartTime = os.clock()
+  wezterm.log_info("Starting InputSelector with " .. #projects .. " projects")
+
   window:perform_action(
     act.InputSelector({
       action = wezterm.action_callback(function(win, _, id, label)
         sessionizerOpen = false
+        wezterm.log_info("InputSelector completed in " .. string.format("%.3f", os.clock() - selectorStartTime) .. "s")
         if not id and not label then
           wezterm.log_info("Cancelled")
         else
@@ -407,6 +409,8 @@ M.toggle = function(window, pane)
     }),
     pane
   )
+
+  wezterm.log_info("Total toggle time: " .. string.format("%.3f", os.clock() - toggleStartTime) .. "s")
 end
 
 -- Utility function to clear cache

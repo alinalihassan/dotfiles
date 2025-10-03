@@ -89,3 +89,7 @@ vim.o.cmdheight = 0
 -- See `:help 'confirm'`
 vim.o.confirm = true
 
+-- Make tabs length 2
+vim.o.tabstop = 2
+vim.o.shiftwidth = 2
+vim.o.expandtab = true

@@ -16,6 +16,7 @@ brew "eza" # better ls
 brew "zoxide" # better cd
 brew "the_silver_searcher" # better ack
 brew "git" # Git
+brew "gh" # GitHub CLI
 brew "node" # Node
 brew 'rust' # Rust
 brew "oven-sh/bun/bun" # Bun
@@ -27,10 +28,8 @@ brew "fish" # Shell
 brew "httpie" # HTTP CLI Client
 brew "duf" # Disk Usage Utility - 'df' alternative
 brew "git-delta" # Better diff tool
-
-# Neovim specific
 brew "neovim" # Neovim
-brew "lazygit" # for git nvim plugins
+brew "lazygit" # Best Git Client
 
 # Other
 brew "mas" # to install app store apps
@@ -40,11 +39,8 @@ brew "mas" # to install app store apps
 ###############################
 
 # Utilities
-cask "alt-tab" # Replaces the Command-Tab Window Switcher
-cask "bartender" # Menubar improvements
 cask "clop" # Clipboard auto-optimizer
 cask "command-x" # Cut and paste support for Finder
-cask "raycast" # Better Spotlight replacement
 
 # Browsers
 cask "arc" # Opinionated browser I like
@@ -58,15 +54,10 @@ cask "discord"
 cask "whatsapp"
 
 # Development
-# cask "gitkraken" # Git GUI when I feel lazy
-# cask "rapidapi" # API devtools, Postman replacement
-# cask "visual-studio-code" # Backup editor when I'm tired of NeoVim
 cask "cursor" # Cursor IDE
 cask "wezterm@nightly" # GPU-accelerated and Lua-scriptable fast terminal emulator
+cask "ghostty" # Best Terminal, doesn't have my Lua sessionizer yet, alternating
 cask "orbstack" # Docker Desktop alternative with excellent Mac support
-
-# Notes
-# cask "obsidian" # Hackable markdown-based note taking app
 
 # Fonts
 cask "font-jetbrains-mono-nerd-font" # Best font with NeoVim in my experience
@@ -76,15 +67,17 @@ cask "font-jetbrains-mono-nerd-font" # Best font with NeoVim in my experience
 ###############################
 
 # Utilities
-# mas "Dropover", id: 1355679052 # Save files in shelves by dragging to the corner
+mas "Dropover", id: 1355679052 # Save files in shelves by dragging to the corner
 mas "Magnet", id: 441258766 # Window snapping tool
 mas "Pure Paste", id: 1611378436 # Remove formatting and keeps only the text from clipboard
 mas "rcmd", id: 1596283165 # Keybindings-focused window switcher
 
 ###############################
-# Interesting Apps I consider #
+# Interesting apps and ideas  #
 ###############################
 
-# cask "keycastr" (https://github.com/keycastr/keycastr) - Open-source keystroke visualizer
-# cask "transmission" (https://transmissionbt.com/) -- Torrent Client
-# mas "ducklet" (https://ducklet.app/) - SQL Editor
+# mas "Klack" # Funny mechanical keyboard sounds
+# cask "Raycast" # Better spotlight, Tahoe spotlight is good enough for me
+# brew "lazydocker" # Docker TUI, I don't use docker enough for it
+# mas "Alcove" # Interesting use case for notch, Tahoe changed volume and brightness
+# cask "rapidapi" # API devtools, Postman replacement

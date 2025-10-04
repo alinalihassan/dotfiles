@@ -1,6 +1,7 @@
 # Configure Jump
 
 # Tmux
+# Using Wezterm/Ghostty multiplexers instead
 # Adapted from https://github.com/fish-shell/fish-shell/issues/4434#issuecomment-332626369
 # only run in interactive (not automated SSH for example)
 # if status is-interactive
@@ -41,15 +42,12 @@ alias sudosu='/Applications/Privileges.app/Contents/MacOS/Privileges' # Specific
 ## We use it once and we update it when we install a plugin or update it
 # bk completion fish | source # Very very slow, ~500ms
 
-## Starship prompt
-starship init fish | source
-
 ## Zoxide cd replacement
 zoxide init --cmd cd fish | source
 
 # Functions
 function fish_add_var
-    if count $argv > 1 
+    if count $argv -ne 1 
         set -Ux $argv[1] $argv[2]  
     else
         echo "Usage: fish_add_var VARIABLE VALUE"
@@ -60,8 +58,6 @@ function fish_remove_var
     set --erase $argv
 end
 
-# Added by Windsurf
-fish_add_path /Users/alinalihassan/.codeium/windsurf/bin
 
 # Added by OrbStack: command-line tools and integration
 # This won't be added again if you remove it.

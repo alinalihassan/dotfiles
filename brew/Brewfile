@@ -20,7 +20,6 @@ brew "gh" # GitHub CLI
 brew "node" # Node
 brew 'rust' # Rust
 brew "oven-sh/bun/bun" # Bun
-brew "starship" # Starship prompt
 brew "hyperfine" # Benchmarking tool
 brew "jump" # Utility tool to jump to directories
 brew "fish" # Shell

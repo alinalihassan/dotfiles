@@ -1,4 +1,5 @@
 # Theme
+# First time only: bat cache --build
 --theme="tokyonight_night"
 
 # Disable paging:

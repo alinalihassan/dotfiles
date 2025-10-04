@@ -10,6 +10,7 @@ tap "oven-sh/bun" # for bun
 
 # Binaries
 brew "bat" # better cat
+brew "fzf" # fuzzy finding
 brew "fd" # better find
 brew "ripgrep" # better grep
 brew "eza" # better ls

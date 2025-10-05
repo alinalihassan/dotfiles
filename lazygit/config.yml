@@ -1,7 +1,11 @@
 # yaml-language-server: $schema=https://json.schemastore.org/lazygit.json
 gui:
   nerdFontsVersion: '3'
+  showNumstatInFilesView: true
+  showRandomTip: false
+  showCommandLog: false
 git:
+  parseEmoji: true
   log:
     showGraph: 'always'
   paging:
@@ -9,6 +13,6 @@ git:
     pager: delta --paging=never
 os:
   openLink: open "$(echo {{link}} | sed 's/%2F/\//g')"
-  editPreset: 'lvim'
+  editPreset: 'nvim'
 services:
-  'gitlab.booking.com': 'gitlab:gitlab.booking.com'
+  'gitlab.booking.com': 'gitlab:gitlab.booking.com' # Work-related

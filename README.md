@@ -4,12 +4,15 @@ This repository contains my personal configuration files (dotfiles) for macOS.
 
 ## Contents
 
-- [brew](https://github.com/jakejarvis/dotfiles/blob/main/brew): Homebrew config
-- [git](https://github.com/jakejarvis/dotfiles/blob/main/git): Git configuration 
-- [lvim](https://github.com/jakejarvis/dotfiles/blob/main/lvim): Neovim/LunarVim configuration
-- [starship](https://github.com/jakejarvis/dotfiles/blob/main/starship): Starship prompt configuration
-- [wezterm](https://github.com/jakejarvis/dotfiles/blob/main/wezterm): Wezterm terminal configuration
-- [zsh](https://github.com/jakejarvis/dotfiles/blob/main/zsh): Zsh configuration
+- [bat](https://github.com/alinalihassan/dotfiles/blob/main/bat): Bat configuration
+- [brew](https://github.com/alinalihassan/dotfiles/blob/main/brew): Homebrew configuration
+- [fish](https://github.com/alinalihassan/dotfiles/blob/main/fish): Fish shell configuration
+- [ghostty](https://github.com/alinalihassan/dotfiles/blob/main/ghostty): Ghostty terminal configuration
+- [lazygit](https://github.com/alinalihassan/dotfiles/blob/main/lazygit): LazyGit configuration
+- [git](https://github.com/alinalihassan/dotfiles/blob/main/git): Git configuration 
+- [nvim](https://github.com/alinalihassan/dotfiles/blob/main/lvim): Neovim configuration
+- [vscode](https://github.com/alinalihassan/dotfiles/blob/main/vscode): Vscode configuration
+- [wezterm](https://github.com/alinalihassan/dotfiles/blob/main/wezterm): Wezterm terminal configuration
 
 ## Installation
 

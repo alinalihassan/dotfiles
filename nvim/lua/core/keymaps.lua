@@ -23,7 +23,7 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 
 -- [[ WhichKey Keymaps ]]
 vim.keymap.set('n', '<leader>w', vim.cmd.write, { desc = '[W]rite File' })
-vim.keymap.set('n', '<leader>q', vim.cmd.quit, { desc = '[Q]uit NeoVim' })
+vim.keymap.set('n', '<leader>q', vim.cmd.quitall, { desc = '[Q]uit NeoVim' })
 vim.keymap.set('n', '<leader>pl', ':Lazy<CR>', { desc = '[L]azy' })
 vim.keymap.set('n', '<leader>pm', ':Mason<CR>', { desc = '[M]ason' })
 vim.keymap.set('n', '<leader>tg', ':Gitsigns toggle_current_line_blame<CR>', { desc = 'Toggle Current Line [G]it Blame' })

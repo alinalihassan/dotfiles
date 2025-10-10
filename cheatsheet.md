@@ -208,3 +208,12 @@ All keybindings are found in Ghostty's [config](ghostty/config)
 | Select session | `<leader>ms` |
 | Restore last session | `<leader>ml` |
 | Don't save current session | `<leader>md` |
+
+
+## Obsidian
+
+TODO
+
+## Excalidraw
+
+TODO

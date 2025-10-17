@@ -1,8 +1,6 @@
 [user]
 	email = hassanalinali@gmail.com
 	name = Alin Ali Hassan
-  # Should add signingKey and gpg sign
-  signingKey = ""
 [include]
   path = ~/.dotfiles/git/extra/delta/tokyonight_night.gitconfig
 [init]
@@ -35,10 +33,3 @@
 	gpgSign = false
 [tag]
 	forceSignAnnotated = false
-[credential "https://dev.azure.com"]
-	useHttpPath = true
-# Include work specific configs
-[includeIf "gitdir:~/Developer/Work/"]
-  path = "~/.dotfiles/git/work/.gitconfig"
-[includeIf "gitdir:~/git_tree/"]
-  path = "~/.dotfiles/git/work/.gitconfig"

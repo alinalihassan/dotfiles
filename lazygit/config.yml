@@ -4,7 +4,7 @@ gui:
   nerdFontsVersion: '3'
   showNumstatInFilesView: true
   showRandomTip: false
-  showCommandLog: false
+  # showCommandLog: false
   # ToykoNight Theme
   theme:
     activeBorderColor:

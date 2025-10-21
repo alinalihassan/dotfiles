@@ -9,7 +9,7 @@ return {
       function()
         require('conform').format {
           async = true,
-          lsp_format = 'fallback',
+          lsp_format = 'never',
         }
       end,
       mode = '',
@@ -26,16 +26,17 @@ return {
       if disable_filetypes[vim.bo[bufnr].filetype] then
         return nil
       else
-        return { timeout_ms = 500, lsp_format = 'fallback' }
+        return { timeout_ms = 500, lsp_format = 'never' }
       end
     end,
     formatters_by_ft = {
       lua = { 'stylua' },
-      -- Conform can also run multiple formatters sequentially
-      -- python = { "isort", "black" },
-      --
-      -- You can use 'stop_after_first' to run the first available formatter from the list
-      -- javascript = { "prettierd", "prettier", stop_after_first = true },
+      javascript = { 'biome', 'biome-organize-imports' },
+      javascriptreact = { 'biome', 'biome-organize-imports' },
+      typescript = { 'biome', 'biome-organize-imports' },
+      typescriptreact = { 'biome', 'biome-organize-imports' },
+      go = { 'goimports', 'gofmt' },
+      rust = { 'rustfmt' },
     },
   },
 }

@@ -1,6 +1,6 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
-SETUVAR EDITOR:nvim
+SETUVAR --export EDITOR:nvim
 SETUVAR HOMEBREW_NO_ANALYTICS:1
 SETUVAR --export JAVA_HOME:/opt/homebrew/opt/openjdk/libexec/openjdk\x2ejdk/Contents/Home
 SETUVAR MUSIC_APP:Music

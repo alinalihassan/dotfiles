@@ -2,6 +2,7 @@
 promptToReturnFromSubprocess: false
 gui:
   nerdFontsVersion: '3'
+  tabWidth: 2
   showNumstatInFilesView: true
   showRandomTip: false
   # showCommandLog: false

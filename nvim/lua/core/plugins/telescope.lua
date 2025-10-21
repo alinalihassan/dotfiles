@@ -32,7 +32,23 @@ return {
       --     i = { ['<c-enter>'] = 'to_fuzzy_refine' },
       --   },
       -- },
-      -- pickers = {}
+      defaults = {
+        file_ignore_patterns = {
+          '^%.git/', -- keep .git ignored
+          '^%.idea/',
+          '^%.vscode/',
+          '^%.venv/',
+          '^node_modules/',
+          '^%.cache/',
+          '%.DS_Store$',
+          '^docs/html/',
+        },
+      },
+      pickers = {
+        find_files = {
+          hidden = true,
+        },
+      },
       extensions = {
         ['ui-select'] = { require('telescope.themes').get_dropdown() },
       },
@@ -79,4 +95,3 @@ return {
     end, { desc = '[S]earch [N]eovim files' })
   end,
 }
-

@@ -34,6 +34,7 @@ echo "Setting up symlinks"
 
 ## Setup directories
 mkdir -p ~/.config
+mkdir -p ~/.config/opencode
 mkdir -p ~/Library/Application\ Support/Code/User
 mkdir -p ~/Library/Application\ Support/lazygit
 
@@ -50,6 +51,8 @@ ln -sf "$DOTFILES_PATH/lvim" ~/.config/lvim
 ln -sf "$DOTFILES_PATH/fish" ~/.config/fish
 ## Bat
 ln -sf "$DOTFILES_PATH/bat" ~/.config/bat
+## OpenCode
+ln -sf "$DOTFILES_PATH/opencode/opencode.jsonc" ~/.config/opencode/opencode.jsonc
 ## VSCode
 ln -sf "$DOTFILES_PATH/vscode/settings.json" ~/Library/Application\ Support/Code/User/settings.json
 ln -sf "$DOTFILES_PATH/vscode/keybindings.json" ~/Library/Application\ Support/Code/User/keybindings.json

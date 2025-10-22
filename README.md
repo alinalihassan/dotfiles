@@ -11,7 +11,6 @@ This repository contains my personal configuration files (dotfiles) for macOS.
 - [lazygit](https://github.com/alinalihassan/dotfiles/blob/main/lazygit): LazyGit configuration
 - [git](https://github.com/alinalihassan/dotfiles/blob/main/git): Git configuration 
 - [nvim](https://github.com/alinalihassan/dotfiles/blob/main/lvim): Neovim configuration
-- [vscode](https://github.com/alinalihassan/dotfiles/blob/main/vscode): Vscode configuration
 
 ## Installation
 

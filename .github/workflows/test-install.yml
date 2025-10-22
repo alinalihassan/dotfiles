@@ -16,5 +16,5 @@ jobs:
       - name: Run Dotbot in fake home
         run: |
           export HOME=$(mktemp -d)
-          python3 ./install -v
+          ./install
           ls -la $HOME

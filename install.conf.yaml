@@ -24,9 +24,11 @@
 - brewfile:
     file: brew/Brewfile
 
-# Change default shell to fish
+# Configure Fish
 - shell:
     - description: Set Fish as default shell
       command: chsh -s $(which fish)
       stdout: true
       stderr: true
+    - description: Install Fish Plugins
+      command: fish -c "fisher update"

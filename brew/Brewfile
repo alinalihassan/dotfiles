@@ -24,6 +24,7 @@ brew "oven-sh/bun/bun" # Bun
 brew "hyperfine" # Benchmarking tool
 brew "jump" # Utility tool to jump to directories
 brew "fish" # Shell
+brew "fisher" # Package manager for Fish shell
 # brew "tmux" # Terminal Multiplexer (optional, using ghostty)
 brew "httpie" # HTTP CLI Client
 brew "duf" # Disk Usage Utility - 'df' alternative

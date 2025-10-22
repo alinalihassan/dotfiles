@@ -4,8 +4,8 @@
       force: true
       create: true
     brewfile:
-      stdout: false
-      stderr: false
+      stdout: true
+      stderr: true
       include: ['tap', 'brew', 'cask', 'mas']
 
 # Set up all symlinks
@@ -21,15 +21,17 @@
     ~/.config/opencode/opencode.jsonc: opencode/opencode.jsonc # Opencode adds junk to config folder https://github.com/sst/opencode/issues/3191
     ~/Library/Application\ Support/lazygit/config.yml: lazygit/config.yml
 
-# Install all apps and tools with Brew
-- brewfile:
-    file: brew/Brewfile
-
 # Configure Fish
 - shell:
+    - description: Install Brew
+      command: command -v brew &>/dev/null || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     - description: Set Fish as default shell
       command: chsh -s $(which fish)
       stdout: true
       stderr: true
     - description: Install Fish Plugins
       command: fish -c "fisher update"
+
+# Install all apps and tools with Brew
+- brewfile:
+    file: brew/Brewfile

@@ -45,8 +45,8 @@ ln -sf "$DOTFILES_PATH/git/.gitignore_global" ~/.gitignore_global
 ln -sf "$DOTFILES_PATH/starship/starship.toml" ~/.config/starship.toml
 ## Wezterm
 ln -sf "$DOTFILES_PATH/wezterm" ~/.config/wezterm
-## LunarVim
-ln -sf "$DOTFILES_PATH/lvim" ~/.config/lvim
+## Neovim
+ln -sf "$DOTFILES_PATH/nvim" ~/.config/nvim
 ## Fish
 ln -sf "$DOTFILES_PATH/fish" ~/.config/fish
 ## Bat
@@ -71,14 +71,6 @@ fi
 echo "Installing all brews, casks and apps"
 /opt/homebrew/bin/brew update
 /opt/homebrew/bin/brew bundle --file="$DOTFILES_PATH/brew/Brewfile"
-
-# LunarVim
-echo "Setting up NeoVim and LunarVim"
-if ! command -v lvim &> /dev/null; then
-    echo "LunarVim is not installed. Installing..."
-    LV_BRANCH='release-1.4/neovim-0.9'
-    bash <(curl -s https://raw.githubusercontent.com/LunarVim/LunarVim/release-1.3/neovim-0.9/utils/installer/install.sh)
-fi
 
 # Check if Fish is installed and set it as the default shell if desired
 if

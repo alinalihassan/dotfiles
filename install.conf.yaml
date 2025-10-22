@@ -7,6 +7,10 @@
       stdout: true
       stderr: true
       include: ['tap', 'brew', 'cask', 'mas']
+    shell:
+      stdout: true
+      stderr: true
+      quiet: false
 
 # Set up all symlinks
 - link:
@@ -25,12 +29,8 @@
 - shell:
     - description: Install Brew
       command: command -v brew &>/dev/null || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-      quiet: false
     - description: Set Fish as default shell
       command: chsh -s $(which fish)
-      stdout: true
-      stderr: true
-      quiet: false
     - description: Install Fish Plugins
       command: fish -c "fisher update"
 

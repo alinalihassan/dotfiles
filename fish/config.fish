@@ -1,7 +1,7 @@
 # Configure Jump
 
 # Tmux
-# Using Wezterm/Ghostty multiplexers instead
+# Using Ghostty multiplexers instead
 # Adapted from https://github.com/fish-shell/fish-shell/issues/4434#issuecomment-332626369
 # only run in interactive (not automated SSH for example)
 # if status is-interactive
@@ -30,17 +30,6 @@ alias l="ls -la --git"
 alias ll="ls -l --git"
 alias lt="ls -TL=2"
 alias reload='exec fish'
-alias imgcat='wezterm imgcat'
-
-# Work Aliases
-alias bk_reload='bk completion fish > ~/.config/fish/completions/bk.fish' # Specific work-related CLI completions
-alias sudosu='/Applications/Privileges.app/Contents/MacOS/Privileges' # Specific work-related application
-
-# Completions
-## Booking BK CLI
-## Instead of waiting for bk to run every time we open a shell
-## We use it once and we update it when we install a plugin or update it
-# bk completion fish | source # Very very slow, ~500ms
 
 ## Zoxide cd replacement
 zoxide init --cmd cd fish | source

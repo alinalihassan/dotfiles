@@ -24,7 +24,7 @@ brew "oven-sh/bun/bun" # Bun
 brew "hyperfine" # Benchmarking tool
 brew "jump" # Utility tool to jump to directories
 brew "fish" # Shell
-# brew "tmux" # Terminal Multiplexer (optional, using wezterm)
+# brew "tmux" # Terminal Multiplexer (optional, using ghostty)
 brew "httpie" # HTTP CLI Client
 brew "duf" # Disk Usage Utility - 'df' alternative
 brew "git-delta" # Better diff tool
@@ -56,7 +56,6 @@ cask "whatsapp"
 
 # Development
 cask "cursor" # Cursor IDE
-cask "wezterm@nightly" # GPU-accelerated and Lua-scriptable fast terminal emulator
 cask "ghostty" # Best Terminal, doesn't have my Lua sessionizer yet, alternating
 cask "orbstack" # Docker Desktop alternative with excellent Mac support
 

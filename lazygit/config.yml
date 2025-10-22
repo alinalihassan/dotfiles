@@ -42,8 +42,6 @@ git:
 os:
   openLink: open "$(echo {{link}} | sed 's/%2F/\//g')"
   editPreset: 'nvim'
-services:
-  'gitlab.booking.com': 'gitlab:gitlab.booking.com' # Work-related
 customCommands:
   - key: O
     context: files

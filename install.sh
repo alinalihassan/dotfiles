@@ -34,6 +34,7 @@ echo "Setting up symlinks"
 
 ## Setup directories
 mkdir -p ~/.config
+mkdir -p ~/.config/ghostty
 mkdir -p ~/.config/opencode
 mkdir -p ~/Library/Application\ Support/Code/User
 mkdir -p ~/Library/Application\ Support/lazygit
@@ -43,14 +44,14 @@ ln -sf "$DOTFILES_PATH/git/.gitconfig" ~/.gitconfig
 ln -sf "$DOTFILES_PATH/git/.gitignore_global" ~/.gitignore_global
 ## Starship
 ln -sf "$DOTFILES_PATH/starship/starship.toml" ~/.config/starship.toml
-## Wezterm
-ln -sf "$DOTFILES_PATH/wezterm" ~/.config/wezterm
 ## Neovim
 ln -sf "$DOTFILES_PATH/nvim" ~/.config/nvim
 ## Fish
 ln -sf "$DOTFILES_PATH/fish" ~/.config/fish
 ## Bat
 ln -sf "$DOTFILES_PATH/bat" ~/.config/bat
+## Ghostty
+ln -sf "$DOTFILES_PATH/ghostty/config.ghostty" ~/.config/ghostty/config
 ## OpenCode
 ln -sf "$DOTFILES_PATH/opencode/opencode.jsonc" ~/.config/opencode/opencode.jsonc
 ## VSCode

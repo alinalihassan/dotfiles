@@ -28,7 +28,7 @@
 |--------|----------|
 | Open 1Password Quickview | Opt + Space |
 
-## Ghostty/Wezterm
+## Ghostty
 
 All keybindings are found in Ghostty's [config](ghostty/config)
 

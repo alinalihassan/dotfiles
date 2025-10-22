@@ -1,0 +1,43 @@
+- defaults:
+    link:
+      relink: true
+      force: true
+      create: true
+
+- link:
+    ~/.gitconfig: git/.gitconfig
+    ~/.gitignore_global: git/.gitignore_global
+    ~/.config/nvim: nvim
+    ~/.config/fish: fish
+    ~/.config/bat: bat
+    ~/.config/ghostty: ghostty
+    ~/.config/opencode/opencode.jsonc: opencode/opencode.jsonc
+    ~/Library/Application\ Support/lazygit/config.yml: lazygit/config.yml
+
+- shell:
+    - description: Ensure Homebrew is installed
+      command: if ! command -v brew &> /dev/null; then /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"; fi
+      stdout: true
+      stderr: true
+
+    - description: Update Homebrew
+      command: /opt/homebrew/bin/brew update
+      stdout: true
+      stderr: true
+
+    - description: Install packages from Brewfile
+      command: /opt/homebrew/bin/brew bundle --file="{{@@ env['DOTFILES_PATH'] @@}}/brew/Brewfile"
+      stdout: true
+      stderr: true
+      env:
+        HOMEBREW_NO_INSTALL_FROM_API: 1
+
+    - description: Add Fish to /etc/shells if needed
+      command: if ! grep -q "$(which fish)" /etc/shells; then sudo sh -c "echo $(which fish) >> /etc/shells"; fi
+      stdout: true
+      stderr: true
+
+    - description: Set Fish as default shell
+      command: chsh -s $(which fish)
+      stdout: true
+      stderr: true

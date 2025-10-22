@@ -10,7 +10,8 @@ jobs:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v5
-        submodules: true
+        with:
+          submodules: 'recursive'
 
       - name: Run Dotbot in fake home
         run: |

@@ -16,7 +16,8 @@
     ~/.config/fish: fish
     ~/.config/bat: bat
     ~/.config/ghostty: ghostty
-    # Linking files to config folder
+
+    # Linking individual files to config folder
     ~/.config/opencode/opencode.jsonc: opencode/opencode.jsonc # Opencode adds junk to config folder https://github.com/sst/opencode/issues/3191
     ~/Library/Application\ Support/lazygit/config.yml: lazygit/config.yml
 

@@ -1,0 +1,19 @@
+name: Test Dotbot on macOS
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v5
+        submobules: 'recursive'
+
+      - name: Run Dotbot in fake home
+        run: |
+          export HOME=$(mktemp -d)
+          python3 ./install -v
+          ls -la $HOME

@@ -217,3 +217,51 @@ TODO
 ## Excalidraw
 
 TODO
+
+## Opencode
+
+Leader key is `Ctrl+Space`
+
+### Global
+
+| Action | Shortcut |
+|--------|----------|
+| Help | `<leader>h` |
+| Exit | `Ctrl+c`, `<leader>q` |
+| Open Editor | `<leader>e` |
+| Project Init | `<leader>i` |
+| Tool Details | `<leader>d` |
+| Thinking Blocks | `<leader>b` |
+
+### Session Management
+
+| Action | Shortcut |
+|--------|----------|
+| Export Session | `<leader>x` |
+| New Session | `<leader>n` |
+| List Sessions | `<leader>l` |
+| Share Session | `<leader>s` |
+| Compact Session | `<leader>c` |
+| Cycle Child Sessions (next) | `Ctrl+Right` |
+| Cycle Child Sessions (prev) | `Ctrl+Left` |
+| Interrupt Session | `Esc` |
+
+### Messages
+
+| Action | Shortcut |
+|--------|----------|
+| Page Up/Down | `PgUp`, `PgDn` |
+| Half Page Up/Down | `Ctrl+Alt+u`, `Ctrl+Alt+d` |
+| Go to First/Last | `Ctrl+g`, `Ctrl+Alt+g` |
+| Copy Message | `<leader>y` |
+| Undo/Redo | `<leader>u`, `<leader>r` |
+
+### Models & Agents
+
+| Action | Shortcut |
+|--------|----------|
+| List Models | `<leader>m` |
+| Cycle Models (next/prev) | `F2`, `Shift+F2` |
+| List Agents | `<leader>a` |
+| Cycle Agents (next/prev) | `Tab`, `Shift+Tab` |
+

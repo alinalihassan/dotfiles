@@ -55,8 +55,8 @@ cask "discord"
 cask "whatsapp"
 
 # Development
-cask "cursor" # Cursor IDE
-cask "ghostty" # Best Terminal, doesn't have my Lua sessionizer yet, alternating
+cask "cursor" # AI IDE of choice
+cask "ghostty" # Best Terminal, doesn't have a session manager yet
 cask "orbstack" # Docker Desktop alternative with excellent Mac support
 
 # Fonts

@@ -1,4 +1,5 @@
 theme = TokyoNight
+font-family = JetBrainsMono Nerd Font Mono
 
 # Initial Window Size
 window-height = 60

@@ -9,8 +9,7 @@ window-width = 215
 macos-icon = xray
 
 # Splits
-unfocused-split-fill = #16171F
-split-divider-color = #444
+unfocused-split-fill = 16171F
 
 # Keybindings
 keybind = clear

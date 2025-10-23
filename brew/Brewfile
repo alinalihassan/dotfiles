@@ -1,7 +1,6 @@
 ###############################
 #  Taps                       #
 ###############################
-tap "homebrew/bundle" # for brew bundle
 tap "oven-sh/bun" # for bun
 
 ###############################
@@ -32,6 +31,7 @@ brew "git-delta" # Better diff tool
 brew "neovim" # Neovim
 brew "lazygit" # Best Git Client
 brew "opencode" # AI Coding TUI
+brew "uv" # Python Pip alternative
 
 # Other
 brew "mas" # to install app store apps
@@ -42,7 +42,6 @@ brew "mas" # to install app store apps
 
 # Utilities
 cask "clop" # Clipboard auto-optimizer
-cask "command-x" # Cut and paste support for Finder
 
 # Browsers
 cask "arc" # Opinionated browser I like
@@ -72,13 +71,13 @@ mas "Dropover", id: 1355679052 # Save files in shelves by dragging to the corner
 mas "Magnet", id: 441258766 # Window snapping tool
 mas "Pure Paste", id: 1611378436 # Remove formatting and keeps only the text from clipboard
 mas "rcmd", id: 1596283165 # Keybindings-focused window switcher
+mas "Klack", id: 6446206067 # Funny mechanical keyboard sounds
+mas "Flighty", id: 1358823008 # Best flight tracker
+mas "Command X", id: 6448461551 # Cut and paste support for Finder
 
 ###############################
 # Interesting apps and ideas  #
 ###############################
 
-# mas "Klack" # Funny mechanical keyboard sounds
 # cask "Raycast" # Better spotlight, Tahoe spotlight is good enough for me
-# brew "lazydocker" # Docker TUI, I don't use docker enough for it
 # mas "Alcove" # Interesting use case for notch, Tahoe changed volume and brightness
-# cask "rapidapi" # API devtools, Postman replacement

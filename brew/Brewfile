@@ -46,6 +46,9 @@ cask "clop" # Clipboard auto-optimizer
 # Browsers
 cask "arc" # Opinionated browser I like
 
+# Productivity
+cask "amie" # Calendar and Task manager (take it from my cold dead hands)
+
 # Password manager
 cask "1password" # Password manager of choice
 cask "1password-cli" # CLI support for password manager

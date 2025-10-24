@@ -5,6 +5,9 @@ font-family = JetBrainsMono Nerd Font Mono
 window-height = 60
 window-width = 215
 
+# Tab Bar
+macos-titlebar-style = tabs
+
 # Icon
 macos-icon = xray
 
@@ -16,6 +19,7 @@ keybind = clear
 
 ## Tab Management
 keybind = super+t=new_tab
+keybind = super+shift+t=new_window
 keybind = ctrl+shift+tab=previous_tab
 keybind = ctrl+tab=next_tab
 

@@ -42,6 +42,7 @@ brew "mas" # to install app store apps
 
 # Utilities
 cask "clop" # Clipboard auto-optimizer
+cask "alt-tab" # Command-Tab alternative that iterates over windows (and excludes finder)
 
 # Browsers
 cask "arc" # Opinionated browser I like

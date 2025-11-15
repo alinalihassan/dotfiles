@@ -36,9 +36,9 @@ git:
   parseEmoji: true
   log:
     showGraph: 'always'
-  paging:
-    colorArg: always
-    pager: delta --paging=never
+  pagers:
+    - colorArg: always
+      pager: delta --paging=never
 os:
   openLink: open "$(echo {{link}} | sed 's/%2F/\//g')"
   editPreset: 'nvim'

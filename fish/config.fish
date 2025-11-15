@@ -12,8 +12,11 @@
 #   tmux new-session -A -s main
 # end
 
-# Jump
-status --is-interactive; and source (jump shell fish | psub)
+# Jump - lazy loaded on first prompt for faster startup
+function __jump_init --on-event fish_prompt
+    functions --erase __jump_init  # Remove this function after first run
+    source (jump shell fish | psub)
+end
 
 # Aliases
 alias v="nvim"
@@ -36,11 +39,11 @@ zoxide init --cmd cd fish | source
 
 # Functions
 function fish_add_var
-    if count $argv -ne 1 
-        set -Ux $argv[1] $argv[2]  
-    else
+    if test (count $argv) -lt 2
         echo "Usage: fish_add_var VARIABLE VALUE"
+        return 1
     end
+    set -Ux $argv[1] $argv[2]
 end
 
 function fish_remove_var

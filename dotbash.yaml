@@ -1,0 +1,29 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/alinalihassan/dotbash/refs/heads/main/schema.json
+defaults:
+  link:
+    relink: true
+    force: true
+    create: true
+
+link:
+  ~/.gitconfig: git/.gitconfig
+  ~/.gitignore_global: git/.gitignore_global
+  ~/.config/nvim: nvim
+  ~/.config/fish: fish
+  ~/.config/bat: bat
+  ~/.config/ghostty: ghostty
+  ~/.config/opencode/opencode.jsonc: opencode/opencode.jsonc
+  ~/Library/Application Support/lazygit/config.yml: lazygit/config.yml
+
+packageManager:
+  installSelf: true
+  dependenciesFile: brew/Brewfile
+
+shell:
+- description: Set Fish as default shell
+  command: |
+    FP=$(command -v fish)
+    grep -Fxq "$FP" /etc/shells || echo "$FP" | sudo tee -a /etc/shells
+    [ "$SHELL" = "$FP" ] || chsh -s "$FP" "$USER"
+- description: Install Fish Plugins
+  command: fish -c "fisher update"

@@ -18,7 +18,7 @@
   navigate = true
   line-numbers = true
   hyperlinks = true
-  hyperlinks-file-link-format = "vscode://file/{path}:{line}"
+  paging = never
 [merge]
   conflictstyle = diff3
 [diff]

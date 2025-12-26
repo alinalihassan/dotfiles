@@ -1,6 +1,8 @@
 theme = TokyoNight
 font-family = JetBrainsMono Nerd Font Mono
 
+auto-update-channel = tip
+
 # Initial Window Size
 window-height = 60
 window-width = 215

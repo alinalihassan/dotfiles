@@ -10,7 +10,6 @@ link:
   ~/.gitignore_global: git/.gitignore_global
   ~/.config/nvim: nvim
   ~/.config/fish: fish
-  ~/.config/fish-ai.ini: fish/fish-ai.ini
   ~/.config/bat: bat
   ~/.config/ghostty: ghostty
   ~/.config/opencode/opencode.jsonc: opencode/opencode.jsonc

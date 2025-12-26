@@ -4,7 +4,7 @@ font-family = JetBrainsMono Nerd Font Mono
 auto-update-channel = tip
 
 # Initial Window Size
-window-height = 60
+window-height = 61
 window-width = 215
 
 # Tab Bar

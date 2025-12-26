@@ -66,10 +66,5 @@ keybind = super+c=copy_to_clipboard
 keybind = super+v=paste_from_clipboard
 keybind = super+q=quit
 
-# Fuzzy Finding (based on fzf.fish)
-keybind = ctrl+f>f=text:_fzf_search_directory\x0d
-keybind = ctrl+f>h=text:_fzf_search_history\x0d
-keybind = ctrl+f>s=text:_fzf_search_git_status\x0d
-keybind = ctrl+f>l=text:_fzf_search_git_log\x0d
-keybind = ctrl+f>p=text:_fzf_search_processes\x0d
-keybind = ctrl+f>v=text:_fzf_search_variables (set --show | psub) (set --names | psub)\x0d
+# Fuzzy Finding keybindings are configured in fish/config.fish via fzf_configure_bindings
+# Ctrl+F -> F = Directory, H = History, S = Git Status, L = Git Log, P = Processes, V = Variables

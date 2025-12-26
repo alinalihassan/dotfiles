@@ -50,6 +50,9 @@ function fish_remove_var
     set --erase $argv
 end
 
+# Configure fzf.fish keybindings (tmux-style: Ctrl+F then letter)
+# \cf = Ctrl+F, then the letter follows
+fzf_configure_bindings --directory=\cff --history=\cfh --git_status=\cfs --git_log=\cfl --processes=\cfp --variables=\cfv
 
 # Added by OrbStack: command-line tools and integration
 # This won't be added again if you remove it.

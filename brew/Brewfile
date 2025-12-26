@@ -18,14 +18,13 @@ brew "the_silver_searcher" # better ack
 brew "git" # Git
 brew "gh" # GitHub CLI
 brew "node" # Node
-brew 'rust' # Rust
 brew "oven-sh/bun/bun" # Bun
 brew "hyperfine" # Benchmarking tool
 brew "jump" # Utility tool to jump to directories
 brew "fish" # Shell
 brew "fisher" # Package manager for Fish shell
 # brew "tmux" # Terminal Multiplexer (optional, using ghostty)
-brew "httpie" # HTTP CLI Client
+# brew "httpie" # HTTP CLI Client
 brew "duf" # Disk Usage Utility - 'df' alternative
 brew "git-delta" # Better diff tool
 brew "neovim" # Neovim

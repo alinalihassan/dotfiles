@@ -9,7 +9,8 @@ SETUVAR _fisher_jorgebucaran_2F_autopair_2E_fish_files:\x7e/\x2econfig/fish/func
 SETUVAR _fisher_jorgebucaran_2F_fisher_files:\x7e/\x2econfig/fish/functions/fisher\x2efish\x1e\x7e/\x2econfig/fish/completions/fisher\x2efish
 SETUVAR _fisher_oh_2D_my_2D_fish_2F_plugin_2D_bang_2D_bang_files:\x7e/\x2econfig/fish/functions/__history_previous_command\x2efish\x1e\x7e/\x2econfig/fish/functions/__history_previous_command_arguments\x2efish\x1e\x7e/\x2econfig/fish/conf\x2ed/plugin\x2dbang\x2dbang\x2efish
 SETUVAR _fisher_patrickf1_2F_fzf_2E_fish_files:\x7e/\x2econfig/fish/functions/_fzf_configure_bindings_help\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_extract_var_info\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_preview_changed_file\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_preview_file\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_report_diff_type\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_report_file_type\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_search_directory\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_search_git_log\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_search_git_status\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_search_history\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_search_processes\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_search_variables\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_wrapper\x2efish\x1e\x7e/\x2econfig/fish/functions/fzf_configure_bindings\x2efish\x1e\x7e/\x2econfig/fish/conf\x2ed/fzf\x2efish\x1e\x7e/\x2econfig/fish/completions/fzf_configure_bindings\x2efish
-SETUVAR _fisher_plugins:jorgebucaran/fisher\x1evitallium/tokyonight\x2dfish\x1ejorgebucaran/autopair\x2efish\x1eacomagu/fish\x2dasync\x2dprompt\x1epatrickf1/fzf\x2efish\x1eoh\x2dmy\x2dfish/plugin\x2dbang\x2dbang
+SETUVAR _fisher_plugins:jorgebucaran/fisher\x1evitallium/tokyonight\x2dfish\x1ejorgebucaran/autopair\x2efish\x1eacomagu/fish\x2dasync\x2dprompt\x1epatrickf1/fzf\x2efish\x1eoh\x2dmy\x2dfish/plugin\x2dbang\x2dbang\x1erealiserad/fish\x2dai
+SETUVAR _fisher_realiserad_2F_fish_2D_ai_files:\x7e/\x2econfig/fish/functions/_fish_ai_autocomplete\x2efish\x1e\x7e/\x2econfig/fish/functions/_fish_ai_autocomplete_or_fix\x2efish\x1e\x7e/\x2econfig/fish/functions/_fish_ai_codify\x2efish\x1e\x7e/\x2econfig/fish/functions/_fish_ai_codify_or_explain\x2efish\x1e\x7e/\x2econfig/fish/functions/_fish_ai_explain\x2efish\x1e\x7e/\x2econfig/fish/functions/_fish_ai_fix\x2efish\x1e\x7e/\x2econfig/fish/functions/fish_ai_bug_report\x2efish\x1e\x7e/\x2econfig/fish/functions/fish_ai_put_api_key\x2efish\x1e\x7e/\x2econfig/fish/functions/fish_ai_switch_context\x2efish\x1e\x7e/\x2econfig/fish/conf\x2ed/fish_ai\x2efish
 SETUVAR _fisher_upgraded_to_4_4:\x1d
 SETUVAR _fisher_vitallium_2F_tokyonight_2D_fish_files:\x7e/\x2econfig/fish/themes/TokyoNight\x20Day\x2etheme\x1e\x7e/\x2econfig/fish/themes/TokyoNight\x20Moon\x2etheme\x1e\x7e/\x2econfig/fish/themes/TokyoNight\x20Night\x2etheme\x1e\x7e/\x2econfig/fish/themes/TokyoNight\x20Storm\x2etheme
 SETUVAR fish_color_autosuggestion:565f89
@@ -37,7 +38,7 @@ SETUVAR fish_color_status:red
 SETUVAR fish_color_user:\x1d
 SETUVAR fish_color_valid_path:\x2d\x2dunderline
 SETUVAR fish_greeting:
-SETUVAR fish_key_bindings:fish_default_key_bindings
+SETUVAR fish_key_bindings:fish_vi_key_bindings
 SETUVAR fish_pager_color_background:\x1d
 SETUVAR fish_pager_color_completion:c0caf5
 SETUVAR fish_pager_color_description:565f89

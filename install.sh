@@ -55,6 +55,19 @@ fi
 ln -s "$(pwd)/fish" "$HOME/.config/fish"
 echo "  ✓ Linked ~/.config/fish"
 
+echo "Setting up: ~/.config/fish-ai.ini -> fish/fish-ai.ini"
+if [ ! -e "$(pwd)/fish/fish-ai.ini" ]; then
+  echo "  ✗ Error: Source does not exist: fish/fish-ai.ini"
+  exit 1
+fi
+mkdir -p "$(dirname "$HOME/.config/fish-ai.ini")"
+if [ -e "$HOME/.config/fish-ai.ini" ] || [ -L "$HOME/.config/fish-ai.ini" ]; then
+  echo "  Removing existing: ~/.config/fish-ai.ini"
+  rm -rf "$HOME/.config/fish-ai.ini"
+fi
+ln -s "$(pwd)/fish/fish-ai.ini" "$HOME/.config/fish-ai.ini"
+echo "  ✓ Linked ~/.config/fish-ai.ini"
+
 echo "Setting up: ~/.config/bat -> bat"
 if [ ! -e "$(pwd)/bat" ]; then
   echo "  ✗ Error: Source does not exist: bat"

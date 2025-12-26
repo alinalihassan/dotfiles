@@ -64,6 +64,8 @@ keybind = super+r=reload_config
 keybind = super+w=close_surface
 keybind = super+c=copy_to_clipboard
 keybind = super+v=paste_from_clipboard
+keybind = super+f=start_search
+keybind = super+a=select_all
 keybind = super+q=quit
 
 # Fuzzy Finding keybindings are configured in fish/config.fish via fzf_configure_bindings

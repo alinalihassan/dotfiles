@@ -29,6 +29,8 @@ The installation process uses **Dotbot** to automate setup:
    - `fish/` → `~/.config/fish`
    - `bat/` → `~/.config/bat`
    - `ghostty/` → `~/.config/ghostty`
+   - `niri/` → `~/.config/niri` (Niri window manager)
+   - `noctalia/` → `~/.config/noctalia` (Noctalia desktop shell)
    - And others...
 
 2. **Installs Homebrew** - If not already installed (macOS only)
@@ -78,6 +80,8 @@ The package list includes CLI tools, development tools, applications, and Arch-s
 | `git/` | Git configuration with delta diff viewer |
 | `ghostty/` | Terminal emulator configuration |
 | `lazygit/` | LazyGit UI for git operations |
+| `niri/` | Niri window manager configuration |
+| `noctalia/` | Noctalia desktop shell configuration |
 | `nvim/` | Neovim editor configuration |
 | `opencode/` | OpenCode CLI configuration |
 
@@ -99,6 +103,8 @@ ln -s ~/.dotfiles/bat ~/.config/bat
 ln -s ~/.dotfiles/ghostty ~/.config/ghostty
 mkdir -p ~/.config/lazygit
 ln -s ~/.dotfiles/lazygit/config.yml ~/.config/lazygit/config.yml
+ln -s ~/.dotfiles/niri ~/.config/niri
+ln -s ~/.dotfiles/noctalia ~/.config/noctalia
 
 # Install packages (choose one)
 # macOS:

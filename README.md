@@ -1,15 +1,15 @@
 # Dotfiles
 
-This repository contains my personal configuration files (dotfiles) for macOS.
+This repository contains my personal configuration files (dotfiles) for macOS and Arch Linux.
 
 ## Installation
 
 ### Prerequisites
 
 Before running the installation script, ensure you have:
-- macOS 12 or later
+- macOS 12 or later **or** Arch Linux
 - Git installed
-- Command Line Tools: `xcode-select --install`
+- For macOS: Command Line Tools: `xcode-select --install`
 
 ### Quick Start
 
@@ -31,12 +31,26 @@ The installation process uses **Dotbot** to automate setup:
    - `ghostty/` → `~/.config/ghostty`
    - And others...
 
-2. **Installs Homebrew** - If not already installed
+2. **Installs Homebrew** - If not already installed (macOS only)
    - Uses the included `brew/Brewfile` for reproducible package installation
 
 3. **Configures Shell** - Sets Fish as your default shell
 
 4. **Installs Fish Plugins** - Runs `fisher update` to install plugins listed in `fish/fish_plugins`
+
+### Arch Linux (CachyOS/Arch)
+
+For Arch Linux systems, there's a separate package list in `arch/pkglist.txt`:
+
+```bash
+# Install all packages with paru
+paru -S --needed --noconfirm - < arch/pkglist.txt
+
+# Or with yay
+yay -S --needed --noconfirm - < arch/pkglist.txt
+```
+
+The package list includes CLI tools, development tools, applications, and Arch-specific packages from the AUR.
 
 ### Troubleshooting
 
@@ -57,6 +71,7 @@ The installation process uses **Dotbot** to automate setup:
 
 | Directory | Purpose |
 |-----------|---------|
+| `arch/` | Arch Linux package list (pkglist.txt) |
 | `bat/` | Syntax highlighting configuration |
 | `brew/` | Homebrew package list (Brewfile) |
 | `fish/` | Fish shell configuration, functions, and plugins |
@@ -82,12 +97,15 @@ ln -s ~/.dotfiles/nvim ~/.config/nvim
 ln -s ~/.dotfiles/fish ~/.config/fish
 ln -s ~/.dotfiles/bat ~/.config/bat
 ln -s ~/.dotfiles/ghostty ~/.config/ghostty
-mkdir -p ~/Library/Application\ Support/lazygit
-ln -s ~/.dotfiles/lazygit/config.yml ~/Library/Application\ Support/lazygit/config.yml
+mkdir -p ~/.config/lazygit
+ln -s ~/.dotfiles/lazygit/config.yml ~/.config/lazygit/config.yml
 
-# Install Homebrew and packages
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+# Install packages (choose one)
+# macOS:
 brew bundle --file=~/.dotfiles/brew/Brewfile
+
+# Arch Linux:
+paru -S --needed --noconfirm - < ~/.dotfiles/arch/pkglist.txt
 
 # Set Fish as default shell and install plugins
 chsh -s $(which fish)

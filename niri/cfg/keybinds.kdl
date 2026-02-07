@@ -11,7 +11,7 @@ binds {
     // ─── Applications ───
     Mod+Return                          hotkey-overlay-title="Open Terminal: Ghostty" { spawn "ghostty"; }
     Mod+CTRL+Return                     hotkey-overlay-title="Open App Launcher: noctalia launcher" { spawn-sh "qs -c noctalia-shell ipc call launcher toggle"; }
-    Mod+B                               hotkey-overlay-title="Open Browser: firefox" { spawn "firefox"; }
+    Mod+B                               hotkey-overlay-title="Open Browser: Zen Browser" { spawn "zen-browser"; }
     Mod+ALT+L                           hotkey-overlay-title="Lock Screen: noctalia lock" { spawn-sh "qs -c noctalia-shell ipc call lockScreen lock"; }
     Mod+Shift+Q                        hotkey-overlay-title="Session Menu: noctalia sessionMenu" { spawn-sh "qs -c noctalia-shell ipc call sessionMenu toggle"; }
 
@@ -59,14 +59,22 @@ binds {
     Mod+CTRL+End                        { move-column-to-last; }
 
     Mod+Shift+Left                      { focus-monitor-left; }
+    Mod+Shift+H                         { focus-monitor-left; }
     Mod+Shift+Right                     { focus-monitor-right; }
+    Mod+Shift+L                         { focus-monitor-right; }
     Mod+Shift+UP                        { focus-monitor-up; }
+    Mod+Shift+K                         { focus-monitor-up; }
     Mod+Shift+Down                      { focus-monitor-down; }
+    Mod+Shift+J                         { focus-monitor-down; }
 
     Mod+Shift+CTRL+Left                 { move-column-to-monitor-left; }
+    Mod+Shift+CTRL+H                    { move-column-to-monitor-left; }
     Mod+Shift+CTRL+Right                { move-column-to-monitor-right; }
+    Mod+Shift+CTRL+L                    { move-column-to-monitor-right; }
     Mod+Shift+CTRL+UP                   { move-column-to-monitor-up; }
+    Mod+Shift+CTRL+K                    { move-column-to-monitor-up; }
     Mod+Shift+CTRL+Down                 { move-column-to-monitor-down; }
+    Mod+Shift+CTRL+J                    { move-column-to-monitor-down; }
 
     // ─── Workspace Switching ───
     Mod+WheelScrollDown                 cooldown-ms=150 { focus-workspace-down; }

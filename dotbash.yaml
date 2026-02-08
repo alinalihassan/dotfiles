@@ -13,7 +13,7 @@ link:
   ~/.config/bat: bat
   ~/.config/ghostty: ghostty
   ~/.config/opencode/opencode.jsonc: opencode/opencode.jsonc
-  ~/Library/Application Support/lazygit/config.yml: lazygit/config.yml
+  ~/.config/lazygit/config.yml: lazygit/config.yml
 
 packageManager:
   installSelf: true

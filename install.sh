@@ -94,18 +94,18 @@ fi
 ln -s "$(pwd)/opencode/opencode.jsonc" "$HOME/.config/opencode/opencode.jsonc"
 echo "  ✓ Linked ~/.config/opencode/opencode.jsonc"
 
-echo "Setting up: ~/Library/Application Support/lazygit/config.yml -> lazygit/config.yml"
+echo "Setting up: ~/.config/lazygit/config.yml -> lazygit/config.yml"
 if [ ! -e "$(pwd)/lazygit/config.yml" ]; then
   echo "  ✗ Error: Source does not exist: lazygit/config.yml"
   exit 1
 fi
-mkdir -p "$(dirname "$HOME/Library/Application Support/lazygit/config.yml")"
-if [ -e "$HOME/Library/Application Support/lazygit/config.yml" ] || [ -L "$HOME/Library/Application Support/lazygit/config.yml" ]; then
-  echo "  Removing existing: ~/Library/Application Support/lazygit/config.yml"
-  rm -rf "$HOME/Library/Application Support/lazygit/config.yml"
+mkdir -p "$(dirname "$HOME/.config/lazygit/config.yml")"
+if [ -e "$HOME/.config/lazygit/config.yml" ] || [ -L "$HOME/.config/lazygit/config.yml" ]; then
+  echo "  Removing existing: ~/.config/lazygit/config.yml"
+  rm -rf "$HOME/.config/lazygit/config.yml"
 fi
-ln -s "$(pwd)/lazygit/config.yml" "$HOME/Library/Application Support/lazygit/config.yml"
-echo "  ✓ Linked ~/Library/Application Support/lazygit/config.yml"
+ln -s "$(pwd)/lazygit/config.yml" "$HOME/.config/lazygit/config.yml"
+echo "  ✓ Linked ~/.config/lazygit/config.yml"
 
 echo "All symlinks created successfully!"
 

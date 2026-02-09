@@ -16,6 +16,7 @@ Before running the installation script, ensure you have:
 ```bash
 git clone --recurse-submodules https://github.com/alinalihassan/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
+bunx dotbash
 ./install
 ```
 
@@ -94,15 +95,14 @@ If you prefer to set up manually:
 git clone https://github.com/alinalihassan/dotfiles.git ~/.dotfiles
 
 # Create symlinks manually
+mkdir -p ~/.config
 ln -s ~/.dotfiles/git/.gitconfig ~/.gitconfig
 ln -s ~/.dotfiles/git/.gitignore_global ~/.gitignore_global
-mkdir -p ~/.config
 ln -s ~/.dotfiles/nvim ~/.config/nvim
 ln -s ~/.dotfiles/fish ~/.config/fish
 ln -s ~/.dotfiles/bat ~/.config/bat
 ln -s ~/.dotfiles/ghostty ~/.config/ghostty
-mkdir -p ~/.config/lazygit
-ln -s ~/.dotfiles/lazygit/config.yml ~/.config/lazygit/config.yml
+ln -s ~/.dotfiles/lazygit ~/.config/lazygit
 ln -s ~/.dotfiles/niri ~/.config/niri
 ln -s ~/.dotfiles/noctalia ~/.config/noctalia
 

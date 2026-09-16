@@ -28,9 +28,16 @@ After changing `dotbash.yaml`:
 
 ```bash
 bunx dotbash
+dotbash --check
 ```
 
 Commit the updated `install.sh` together with the YAML.
+
+Preview what the installer would do without making changes:
+
+```bash
+./install.sh --dry-run
+```
 
 ### Troubleshooting
 

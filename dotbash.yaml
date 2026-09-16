@@ -29,6 +29,7 @@ shell:
 - description: Install Fish Plugins
   command: fish -c "fisher update"
 - description: Generate Fish completions
+  optional: true
   command: |
     COMPDIR="$HOME/.config/fish/completions"
     mkdir -p "$COMPDIR"

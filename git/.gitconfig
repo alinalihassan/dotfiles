@@ -2,37 +2,28 @@
 	email = hassanalinali@gmail.com
 	name = Alin Ali Hassan
 [include]
-  path = ~/.dotfiles/git/extra/delta/tokyonight_night.gitconfig
+	path = ~/.config/git/delta/tokyonight_night.gitconfig
 [init]
-  defaultBranch = main
+	defaultBranch = main
 [push]
-  autoSetupRemote = true
+	autoSetupRemote = true
 [core]
-  ; pager = bat
-  pager = delta
-  excludesfile = ~/.gitignore_global
-  editor = nvim
+	pager = delta
+	excludesfile = ~/.gitignore_global
+	editor = nvim
 [interactive]
-  diffFilter = delta --color-only
+	diffFilter = delta --color-only
 [delta]
-  navigate = true
-  line-numbers = true
-  hyperlinks = true
-  paging = never
+	navigate = true
+	line-numbers = true
+	hyperlinks = true
+	paging = never
 [merge]
-  conflictstyle = diff3
+	conflictstyle = diff3
 [diff]
-  colorMoved = default
+	colorMoved = default
 [github]
-  user = alinalihassan
-[hub]
-	host = github.com
-[gpg]
-	program = gpg
-[commit]
-	gpgSign = false
-[tag]
-	forceSignAnnotated = false
+	user = alinalihassan
 [credential "https://github.com"]
 	helper = !gh auth git-credential
 [credential "https://gist.github.com"]

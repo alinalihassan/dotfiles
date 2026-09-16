@@ -29,6 +29,19 @@ fi
 ln -s "$(pwd)/git/.gitignore_global" "$HOME/.gitignore_global"
 echo "  ✓ Linked ~/.gitignore_global"
 
+echo "Setting up: ~/.config/git/delta/tokyonight_night.gitconfig -> git/extra/delta/tokyonight_night.gitconfig"
+if [ ! -e "$(pwd)/git/extra/delta/tokyonight_night.gitconfig" ]; then
+  echo "  ✗ Error: Source does not exist: git/extra/delta/tokyonight_night.gitconfig"
+  exit 1
+fi
+mkdir -p "$(dirname "$HOME/.config/git/delta/tokyonight_night.gitconfig")"
+if [ -e "$HOME/.config/git/delta/tokyonight_night.gitconfig" ] || [ -L "$HOME/.config/git/delta/tokyonight_night.gitconfig" ]; then
+  echo "  Removing existing: ~/.config/git/delta/tokyonight_night.gitconfig"
+  rm -rf "$HOME/.config/git/delta/tokyonight_night.gitconfig"
+fi
+ln -s "$(pwd)/git/extra/delta/tokyonight_night.gitconfig" "$HOME/.config/git/delta/tokyonight_night.gitconfig"
+echo "  ✓ Linked ~/.config/git/delta/tokyonight_night.gitconfig"
+
 echo "Setting up: ~/.config/nvim -> nvim"
 if [ ! -e "$(pwd)/nvim" ]; then
   echo "  ✗ Error: Source does not exist: nvim"
@@ -81,18 +94,18 @@ fi
 ln -s "$(pwd)/ghostty" "$HOME/.config/ghostty"
 echo "  ✓ Linked ~/.config/ghostty"
 
-echo "Setting up: ~/.config/opencode/opencode.jsonc -> opencode/opencode.jsonc"
-if [ ! -e "$(pwd)/opencode/opencode.jsonc" ]; then
-  echo "  ✗ Error: Source does not exist: opencode/opencode.jsonc"
+echo "Setting up: ~/.config/opencode -> opencode"
+if [ ! -e "$(pwd)/opencode" ]; then
+  echo "  ✗ Error: Source does not exist: opencode"
   exit 1
 fi
-mkdir -p "$(dirname "$HOME/.config/opencode/opencode.jsonc")"
-if [ -e "$HOME/.config/opencode/opencode.jsonc" ] || [ -L "$HOME/.config/opencode/opencode.jsonc" ]; then
-  echo "  Removing existing: ~/.config/opencode/opencode.jsonc"
-  rm -rf "$HOME/.config/opencode/opencode.jsonc"
+mkdir -p "$(dirname "$HOME/.config/opencode")"
+if [ -e "$HOME/.config/opencode" ] || [ -L "$HOME/.config/opencode" ]; then
+  echo "  Removing existing: ~/.config/opencode"
+  rm -rf "$HOME/.config/opencode"
 fi
-ln -s "$(pwd)/opencode/opencode.jsonc" "$HOME/.config/opencode/opencode.jsonc"
-echo "  ✓ Linked ~/.config/opencode/opencode.jsonc"
+ln -s "$(pwd)/opencode" "$HOME/.config/opencode"
+echo "  ✓ Linked ~/.config/opencode"
 
 echo "Setting up: ~/.config/lazygit/config.yml -> lazygit/config.yml"
 if [ ! -e "$(pwd)/lazygit/config.yml" ]; then
@@ -157,6 +170,35 @@ if (fish -c "fisher update"); then
   echo "  ✓ Install Fish Plugins completed"
 else
   echo "  ✗ Error: Install Fish Plugins failed"
+  exit 1
+fi
+
+# Generate Fish completions
+echo "Generate Fish completions..."
+if (COMPDIR="$HOME/.config/fish/completions"
+mkdir -p "$COMPDIR"
+
+emit() {
+  local bin="$1" dest="$2"
+  shift 2
+  if command -v "$bin" >/dev/null 2>&1; then
+    "$@" >"$dest" || rm -f "$dest"
+  fi
+}
+
+emit docker "$COMPDIR/docker.fish" docker completion fish
+emit kubectl "$COMPDIR/kubectl.fish" kubectl completion fish
+emit gh "$COMPDIR/gh.fish" gh completion -s fish
+emit supabase "$COMPDIR/supabase.fish" supabase completion fish
+emit orbctl "$COMPDIR/orbctl.fish" orbctl completion fish
+
+if command -v bun >/dev/null 2>&1; then
+  bun completions "$COMPDIR" >/dev/null 2>&1 || true
+fi
+); then
+  echo "  ✓ Generate Fish completions completed"
+else
+  echo "  ✗ Error: Generate Fish completions failed"
   exit 1
 fi
 

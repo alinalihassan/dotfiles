@@ -66,12 +66,12 @@ All keybindings are found in Ghostty's [config](ghostty/config)
 
 | Action | Shortcut |
 |--------|----------|
-| Search directory | Ctrl + Opt + f |
-| Search history | Ctrl + r |
-| Search Git log | Ctrl + Opt + l |
-| Search Git status | Ctrl + Opt + s |
-| Search processes | Ctrl + Opt + p |
-| Search variables | Ctrl + v |
+| Search directory | Ctrl + f, then f |
+| Search history | Ctrl + f, then h |
+| Search Git log | Ctrl + f, then l |
+| Search Git status | Ctrl + f, then s |
+| Search processes | Ctrl + f, then p |
+| Search variables | Ctrl + f, then v |
 
 ## NeoVim
 

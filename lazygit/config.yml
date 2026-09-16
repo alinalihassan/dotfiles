@@ -42,9 +42,3 @@ git:
 os:
   openLink: open "$(echo {{link}} | sed 's/%2F/\//g')"
   editPreset: 'nvim'
-customCommands:
-  - key: O
-    context: files
-    command: env OCO_GITPUSH=false oco --yes
-    loadingText: 'Generating commit message'
-    description: Auto-generate commit message using OpenCommit

@@ -1,5 +1,18 @@
-# macOS folder attributes. 
+# macOS folder attributes.
 .DS_Store
 
 # Git credentials
 git/.git-credentials
+
+# Machine-local Fish state
+fish/fish_variables
+
+# Fisher plugins and generated completions
+fish/themes/
+fish/completions/
+fish/functions/_*
+fish/functions/__*
+fish/functions/fisher.fish
+fish/functions/fzf_configure_bindings.fish
+fish/functions/sponge_filter_*.fish
+fish/conf.d/

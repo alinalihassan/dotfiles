@@ -2,57 +2,50 @@
 
 This repository contains my personal configuration files (dotfiles) for macOS.
 
+[DotBash](https://github.com/alinalihassan/dotbash) generates a self-contained `install.sh` from `dotbash.yaml`. Commit both: edit the YAML, regenerate the script, and new machines only need `./install.sh`.
+
 ## Installation
 
 ### Prerequisites
 
-Before running the installation script, ensure you have:
 - macOS 12 or later
-- Git installed
+- Git
 - Command Line Tools: `xcode-select --install`
 
 ### Quick Start
 
 ```bash
-git clone --recurse-submodules https://github.com/alinalihassan/dotfiles.git ~/.dotfiles
+git clone https://github.com/alinalihassan/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
-bunx dotbash
-./install
+./install.sh
 ```
 
-### What the Installation Does
+That creates symlinks, installs Homebrew packages from `brew/Brewfile`, sets Fish as the default shell, installs Fisher plugins, and generates Fish completions for tools that are present (`docker`, `kubectl`, `gh`, `supabase`, `orbctl`, `bun`).
 
-The installation process uses **DotBash** to automate setup:
+### Regenerating `install.sh`
 
-1. **Creates Symlinks** - Links configuration files from the repo to their proper locations:
-   - `git/.gitconfig` → `~/.gitconfig`
-   - `nvim/` → `~/.config/nvim`
-   - `fish/` → `~/.config/fish`
-   - `bat/` → `~/.config/bat`
-   - `ghostty/` → `~/.config/ghostty`
-   - And others...
+After changing `dotbash.yaml`:
 
-2. **Installs Homebrew** - If not already installed
-   - Uses the included `brew/Brewfile` for reproducible package installation
+```bash
+bunx dotbash
+```
 
-3. **Configures Shell** - Sets Fish as your default shell
-
-4. **Installs Fish Plugins** - Runs `fisher update` to install plugins listed in `fish/fish_plugins`
+Commit the updated `install.sh` together with the YAML.
 
 ### Troubleshooting
 
 **Symlink conflicts:**
-- If you have existing config files at the target locations, DotBash will overwrite them (due to `force: true` in the config)
-- Backup any existing configs before running `./install`
+- Existing files at target paths are replaced (`force: true`)
+- Backup anything you care about before running `./install.sh`
 
 **Fish plugins don't load:**
-- Manually run: `fish -c "fisher update"`
+- `fish -c "fisher update"`
 
 **Permission denied on install script:**
-- Make executable: `chmod +x ~/.dotfiles/install`
+- `chmod +x ~/.dotfiles/install.sh`
 
 **Homebrew installation fails:**
-- Ensure Command Line Tools are installed: `xcode-select --install`
+- `xcode-select --install`
 
 ### Configuration Files
 
@@ -60,35 +53,9 @@ The installation process uses **DotBash** to automate setup:
 |-----------|---------|
 | `bat/` | Syntax highlighting configuration |
 | `brew/` | Homebrew package list (Brewfile) |
-| `fish/` | Fish shell configuration, functions, and plugins |
-| `git/` | Git configuration with delta diff viewer |
+| `fish/` | Fish shell configuration (plugins and completions are installed, not committed) |
+| `git/` | Git configuration with delta |
 | `ghostty/` | Terminal emulator configuration |
 | `lazygit/` | LazyGit UI for git operations |
 | `nvim/` | Neovim editor configuration |
 | `opencode/` | OpenCode CLI configuration |
-
-### Manual Installation (Without DotBash)
-
-If you prefer to set up manually:
-
-```bash
-# Clone the repo
-git clone https://github.com/alinalihassan/dotfiles.git ~/.dotfiles
-
-# Create symlinks manually
-mkdir -p ~/.config
-ln -s ~/.dotfiles/git/.gitconfig ~/.gitconfig
-ln -s ~/.dotfiles/git/.gitignore_global ~/.gitignore_global
-ln -s ~/.dotfiles/nvim ~/.config/nvim
-ln -s ~/.dotfiles/fish ~/.config/fish
-ln -s ~/.dotfiles/bat ~/.config/bat
-ln -s ~/.dotfiles/ghostty ~/.config/ghostty
-ln -s ~/.dotfiles/lazygit ~/.config/lazygit
-
-# Install packages
-brew bundle --file=~/.dotfiles/brew/Brewfile
-
-# Set Fish as default shell and install plugins
-chsh -s $(which fish)
-fish -c "fisher update"
-```

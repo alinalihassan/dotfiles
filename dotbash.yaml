@@ -8,11 +8,12 @@ defaults:
 link:
   ~/.gitconfig: git/.gitconfig
   ~/.gitignore_global: git/.gitignore_global
+  ~/.config/git/delta/tokyonight_night.gitconfig: git/extra/delta/tokyonight_night.gitconfig
   ~/.config/nvim: nvim
   ~/.config/fish: fish
   ~/.config/bat: bat
   ~/.config/ghostty: ghostty
-  ~/.config/opencode/opencode.jsonc: opencode/opencode.jsonc
+  ~/.config/opencode: opencode
   ~/.config/lazygit/config.yml: lazygit/config.yml
 
 packageManager:
@@ -27,3 +28,25 @@ shell:
     [ "$SHELL" = "$FP" ] || chsh -s "$FP" "$USER"
 - description: Install Fish Plugins
   command: fish -c "fisher update"
+- description: Generate Fish completions
+  command: |
+    COMPDIR="$HOME/.config/fish/completions"
+    mkdir -p "$COMPDIR"
+
+    emit() {
+      local bin="$1" dest="$2"
+      shift 2
+      if command -v "$bin" >/dev/null 2>&1; then
+        "$@" >"$dest" || rm -f "$dest"
+      fi
+    }
+
+    emit docker "$COMPDIR/docker.fish" docker completion fish
+    emit kubectl "$COMPDIR/kubectl.fish" kubectl completion fish
+    emit gh "$COMPDIR/gh.fish" gh completion -s fish
+    emit supabase "$COMPDIR/supabase.fish" supabase completion fish
+    emit orbctl "$COMPDIR/orbctl.fish" orbctl completion fish
+
+    if command -v bun >/dev/null 2>&1; then
+      bun completions "$COMPDIR" >/dev/null 2>&1 || true
+    fi

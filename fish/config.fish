@@ -17,6 +17,9 @@ end
 if test -d $HOME/.orbstack/bin
     fish_add_path $HOME/.orbstack/bin
 end
+if test -d $HOME/.opencode/bin
+    fish_add_path $HOME/.opencode/bin
+end
 
 if status is-interactive
     command -q zoxide; and zoxide init --cmd cd fish | source
@@ -25,5 +28,8 @@ if status is-interactive
         fzf_configure_bindings --directory=\cff --history=\cfh --git_status=\cfs --git_log=\cfl --processes=\cfp --variables=\cfv
     end
 
-    fish_config theme choose "TokyoNight Night" 2>/dev/null
+    set -l theme_file $__fish_config_dir/themes/"TokyoNight Night.theme"
+    if test -f $theme_file
+        fish_config theme choose "TokyoNight Night"
+    end
 end

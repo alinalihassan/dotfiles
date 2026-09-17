@@ -1,0 +1,3 @@
+[submodule "mackup/store"]
+	path = mackup/store
+	url = https://github.com/alinalihassan/mackup-store.git

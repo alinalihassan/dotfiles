@@ -33,6 +33,7 @@ brew "uv" # Python Pip alternative
 
 # Other
 brew "mas" # to install app store apps
+brew "mackup" # Sync macOS / GUI app settings (copy mode)
 
 ###############################
 #  Casks                      #
@@ -44,9 +45,6 @@ cask "alt-tab" # Command-Tab alternative that iterates over windows (and exclude
 
 # Browsers
 cask "arc" # Opinionated browser I like
-
-# Productivity
-cask "amie" # Calendar and Task manager (take it from my cold dead hands)
 
 # Password manager
 cask "1password" # Password manager of choice

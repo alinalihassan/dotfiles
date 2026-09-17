@@ -217,6 +217,48 @@ else
   fi
 fi
 
+echo "Setting up: ~/.mackup.cfg -> mackup/mackup.cfg"
+if [ ! -e "$ROOT"/mackup/mackup.cfg ]; then
+  echo "  ✗ Error: Source does not exist: mackup/mackup.cfg"
+  exit 1
+fi
+if [ -L "$HOME/.mackup.cfg" ] && [ "$(readlink "$HOME/.mackup.cfg")" = "$ROOT"/mackup/mackup.cfg ]; then
+  echo "  ✓ Already linked ~/.mackup.cfg"
+else
+  if [ "$DRY_RUN" = true ]; then
+    echo "  [dry-run] would link ~/.mackup.cfg -> mackup/mackup.cfg"
+  else
+    mkdir -p "$(dirname "$HOME/.mackup.cfg")"
+    if [ -e "$HOME/.mackup.cfg" ] || [ -L "$HOME/.mackup.cfg" ]; then
+      echo "  Removing existing: ~/.mackup.cfg"
+      rm -rf "$HOME/.mackup.cfg"
+    fi
+    ln -s "$ROOT"/mackup/mackup.cfg "$HOME/.mackup.cfg"
+    echo "  ✓ Linked ~/.mackup.cfg"
+  fi
+fi
+
+echo "Setting up: ~/.mackup -> mackup/applications"
+if [ ! -e "$ROOT"/mackup/applications ]; then
+  echo "  ✗ Error: Source does not exist: mackup/applications"
+  exit 1
+fi
+if [ -L "$HOME/.mackup" ] && [ "$(readlink "$HOME/.mackup")" = "$ROOT"/mackup/applications ]; then
+  echo "  ✓ Already linked ~/.mackup"
+else
+  if [ "$DRY_RUN" = true ]; then
+    echo "  [dry-run] would link ~/.mackup -> mackup/applications"
+  else
+    mkdir -p "$(dirname "$HOME/.mackup")"
+    if [ -e "$HOME/.mackup" ] || [ -L "$HOME/.mackup" ]; then
+      echo "  Removing existing: ~/.mackup"
+      rm -rf "$HOME/.mackup"
+    fi
+    ln -s "$ROOT"/mackup/applications "$HOME/.mackup"
+    echo "  ✓ Linked ~/.mackup"
+  fi
+fi
+
 echo "All symlinks created successfully!"
 
 # Package Manager Setup
@@ -242,6 +284,22 @@ if [[ "$(uname)" == "Darwin" ]]; then
   echo "Installing packages from brew/Brewfile..."
   dotbash_run brew bundle --file="$ROOT"/brew/Brewfile
   echo "  ✓ Packages installed successfully"
+fi
+
+# Init private Mackup store submodule
+echo "Init private Mackup store submodule..."
+if [ "$DRY_RUN" = true ]; then
+  echo "[dry-run] Init private Mackup store submodule"
+else
+  set +e
+  git submodule update --init --recursive mackup/store
+  status=$?
+  set -e
+  if [ $status -eq 0 ]; then
+    echo "  ✓ Init private Mackup store submodule completed"
+  else
+    echo "  ⚠ Init private Mackup store submodule skipped (optional)"
+  fi
 fi
 
 # Set Fish as default shell

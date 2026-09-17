@@ -3,14 +3,13 @@
   "model": "opencode/kimi-k2.5",
   "instructions": [".cursor/rules/*.md"],
   "mcp": {
-    "excalidraw": {
+    "commanderview": {
+      "type": "remote",
+      "url": "http://localhost:3000/api/mcp",
       "enabled": true,
-      "type": "remote",
-      "url": "https://excalidraw-mcp-app.vercel.app/mcp" 
-    },
-    "guilders-mcp": {
-      "type": "remote",
-      "url": "http://localhost:3000/mcp",
+      "oauth": {
+        "scope": "openid profile email offline_access read write"
+      }
     }
   }
 }

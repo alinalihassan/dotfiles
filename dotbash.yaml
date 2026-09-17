@@ -15,12 +15,17 @@ link:
   ~/.config/ghostty: ghostty
   ~/.config/opencode: opencode
   ~/.config/lazygit/config.yml: lazygit/config.yml
+  ~/.mackup.cfg: mackup/mackup.cfg
+  ~/.mackup: mackup/applications
 
 packageManager:
   installSelf: true
   dependenciesFile: brew/Brewfile
 
 shell:
+- description: Init private Mackup store submodule
+  optional: true
+  command: git submodule update --init --recursive mackup/store
 - description: Set Fish as default shell
   command: |
     FP=$(command -v fish)
